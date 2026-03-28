@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face{
+  font-family:'InterVariable';
+  src:url('https://rsms.me/inter/font-files/InterVariable.woff2?v=4.1') format('woff2-variations');
+  font-weight:100 900; font-style:normal; font-display:swap;
+}
+
+/* base */
+@layer base{
+  :root{ color-scheme: light; }
+  html{ font-feature-settings:"case","calt","frac","kern","liga","lnum","ss01","tnum"; }
+  *{ box-sizing:border-box; }
+  body{ @apply bg-base-bg text-base-text font-sans antialiased selection:bg-base-accent/20 selection:text-base-text; font-weight:300; }
+  a{ @apply text-base-accent underline-offset-2 hover:underline; }
+  hr{ @apply border-base-border; }
+}
+
+/* small components */
+@layer components{
+  .container{ @apply max-w-5xl mx-auto px-4; }
+}
+
+/* typography tweaks */
+.prose{ @apply prose-slate max-w-none; }
+.prose :where(h1,h2,h3,h4){ @apply tracking-tight text-base-text; }
+.prose :where(code){ @apply font-normal; }
+
+/* pull quotes */
+.pull-quote{
+  @apply border border-base-border rounded-lg px-8 py-6 my-10 text-xl italic text-base-text/90 text-center bg-base-bg;
+  font-weight: 400;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+

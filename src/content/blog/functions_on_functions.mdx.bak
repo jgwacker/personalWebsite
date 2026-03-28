@@ -1,0 +1,265 @@
+---
+title: Functions, Domains, and Ranges — the “Machines” Behind the Curtain
+pubDate: 2025-10-03
+description: This is a short aside on how domains and range can be viewed as functions on functions and can introduce the notion of higher order mathematics to students in an algebra class.
+tags: [mathematics, algebra, functions]
+---
+
+<p>
+I remember getting introduced to functions many moons ago initially pre-algebra and then repeating the
+introductions again through
+algebra and calculus (and beyond). Functions seemed obvious yet a bit confusing as to why
+there was so much hubbabaloo over them.  As I progressed throughout my mathematical journey into college and
+graduate school, I came to see that I was actually missing a lot of the core concepts around functions and I
+had to fill in the gaps.
+</p>
+<p>
+What were the gaps? Well, I think they arose from the fact that I initially viewed functions as simple
+polynomial functions like f(x) = x^2 - 4. Even as I learned more functions like the exponential function and
+logarithm or the trigonometric functions, I just patched on additional rules to make them work. It wasn't
+obvious that some of the issues I was struggling through went back to not understanding what a function
+really was.
+</p>
+
+<p>
+Now we don't need to dive into amazing mathematicalrigor to get a lot of background of functions, instead, having a
+wider swath of functions can help give more examples. One of my favorite books in mathematics is
+Counterexamples in Topology -- basically it's a book tabulating examples that violate naive intuition
+brought up by so-called nice functions. 
+</p>
+
+<p>
+I like to think of a function as a <em>machine</em>. You feed it an input, it grinds its gears, and
+the function pops out an output. 
+</p>
+
+<p>
+We’ll start with four honest, hard-working machines and one slightly mind-bending one.
+</p>
+
+<h3>Linear Functions</h3> 
+<p>
+Linear functions are basically the most basic function.  As an example, f(x) = 2x + 3.
+Push in a number, it stretches by 2, then shifts by 3. No nonsense.
+</p>
+<figure>
+  <table>
+    <thead><tr><th>x</th><th>f(x)=2x+3</th></tr></thead>
+    <tbody>
+      <tr><td>-2</td><td>-1</td></tr>
+      <tr><td>0</td><td>3</td></tr>
+      <tr><td>4.5</td><td>12</td></tr>
+    </tbody>
+  </table>
+  <figcaption>Linear: multiply, then add. </figcaption>
+</figure>
+
+<h3>Quadratic Function: f(x) = x^2</h3>
+<p>
+The quadratic function is the next function you might think about after the linear function. Simply take the
+input number and multiply it by itself. The thing to notice is that everything comes out nonnegative. Negatives get squared into positives; zero stays zero; positives remain positive.
+</p>
+<figure>
+  <table>
+    <thead><tr><th>x</th><th>f(x)=x^2</th></tr></thead>
+    <tbody>
+      <tr><td>-3</td><td>9</td></tr>
+      <tr><td>0</td><td>0</td></tr>
+      <tr><td>2</td><td>4</td></tr>
+    </tbody>
+  </table>
+  <figcaption>Quadratic: multiply a number by itself. </figcaption>
+</figure>
+
+<h3>Rounding Function</h3>
+<p>
+We often learn about rounding in elementary school and don't think a lot more about it. But you can treat
+rounding as a function: feed it any real number and it spits out an integer. 
+Try 2.49, 2.5, 2.51 and watch it snap to an integer .
+</p>
+<figure>
+  <table>
+    <thead><tr><th>x</th><th>f(x)=Round(x)</th></tr></thead>
+    <tbody>
+      <tr><td>2.49</td><td>2</td></tr>
+      <tr><td>2.51</td><td>3</td></tr>
+      <tr><td>3.2</td><td>3</td></tr>
+    </tbody>
+  </table>
+  <figcaption>Rounding funciton: rounds to the nearest integer.</figcaption>
+</figure>
+
+<h3>Reciprocal Function: f(x) = 1/x</h3>
+<p>
+The reciprocal function is pretty straight forward: just take a number and divide 1 by that number. The
+tricky thing about the reciprocal function is that it doesn't work for one value: x = 0 where you try to
+divide 1 by 0 which obviously doesn't work. This means there is a “do not feed” sign for x = 0. Everything else is fair game.
+</p>
+<figure>
+  <table>
+    <thead><tr><th>x</th><th>f(x)=1/x</th></tr></thead>
+    <tbody>
+      <tr><td>-2</td><td>-0.5</td></tr>
+      <tr><td>0.25</td><td>4</td></tr>
+      <tr><td>0</td><td><em>kaboom</em></td></tr>
+    </tbody>
+  </table>
+  <figcaption>Reciprocal function. </figcaption>
+</figure>
+
+<h2>Domain and Range: What’s Allowed In, What Actually Comes Out</h2>
+<p>
+Every  machine has two important properties:
+</p>
+<ul>
+  <li><strong>Domain</strong>: the allowed inputs. If it’s not on the list, do not shove it into the gears.</li>
+  <li><strong>Range</strong> (a.k.a. image): the outputs the machine actually produces when you feed it valid inputs.</li>
+</ul>
+<p>
+The domain and range are really important properties of a funciton and knowing them can help understand the
+function.
+</p>
+<p>
+The question you should have is: what the heck is a domain or range of a function mathematically? It's not a number.
+As we saw with the sphere funciton, it's not all output of functions are numbers.  It's really a set of
+values.
+</p>
+
+<h3>The Domain </h3>
+<p>
+The domain seems pretty easy to understand, if the input makes sense for the function, then it is part of
+the domain. Technically, you're always allowed to restrict the domain -- making it artificially smaller. For
+instance we could have our linear function and say that our domain is just the positive numbers or may be
+just integers, or even just the numbers between -1 and 1. But generally, we'll be considering the most
+inclusive set of inputs that make sense.
+</p>
+
+<p>
+The first three funcitons (linear, quadratic, rounding) have simple domains -- put in any real number and
+the machine works. The reciprocal function shows something with a bit more to it -- you can take the
+reciprocal of any number <i>except</i> 0. This means that 0 is not part of the domain of the reciprocal
+function. Finally, the sphere function only makes sense with integers since it takes the number of variables
+you're adding up and it doesn't make sense ot traeat that as anything other than an integer. 
+</p>
+
+<p>
+We can summarize the domains of each function in the table below:
+</p>
+<figure>
+  <table>
+    <thead><tr><th>function</th><th>domain in words</th><th>domain in symbols</th></tr></thead>
+    <tbody>
+      <tr><td>Linear</td><td>The real numbers</td><td> ℝ</td></tr>
+      <tr><td>Quadratic</td><td>The real numbers</td><td> ℝ</td></tr>
+      <tr><td>Rounding</td><td>The real numbers</td><td> ℝ</td></tr>
+      <tr><td>Reciprocal</td><td>The real numbers without 0</td><td> ℝ \ &#123;0&#125;</td></tr>
+    </tbody>
+  </table>
+  <figcaption>The ranges of the functions above</figcaption>
+</figure>
+
+
+<h3>The Range</h3>
+<p>
+The range is a bit less intuitive.  It's all the values that the function can output. It's a bit less
+obvious how to identify the range, but you can start to survey all the possible values a function take on by
+trying different inputs, you start to notice what can come out.
+</p>
+
+
+<p>
+We can summarize the ranges fo each function in the table below:
+</p>
+<figure>
+  <table>
+    <thead><tr><th>function</th><th>range in words</th><th>range in symbols</th></tr></thead>
+    <tbody>
+      <tr><td>Linear</td><td>The real numbers</td><td> ℝ</td></tr>
+      <tr><td>Quadratic</td><td>The real numbers greater than or equal to 0</td><td> [0, ∞)</td></tr>
+      <tr><td>Rounding</td><td>The real integers </td><td> ℤ</td></tr>
+      <tr><td>Reciprocal</td><td>The real numbers without 0</td><td> ℝ \ &#123;0&#125; = (-∞, 0)∪(0, ∞)</td></tr>
+    </tbody>
+  </table>
+  <figcaption>The domains of the functions above</figcaption>
+</figure>
+
+<h2>Domain and Range as Machines Themselves</h2>
+<p>
+Here’s the bit that mathematicians love. The labels “domain” and “range” are not just facts about a
+function; they can be treated as functions <em>about</em> functions. Yes, machines that take an entire
+function as input and spit out a set.
+</p>
+
+<h3>The Domain Function </h3>
+<p>Feed it a function, it returns the set of allowed inputs for that function.</p>
+<figure>
+  <table>
+    <thead><tr><th>Domain Function Input</th><th> Output</th></tr></thead>
+    <tbody>
+      <tr><td>Domain(Linear)</td><td> ℝ</td></tr>
+      <tr><td>Domain(Quadratic)</td><td>ℝ</td></tr>
+      <tr><td>Domain(Rounding)</td><td>ℝ </td></tr>
+      <tr><td>Domain(Reciprocal)</td><td>ℝ \ &#123;0&#125; </td></tr>
+    </tbody>
+  </table>
+  <figcaption>The domain function acting upon the functions we've been using</figcaption>
+</figure>
+
+<h3>The Range Function</h3>
+<p>Feed it a function, it returns the set of outputs that function actually produces.</p>
+<figure>
+  <table>
+    <thead><tr><th>Range Function Input</th><th> Output</th></tr></thead>
+    <tbody>
+      <tr><td>Range(Linear)</td><td> ℝ</td></tr>
+      <tr><td>Range(Quadratic)</td><td>[0, ∞)</td></tr>
+      <tr><td>Range(Rounding)</td><td>ℤ </td></tr>
+      <tr><td>Range(Reciprocal)</td><td>ℝ \ &#123;0&#125; </td></tr>
+    </tbody>
+  </table>
+  <figcaption>The range function acting upon the functions we've been using</figcaption>
+</figure>
+
+<h3>The Domain and Range Functions Acting on Themselves</h3>
+<p>
+By treating “domain” and “range” as <em>functions</em>, we step up a level. We’re no longer just playing with numbers; we’re playing with the machines that play with numbers. The inputs to these new machines are entire functions, and the outputs are sets.
+</p>
+<p>
+The question is: <strong>What is are the domains of the domain and range functions?</strong>
+Well, if we think about it, the domain of either the domain or range functions is the set of all functions:
+</p>
+<figure>
+  <table>
+    <thead><tr><th>Domain of the Domain and Range Functions</th><th> Output</th></tr></thead>
+    <tbody>
+      <tr><td>Domain(Domain)</td><td> Set of All Functions</td></tr>
+      <tr><td>Domain(Range)</td><td>Set of All Functions</td></tr>
+    </tbody>
+  </table>
+  <figcaption>The domain function acting the domain and range functions</figcaption>
+</figure>
+
+<p>
+Similarly, <strong>What is the range of the domain and range functions?</strong> Again, thinking about it
+clearly, any set can be a range of some function and similarly the domain of some function can be any set. Therefore, the set of all sets is the range of both the domain and range functions.
+</p>
+
+<figure>
+  <table>
+    <thead><tr><th>Range of the Domain and Range Functions</th><th> Output</th></tr></thead>
+    <tbody>
+      <tr><td>Range(Domain)</td><td> Set of All Sets</td></tr>
+      <tr><td>Range(Range)</td><td>Set of All Sets</td></tr>
+    </tbody>
+  </table>
+  <figcaption>The range function acting the domain and range functions</figcaption>
+</figure>
+
+
+
+<ul>
+
+  <li><strong>Uniform language.</strong> Lines, quadratics, weird rounding rules, and even “give me a whole sphere” can all be discussed with the same tools.</li>
+  <li><strong>Composability.</strong> Once you think of “domain” and “range” as operators, you can compare, compose, and reason about families of functions at once.</li>
+  <li><strong>Fewer surprises.</strong> Asking “What’s the domain?” before plugging in numbers prevents the x = 0 “kaboom.”</li>
+</ul>

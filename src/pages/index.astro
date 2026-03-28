@@ -1,0 +1,37 @@
+---
+import IndexLayout from '@layouts/IndexLayout.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog', (p) => !p.data.draft)).sort((a,b)=>+new Date(b.data.pubDate)-+new Date(a.data.pubDate)).slice(0,4);
+const research = (await getCollection('research', (p) => !p.data.draft)).slice(0,4);
+---
+<IndexLayout>
+  <section class="grid gap-10">
+    <div>
+      <h1 class="text-3xl font-semibold tracking-tight">Jay Wacker</h1>
+      <p class="mt-2 text-base-mute max-w-2xl">Physicist and machine learning engineer. This site hosts my writing, a concise résumé, selected physics research, and photography.</p>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight">Latest writing</h2>
+      <ul class="mt-4 grid gap-4">
+        {posts.map((p) => (
+          <li><a class="hover:underline" href={`/blog/${p.slug}/`}>{p.data.title}</a> <span class="text-base-mute">— {new Date(p.data.pubDate).toLocaleDateString()}</span></li>
+        ))}
+      </ul>
+      <a href="/blog/" class="mt-3 inline-block">All posts →</a>
+    </div>
+
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight">Selected research</h2>
+      <ul class="mt-4 grid gap-3">
+        {research.map((r) => (
+          <li>
+            <a class="hover:underline" href={`/research/${r.slug}/`}>{r.data.title}</a>
+            {r.data.venue && <span class="text-base-mute"> — {r.data.venue}</span>}
+          </li>
+        ))}
+      </ul>
+      <a href="/research/" class="mt-3 inline-block">All research →</a>
+    </div>
+  </section>
+</IndexLayout>

@@ -1,0 +1,23 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import ArticleLayout from '@layouts/ArticleLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research');
+  return entries.map((e) => ({ params: { slug: e.slug } }));
+}
+
+const slug = Astro.params.slug!;
+const entry = await getEntry('research', slug);
+const { Content } = await entry.render();
+---
+<ArticleLayout frontmatter={entry.data}>
+  <Content />
+  {entry.data.links?.length && (
+    <ul class="mt-6 flex flex-wrap gap-4 text-sm">
+      {entry.data.links.map((l) => (
+        <li><a href={l.url}>{l.label}</a></li>
+      ))}
+    </ul>
+  )}
+</ArticleLayout>

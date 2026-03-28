@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const entries = (await getCollection('research', (p) => !p.data.draft)).sort((a,b)=>+new Date(b.data.pubDate)-+new Date(a.data.pubDate));
+---
+<BaseLayout title="Research">
+  <section class="grid gap-4">
+    {entries.map((e)=> (
+      <article class="border border-base-border rounded-xl p-4">
+        <h3 class="text-lg font-semibold"><a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a></h3>
+        {e.data.venue && <p class="text-base-mute">{e.data.venue}</p>}
+        {e.data.abstract && <p class="mt-2">{e.data.abstract}</p>}
+        {e.data.tags?.length && (
+          <p class="mt-2 text-sm text-base-mute">{e.data.tags.join(', ')}</p>
+        )}
+      </article>
+    ))}
+  </section>
+</BaseLayout>

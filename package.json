@@ -1,0 +1,29 @@
+{
+  "name": "astro-personal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.6",
+    "@astrojs/rss": "^4.0.6",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^5.14.1",
+    "astro-icon": "^1.1.0",
+    "lucide-static": "^0.460.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "tslib": "^2.8.1",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const name = 'Jay Wacker';
+const headline = 'Physicist • Machine Learning Engineering Manager';
+const location = 'Menlo Park, CA';
+const email = 'jay@example.com';
+const website = 'https://example.com';
+const sections = [
+  {
+    title: 'Experience',
+    items: [
+      { role: 'Manager, Siri NL', org: 'Apple', dates: '2023–present', bullets: [
+        'Led on-device NLU program across multiple OS locales',
+        'Improved NLX quality and release management',
+        'Developed LLM-based evaluation/training data pipelines'
+      ]},
+      { role: 'Product Manager', org: 'Quora', dates: '—', bullets: ['Large-scale ML systems', 'Extreme classification']},
+    ]
+  },
+  { title: 'Education', items: [ { role: 'Ph.D., Physics', org: '—', dates: '—', bullets: ['—'] } ] }
+];
+---
+<BaseLayout title="Résumé">
+  <section class="grid gap-2">
+    <h1 class="text-3xl font-semibold tracking-tight">{name}</h1>
+    <p class="text-base-mute">{headline} · {location} · <a href={`mailto:${email}`}>{email}</a> · <a href={website}>{website}</a></p>
+  </section>
+
+  {sections.map((sec) => (
+    <section class="mt-8">
+      <h2 class="text-xl font-semibold tracking-tight">{sec.title}</h2>
+      <div class="mt-3 grid gap-6">
+        {sec.items.map((it) => (
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <div class="font-semibold">{it.role}</div>
+                <div class="text-base-mute">{it.org}</div>
+              </div>
+              <div class="text-sm text-base-mute">{it.dates}</div>
+            </div>
+            {it.bullets?.length && (
+              <ul class="mt-2 list-disc pl-5">
+                {it.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <script type="application/ld+json">{JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name, url: website, email,
+    jobTitle: headline,
+    address: { '@type': 'PostalAddress', addressLocality: 'Menlo Park', addressRegion: 'CA' }
+  })}</script>
+</BaseLayout>

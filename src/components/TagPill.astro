@@ -1,0 +1,6 @@
+---
+const { tag, href = `/blog/tags/${tag}/` } = Astro.props;
+---
+<a href={href} class="rounded-full border border-base-border px-3 py-1 text-xs hover:bg-base-accent/5">
+  {tag}
+</a>

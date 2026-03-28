@@ -1,0 +1,11 @@
+---
+const { photo } = Astro.props; // {src, title?, location?, date?}
+---
+<figure class="group">
+  <img src={photo.src} alt={photo.title || ''} class="w-full rounded-xl shadow-sm border border-base-border" loading="lazy" />
+  {(photo.title || photo.location || photo.date) && (
+    <figcaption class="mt-2 text-sm text-base-mute">
+      {photo.title && <span class="font-normal text-base-text">{photo.title}</span>} {photo.location} {photo.date}
+    </figcaption>
+  )}
+</figure>

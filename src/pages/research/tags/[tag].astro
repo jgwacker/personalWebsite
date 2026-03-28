@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research');
+  const tagSet = new Set(entries.flatMap((e) => e.data.tags || []));
+  return [...tagSet].map((t) => ({ params: { tag: t } }));
+}
+
+const { tag } = Astro.params;
+const entries = (await getCollection(
+  'research',
+  (e) => (e.data.tags || []).includes(tag!)
+)).sort((a, b) => +new Date(b.data.pubDate) - +new Date(a.data.pubDate));
+---
+<BaseLayout title={`Tag: ${tag}`}>
+  <section class="grid gap-4">
+    {entries.map((e) => (
+      <article class="border border-base-border rounded-xl p-4">
+        <h3 class="text-lg font-semibold">
+          <a href={`/research/${e.slug}/`} class="hover:underline">
+            {e.data.title}
+          </a>
+        </h3>
+        {e.data.venue && <p class="text-base-mute">{e.data.venue}</p>}
+        {e.data.abstract && <p class="mt-2">{e.data.abstract}</p>}
+      </article>
+    ))}
+  </section>
+</BaseLayout>
