@@ -1,0 +1,33 @@
+---
+title: Intelligent Assistant Language Understanding On Device
+pubDate: 2023-08-07
+venue: Apple Machine Learning Research (2023)
+abstract: Describes the design of a natural language understanding system that runs on-device for personal digital assistants, achieving improvements in privacy, reliability, speed, expressiveness, and accuracy compared to server-based approaches. Shares practical insights on architectural decisions and deployment challenges.
+tags: [NLU, on-device ML, digital assistants, machine learning, NLP, Apple]
+links:
+  - { label: "arXiv:2308.03905", url: "https://arxiv.org/abs/2308.03905" }
+  - { label: "Apple ML Research", url: "https://machinelearning.apple.com/research/intelligent-assistant-language" }
+---
+
+<p>
+A systems paper from my time at Apple, describing the natural language understanding stack that powers on-device assistant functionality.
+</p>
+
+<h2>The Problem</h2>
+
+<p>
+Server-based digital assistants send user queries to the cloud for processing. This introduces latency, requires network connectivity, and raises privacy concerns since voice data leaves the device. As on-device compute became powerful enough to run meaningful ML models, the question was whether a full natural language understanding pipeline could run locally with competitive accuracy. The challenge is not just model size — it is maintaining a system that handles the full complexity of assistant queries (intents, slots, entities, dialog state) within the memory and compute constraints of a phone.
+</p>
+
+<h2>The Approach</h2>
+
+<p>
+The paper describes the end-to-end NLU system architecture for on-device processing: how user utterances are parsed into structured representations, how the system handles the combinatorial complexity of intent and slot filling, and how the models are kept small enough to run on-device while maintaining accuracy. The paper emphasizes practical deployment considerations — some approaches that work well in academic dialog systems research are difficult to maintain at scale over time. The design choices prioritize reliability and maintainability alongside accuracy.
+</p>
+
+<h2>Recollections</h2>
+
+<p>
+<em>[To be filled in.]</em>
+</p>
+
