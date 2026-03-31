@@ -23,6 +23,7 @@ const research = defineCollection({
     arxiv: z.string().optional(),
     tags: z.array(z.string()).default([]),
     links: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
+    program: z.string().optional(),
     draft: z.boolean().default(false)
   })
 });

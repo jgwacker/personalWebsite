@@ -1,19 +1,78 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-const entries = (await getCollection('research', (p) => !p.data.draft)).sort((a,b)=>+new Date(b.data.pubDate)-+new Date(a.data.pubDate));
+
+const allEntries = (await getCollection('research', (p) => !p.data.draft)).sort(
+  (a, b) => +new Date(b.data.pubDate) - +new Date(a.data.pubDate)
+);
+
+const programOrder = [
+  'Electroweak Symmetry Breaking',
+  'Split Supersymmetry',
+  'Search Strategies',
+  'Jet Substructure',
+  'Dark Matter',
+  'Cosmology & Formal Theory',
+  'Experimental',
+  'Machine Learning',
+];
+
+const programDescriptions: Record<string, string> = {
+  'Electroweak Symmetry Breaking': 'The Little Higgs program: the Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
+  'Split Supersymmetry': 'What happens when you abandon naturalness: predictions for the Higgs mass, long-lived gluinos, and cosmological constraints on the SUSY breaking scale.',
+  'Search Strategies': 'From model-dependent benchmarks to model-independent frameworks: redesigning how LHC searches are performed, presented, and reinterpreted.',
+  'Jet Substructure': 'Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
+  'Dark Matter': 'From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
+  'Cosmology & Formal Theory': 'N-flation, metastable SUSY breaking, anyons, exotic Higgs decays, and precision measurements: work that crosses program boundaries.',
+  'Experimental': 'Hands-on detector work and computational materials science that preceded and informed the theoretical program.',
+  'Machine Learning': 'Applied machine learning for on-device natural language understanding.',
+};
+
+const grouped = programOrder.map((program) => ({
+  program,
+  description: programDescriptions[program] || '',
+  entries: allEntries.filter((e) => e.data.program === program),
+})).filter((g) => g.entries.length > 0);
+
+const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.includes(e.data.program));
 ---
 <BaseLayout title="Research">
-  <section class="grid gap-4">
-    {entries.map((e)=> (
-      <article class="border border-base-border rounded-xl p-4">
-        <h3 class="text-lg font-semibold"><a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a></h3>
-        {e.data.venue && <p class="text-base-mute">{e.data.venue}</p>}
-        {e.data.abstract && <p class="mt-2">{e.data.abstract}</p>}
-        {e.data.tags?.length && (
-          <p class="mt-2 text-sm text-base-mute">{e.data.tags.join(', ')}</p>
-        )}
-      </article>
-    ))}
-  </section>
+  <p class="mb-8 text-base-mute">
+    64 papers organized by research program. Papers are listed newest-first within each program.
+  </p>
+
+  {grouped.map((group) => (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold tracking-tight mb-2">{group.program}</h2>
+      <p class="text-base-mute mb-4">{group.description}</p>
+      <div class="grid gap-3">
+        {group.entries.map((e) => (
+          <article class="border border-base-border rounded-xl p-4">
+            <h3 class="text-lg font-semibold">
+              <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
+            </h3>
+            {e.data.venue && <p class="text-base-mute text-sm">{e.data.venue}</p>}
+            {e.data.abstract && <p class="mt-1 text-sm">{e.data.abstract}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  {ungrouped.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold tracking-tight mb-4">Other</h2>
+      <div class="grid gap-3">
+        {ungrouped.map((e) => (
+          <article class="border border-base-border rounded-xl p-4">
+            <h3 class="text-lg font-semibold">
+              <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
+            </h3>
+            {e.data.venue && <p class="text-base-mute text-sm">{e.data.venue}</p>}
+            {e.data.abstract && <p class="mt-1 text-sm">{e.data.abstract}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>
