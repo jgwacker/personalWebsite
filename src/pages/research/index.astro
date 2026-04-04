@@ -24,7 +24,7 @@ const programDescriptions: Record<string, string> = {
   'Jet Substructure': 'Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
   'Dark Matter': 'From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
   'Cosmology & Formal Theory': 'N-flation, metastable SUSY breaking, anyons, exotic Higgs decays, and precision measurements: work that crosses program boundaries.',
-  'Experimental': 'Hands-on detector work and computational materials science that preceded and informed the theoretical program.',
+  'Experimental': 'Hands-on detector work, computational materials science, and precision measurements.',
   'Machine Learning': 'Applied machine learning for on-device natural language understanding.',
 };
 
@@ -38,17 +38,20 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
 ---
 <BaseLayout title="Research">
   <p class="mb-8 text-base-mute">
-    64 papers organized by research program. Papers are listed newest-first within each program.
+    64 papers organized by research program.
   </p>
 
-  {grouped.map((group) => (
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold tracking-tight mb-2">{group.program}</h2>
-      <p class="text-base-mute mb-4">{group.description}</p>
-      <div class="grid gap-3">
+  {grouped.map((group, i) => (
+    <details class="mb-6 border border-base-border rounded-xl" open={i === 0}>
+      <summary class="cursor-pointer px-5 py-4 select-none">
+        <span class="text-xl font-semibold tracking-tight">{group.program}</span>
+        <span class="text-base-mute ml-2 text-sm">({group.entries.length} papers)</span>
+        <p class="text-base-mute text-sm mt-1">{group.description}</p>
+      </summary>
+      <div class="px-5 pb-4 grid gap-3">
         {group.entries.map((e) => (
-          <article class="border border-base-border rounded-xl p-4">
-            <h3 class="text-lg font-semibold">
+          <article class="border border-base-border rounded-lg p-3">
+            <h3 class="font-semibold">
               <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
             </h3>
             {e.data.venue && <p class="text-base-mute text-sm">{e.data.venue}</p>}
@@ -56,16 +59,19 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
           </article>
         ))}
       </div>
-    </section>
+    </details>
   ))}
 
   {ungrouped.length > 0 && (
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold tracking-tight mb-4">Other</h2>
-      <div class="grid gap-3">
+    <details class="mb-6 border border-base-border rounded-xl">
+      <summary class="cursor-pointer px-5 py-4 select-none">
+        <span class="text-xl font-semibold tracking-tight">Other</span>
+        <span class="text-base-mute ml-2 text-sm">({ungrouped.length} papers)</span>
+      </summary>
+      <div class="px-5 pb-4 grid gap-3">
         {ungrouped.map((e) => (
-          <article class="border border-base-border rounded-xl p-4">
-            <h3 class="text-lg font-semibold">
+          <article class="border border-base-border rounded-lg p-3">
+            <h3 class="font-semibold">
               <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
             </h3>
             {e.data.venue && <p class="text-base-mute text-sm">{e.data.venue}</p>}
@@ -73,6 +79,6 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
           </article>
         ))}
       </div>
-    </section>
+    </details>
   )}
 </BaseLayout>
