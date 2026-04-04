@@ -18,13 +18,13 @@ const programOrder = [
 ];
 
 const programDescriptions: Record<string, string> = {
-  'Little Higgs': 'The Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
-  'Supersymmetry Phenomenology': 'Split supersymmetry, the Higgs mass, long-lived gluinos, D-terms, and cosmological constraints on the SUSY breaking scale.',
-  'Search Strategies': 'From model-dependent benchmarks to model-independent frameworks: redesigning how LHC searches are performed, presented, and reinterpreted.',
-  'Jet Substructure': 'Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
-  'Dark Matter': 'From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
-  'Cosmology & Formal Theory': 'N-flation, metastable SUSY breaking, anyons, exotic Higgs decays, and precision measurements: work that crosses program boundaries.',
-  'Experimental': 'Hands-on detector work, computational materials science, and precision measurements.',
+  'Little Higgs': '~1,600 citations. The Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
+  'Supersymmetry Phenomenology': '~500 citations. Split supersymmetry, the Higgs mass, long-lived gluinos, D-terms, and cosmological constraints on the SUSY breaking scale.',
+  'Search Strategies': '~2,100 citations. From model-dependent benchmarks to model-independent frameworks: redesigning how LHC searches are performed, presented, and reinterpreted.',
+  'Jet Substructure': '~1,300 citations. Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
+  'Dark Matter': '~2,100 citations. From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
+  'Cosmology & Formal Theory': '~1,400 citations. N-flation, metastable SUSY breaking, anyons, exotic Higgs decays: work that crosses program boundaries.',
+  'Experimental': '~1,100 citations. Hands-on detector work, computational materials science, and precision measurements.',
   'Machine Learning': 'Applied machine learning for on-device natural language understanding.',
 };
 
@@ -38,7 +38,7 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
 ---
 <BaseLayout title="Research">
   <p class="mb-8 text-base-mute">
-    64 papers organized by research program.
+    64 papers organized by research program. ~10,000 total citations.
   </p>
 
   {grouped.map((group, i) => (
