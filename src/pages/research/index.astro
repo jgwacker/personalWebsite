@@ -7,8 +7,8 @@ const allEntries = (await getCollection('research', (p) => !p.data.draft)).sort(
 );
 
 const programOrder = [
-  'Electroweak Symmetry Breaking',
-  'Split Supersymmetry',
+  'Little Higgs',
+  'Supersymmetry Phenomenology',
   'Search Strategies',
   'Jet Substructure',
   'Dark Matter',
@@ -18,8 +18,8 @@ const programOrder = [
 ];
 
 const programDescriptions: Record<string, string> = {
-  'Electroweak Symmetry Breaking': 'The Little Higgs program: the Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
-  'Split Supersymmetry': 'What happens when you abandon naturalness: predictions for the Higgs mass, long-lived gluinos, and cosmological constraints on the SUSY breaking scale.',
+  'Little Higgs': 'The Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
+  'Supersymmetry Phenomenology': 'Split supersymmetry, the Higgs mass, long-lived gluinos, D-terms, and cosmological constraints on the SUSY breaking scale.',
   'Search Strategies': 'From model-dependent benchmarks to model-independent frameworks: redesigning how LHC searches are performed, presented, and reinterpreted.',
   'Jet Substructure': 'Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
   'Dark Matter': 'From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
