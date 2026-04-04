@@ -18,19 +18,31 @@ const programOrder = [
 ];
 
 const programDescriptions: Record<string, string> = {
-  'Little Higgs': '~1,600 citations. The Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
-  'Supersymmetry Phenomenology': '~500 citations. Split supersymmetry, the Higgs mass, long-lived gluinos, D-terms, and cosmological constraints on the SUSY breaking scale.',
-  'Search Strategies': '~2,100 citations. From model-dependent benchmarks to model-independent frameworks: redesigning how LHC searches are performed, presented, and reinterpreted.',
-  'Jet Substructure': '~1,300 citations. Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
-  'Dark Matter': '~2,100 citations. From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
-  'Cosmology & Formal Theory': '~1,400 citations. N-flation, metastable SUSY breaking, anyons, exotic Higgs decays: work that crosses program boundaries.',
-  'Experimental': '~1,100 citations. Hands-on detector work, computational materials science, and precision measurements.',
+  'Little Higgs': 'The Higgs as a pseudo-Goldstone boson protected by collective symmetry breaking, an alternative to supersymmetry for solving the hierarchy problem.',
+  'Supersymmetry Phenomenology': 'Split supersymmetry, the Higgs mass, long-lived gluinos, D-terms, and cosmological constraints on the SUSY breaking scale.',
+  'Search Strategies': 'From model-dependent benchmarks to model-independent frameworks: redesigning how LHC searches are performed, presented, and reinterpreted.',
+  'Jet Substructure': 'Identifying boosted heavy particles from their internal jet structure: the BOOST workshop series, new observables like dipolarity, and data-driven background methods.',
+  'Dark Matter': 'From composite inelastic dark matter to the SIMP miracle: exploring strongly interacting dark sectors, sub-GeV dark matter, and the experimental program they motivate.',
+  'Cosmology & Formal Theory': 'N-flation, metastable SUSY breaking, anyons, exotic Higgs decays: work that crosses program boundaries.',
+  'Experimental': 'Hands-on detector work, computational materials science, and precision measurements.',
   'Machine Learning': 'Applied machine learning for on-device natural language understanding.',
+};
+
+const programCitations: Record<string, string> = {
+  'Little Higgs': '~1,600',
+  'Supersymmetry Phenomenology': '~500',
+  'Search Strategies': '~2,100',
+  'Jet Substructure': '~1,300',
+  'Dark Matter': '~2,100',
+  'Cosmology & Formal Theory': '~1,400',
+  'Experimental': '~1,100',
+  'Machine Learning': '',
 };
 
 const grouped = programOrder.map((program) => ({
   program,
   description: programDescriptions[program] || '',
+  citations: programCitations[program] || '',
   entries: allEntries.filter((e) => e.data.program === program),
 })).filter((g) => g.entries.length > 0);
 
@@ -45,7 +57,7 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
     <details class="mb-6 border border-base-border rounded-xl" open={i === 0}>
       <summary class="cursor-pointer px-5 py-4 select-none">
         <span class="text-xl font-semibold tracking-tight">{group.program}</span>
-        <span class="text-base-mute ml-2 text-sm">({group.entries.length} papers)</span>
+        <span class="text-base-mute ml-2 text-sm">({group.entries.length} papers{group.citations ? `, ${group.citations} citations` : ''})</span>
         <p class="text-base-mute text-sm mt-1">{group.description}</p>
       </summary>
       <div class="px-5 pb-4 grid gap-3">
