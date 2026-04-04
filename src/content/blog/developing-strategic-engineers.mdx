@@ -1,0 +1,92 @@
+---
+title: "Developing Engineers Who Direct Themselves"
+pubDate: 2026-04-03
+description: "When every role on your team is being disrupted simultaneously, developing strategic thinkers is the only way through."
+tags: [management, engineering leadership, AI disruption, team development]
+draft: true
+---
+
+<h2>Every Role Is Changing at Once</h2>
+
+<p>
+I manage a team of 15 engineers building natural language understanding for a product used by billions of people. The team spans 6 disciplines: machine learning engineering, software engineering, language engineering, data science, annotation operations, and tooling. Over the past 5 years we have shipped 60 product areas across 6 operating systems with more than 20 OS-aligned releases, maintaining greater than 98% user-facing accuracy on a system handling billions of weekly requests.
+</p>
+
+<p>
+Every one of those disciplines is being disrupted right now. ML engineers face the question of whether the models they build will be replaced or augmented by foundation models. Software engineers are watching copilot tools reshape how code is written. Language engineers who built rule-based grammars and semantic parsers are seeing generative approaches challenge the systems they spent years refining. Data scientists are watching their analysis workflows get automated. Annotation operations specialists are confronting a future where labeling shifts from human judgment to synthetic data and LLM-assisted annotation. Tooling engineers are being asked to support fundamentally different architectures than the ones they built.
+</p>
+
+<p>
+When one discipline is disrupted, you can retrain or reassign. When all 6 are disrupted simultaneously, the traditional management playbook, assigning tasks, tracking execution, shipping on schedule, breaks down. The tasks themselves may be wrong by the time you finish them. The tools you built last quarter may be obsolete. The role someone was hired into may not exist in 2 years. In this environment, the most important thing a manager can do is develop each person's capacity to think strategically about their own work: to diagnose where the real leverage is, to identify which work matters and which work is about to become irrelevant, and to direct their own effort toward the highest-impact contribution they can make.
+</p>
+
+<h2>Knowing Your People Across Disciplines</h2>
+
+<p>
+I hold weekly 1:1 meetings with every person on the team, not just my direct reports. With 15 people across 2 levels, this is a significant time commitment. The meetings are not status updates. I already know what everyone is working on. The purpose is to understand each person: what motivates them, how they think about their contribution, where their thinking is expanding, and where it has stalled. The goal is to see each person clearly enough to know what they need to grow.
+</p>
+
+<p>
+When your team spans 6 specialties, you cannot rely on shared technical context to build that understanding. An ML engineer and an annotation operations specialist see the system through fundamentally different lenses. The ML engineer thinks in terms of model architectures, loss functions, and evaluation metrics. The annotation specialist thinks in terms of labeling guidelines, inter-annotator agreement, and data quality. Both are looking at the same system. Neither sees the whole picture by default. The manager's job is to understand both lenses well enough to help each person see beyond their own.
+</p>
+
+<p>
+This is where Apple's principle of experts leading experts matters. If I lacked the technical credibility to engage with an ML engineer's architectural decisions or a language engineer's grammar design choices, the conversation would stay at the surface: timelines, dependencies, blockers. With genuine expertise, the conversation can go deeper: is this the right problem to solve? Is there a simpler approach you haven't considered? How does this connect to what the team on the adjacent platform is doing? The expert-leading-expert model means the coaching has substance, not just encouragement. You can expand someone's vision of what's technically achievable only if you can see the frontier yourself.
+</p>
+
+<h2>Shared Language Through Books</h2>
+
+<p>
+A diverse team with 6 disciplines has a fragmentation problem. Each specialty has its own vocabulary, its own mental models, its own definition of "good work." Left alone, each discipline optimizes locally: the ML team builds the best model, the annotation team labels the most data, the tooling team builds the most robust infrastructure. Local optimization is the enemy of system-level performance. The annotation team's labeling priorities should be driven by the model's failure modes, not by what's easiest to label. The tooling team's infrastructure should serve the workflows that matter most, not the ones that are most elegant to build. These connections only happen when people can reason about the system as a whole, not just their piece of it.
+</p>
+
+<p>
+We run regular book clubs to build that shared reasoning capacity. Two recent books illustrate the approach. The first was <em>The Phoenix Project</em> by Gene Kim, Kevin Behr, and George Spafford. It tells the story of an IT organization drowning in unplanned work, invisible dependencies, and single points of failure. The concept that resonated most was "Brent," the one expert everyone depends on and who becomes the bottleneck for everything. Every team has a Brent. Identifying who your Brent is, and understanding why that concentration of knowledge is a systemic risk rather than a mark of individual excellence, changes how people think about their work. When a junior annotation operations specialist starts talking about "the Brent problem" on their subteam, they are diagnosing a systems-level issue, not just reporting a workload complaint. They have a lens for seeing the organization as a system of flows, not just a collection of tasks.
+</p>
+
+<p>
+The second book was <em>Good Strategy/Bad Strategy</em> by Richard Rumelt. Rumelt's core argument is that most organizations confuse strategy with aspiration. "We will be the best at X" is not a strategy. A strategy is a diagnosis of the challenge, a guiding policy for addressing it, and a set of coherent actions. We focused on how each person could develop a strategy for their own work: what is the central challenge in your domain right now, what is your guiding policy for addressing it, and what are the specific actions that follow? When an ML engineer can articulate that their central challenge is reducing latency on older devices (not improving top-line accuracy, which is already above 98%), and can propose a coherent set of experiments focused on model distillation rather than architecture search, they are thinking strategically about their domain. They are not waiting for their manager to tell them what to work on. They are directing themselves.
+</p>
+
+<p>
+The book clubs serve a second purpose beyond individual development: they create a common vocabulary that bridges the 6 disciplines. When the data scientist and the tooling engineer both understand flow, bottlenecks, and the theory of constraints from <em>The Phoenix Project</em>, they can diagnose cross-functional problems together without needing a manager to translate. When the language engineer and the annotation specialist both frame their challenges using Rumelt's diagnosis/policy/action structure, they can align their efforts without needing someone above them to coordinate. The shared language makes the diverse team function as one system rather than 6 silos.
+</p>
+
+<h2>The Shift: From Execution to Self-Direction</h2>
+
+<p>
+The visible sign that the development is working is when subteams and individuals start identifying the right work to do on their own. A junior engineer who arrived thinking "my job is to close the tickets assigned to me" begins diagnosing systemic bottlenecks and proposing solutions that cross discipline boundaries. An annotation operations specialist starts building tooling to automate the repetitive parts of their workflow, not because a manager suggested it, but because they read <em>The Phoenix Project</em> and recognized that their manual process was the constraint. A language engineer starts learning ML, not because their role was redefined, but because they can see that the boundary between rule-based and statistical approaches is dissolving and they want to be on the right side of it.
+</p>
+
+<p>
+This role expansion is one of the most important consequences of developing strategic thinkers. When every discipline is being disrupted, the boundaries between them dissolve. The annotation specialist who builds tooling is not crossing a boundary for fun. They are responding to a real change in where the leverage is in their domain. The language engineer learning ML is not diluting their expertise. They are following the work to where it matters. The manager's job is to make that expansion safe and supported: to give people permission to grow into adjacent territory, to provide the frameworks that help them navigate unfamiliar ground, and to ensure that the team's structure rewards breadth as well as depth.
+</p>
+
+<p>
+The alternative is a team that fragments under disruption. Each discipline retreats into its specialty, defends its territory, and resists the changes that threaten its traditional role. The ML team insists that foundation models are not ready. The annotation team insists that human labeling remains essential. The language engineers insist that rules still outperform statistical methods for their use cases. Each of these claims may be partially true. None of them constitutes a strategy. A team of strategic thinkers can hold the partial truth while still adapting. A team of pure executors cannot.
+</p>
+
+<h2>Why Experts Must Lead This</h2>
+
+<p>
+A non-technical manager can run book clubs. A non-technical manager can hold 1:1s. A non-technical manager can encourage people to "think bigger." What a non-technical manager cannot do is expand someone's vision of what is technically achievable. The ML engineer who proposes model distillation for latency reduction needs a manager who can evaluate that proposal on its merits, who can ask whether knowledge distillation or quantization would be more effective for the specific deployment constraints, who can see the frontier of what the models can do and push the engineer toward it. The language engineer crossing into ML needs a lead who can tell them which techniques are worth learning and which are dead ends. The credibility to expand someone's technical vision comes from genuine expertise, not from management authority.
+</p>
+
+<p>
+Apple's principle of experts leading experts at every level encodes this. The manager's technical depth is the foundation on which all the other practices, the 1:1s, the book clubs, the strategic frameworks, rest. Without it, the development stays at the surface: career advice, organizational navigation, emotional support. All of those matter. None of them produces an engineer who can direct themselves in a domain that is being remade by AI.
+</p>
+
+<h2>The Result</h2>
+
+<p>
+The outcome of this approach is a team where subteams work independently to maximize their impact, surfacing new ideas that the manager did not originate and would not have thought to assign. The annotation operations group builds tooling that reduces labeling time by half. The language engineering group proposes an ML-augmented approach that their predecessors would have considered outside their scope. The data science team identifies a quality signal that the ML team had missed because they were looking at the wrong evaluation metric. Each of these contributions came from individuals who had developed the strategic capacity to see what mattered in their domain and act on it without waiting for direction.
+</p>
+
+<p>
+For the individuals, the development path is clear: an engineer who can diagnose the central challenge in their domain, develop a coherent strategy to address it, and execute independently is an engineer on the path to technical leadership. The strategic capacity that makes the team perform also makes the person's career advance. These are the same skill. Developing one develops the other.
+</p>
+
+<p>
+The manager's time investment, 15 weekly meetings, regular book clubs, and continuous coaching across 6 disciplines, pays for itself because the team scales beyond what any single manager could direct. I cannot identify the highest-leverage work across 6 disciplines, 60 product areas, and 6 operating systems by myself. I need 15 people who can each identify it in their own domain. The only way to get there is to develop them.
+</p>
+
