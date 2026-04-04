@@ -40,32 +40,6 @@ const programCitations: Record<string, string> = {
   'Machine Learning': '',
 };
 
-// Slugs of papers with full write-ups (have <h2> sections)
-const fullPages = new Set([
-  '1998-nature-silicon-clusters', '2002-deconstructing-6d', '2002-jhep-ewsb-theory-space',
-  '2002-jhep-higher-dim-susy', '2002-jhep-minimal-moose', '2002-jhep-mooses-topology',
-  '2004-composite-vector-mesons', '2004-nima-cdf-cot', '2004-prd-finely-tuned-ssm',
-  '2004-prd-little-higgs-custodial', '2004-prd-scalar-dm-theory-space',
-  '2004-prd-su6sp6-little-higgs', '2005-prd-split-susy-gluino-cosmology',
-  '2006-jhep-dterms-unification', '2007-prd-reheating-oraifeartaigh',
-  '2007-prd-stopping-gluinos', '2007-unification-dm-scalar-extension',
-  '2008-jcap-nflation', '2008-plb-directly-decaying-gluinos',
-  '2009-physrevd-jets-met', '2010-jhep-bigger-better-faster',
-  '2010-jhep-collective-quartics', '2010-jhep-cosmology-composite-dm',
-  '2010-npps-hunt-new-physics', '2010-plb-atom-interferometry',
-  '2010-plb-composite-inelastic-dm', '2010-prd-directional-detection',
-  '2010-prd-poker-face-inelastic-dm', '2011-ahep-kinetic-mixing',
-  '2011-epjc-boost2010', '2011-jhep-sidewalk-ends',
-  '2011-jmp-simplicity-perfect-atoms', '2011-split-susy-within-reach',
-  '2012-jhep-130gev-gamma-line', '2012-jhep-heavy-flavor-simplified',
-  '2012-jhep-jet-dipolarity', '2012-jpg-boost2011',
-  '2012-jpg-simplified-models', '2012-new-theory-anyons',
-  '2013-dark-side-top-yukawa', '2014-epjc-boosted-objects',
-  '2014-jhep-substructure-templates', '2014-jhep-susy-simplified-future-colliders',
-  '2014-physrevlett-simp-miracle', '2015-epjc-boost2013',
-  '2015-physrevlett-simplest-miracle', '2016-jhep-dark-matter-3d',
-  '2023-apple-assistant-on-device',
-]);
 
 const grouped = programOrder.map((program) => ({
   program,
@@ -92,11 +66,7 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
         {group.entries.map((e) => (
           <article class="border border-base-border rounded-lg p-3">
             <h3 class="font-semibold">
-              {fullPages.has(e.slug) ? (
-                <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
-              ) : (
-                <span>{e.data.title}</span>
-              )}
+              <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
             </h3>
             {e.data.venue && <p class="text-base-mute text-sm">{e.data.venue}</p>}
             {e.data.abstract && <p class="mt-1 text-sm">{e.data.abstract}</p>}
@@ -116,11 +86,7 @@ const ungrouped = allEntries.filter((e) => !e.data.program || !programOrder.incl
         {ungrouped.map((e) => (
           <article class="border border-base-border rounded-lg p-3">
             <h3 class="font-semibold">
-              {fullPages.has(e.slug) ? (
-                <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
-              ) : (
-                <span>{e.data.title}</span>
-              )}
+              <a href={`/research/${e.slug}/`} class="hover:underline">{e.data.title}</a>
             </h3>
             {e.data.venue && <p class="text-base-mute text-sm">{e.data.venue}</p>}
             {e.data.abstract && <p class="mt-1 text-sm">{e.data.abstract}</p>}
