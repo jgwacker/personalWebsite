@@ -28,6 +28,19 @@
 .prose :where(h1,h2,h3,h4){ @apply tracking-tight text-base-text; }
 .prose :where(code){ @apply font-normal; }
 
+/* post takeaway + summary */
+.post-takeaway{
+  @apply text-lg text-base-text border-l-4 border-base-accent pl-5 my-6;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.post-summary{
+  @apply text-base text-base-mute pl-5 border-l-4 border-base-border my-0 mb-10;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
 /* pull quotes */
 .pull-quote{
   @apply border border-base-border rounded-lg px-8 py-6 my-10 text-xl italic text-base-text/90 text-center bg-base-bg;
