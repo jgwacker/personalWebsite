@@ -15,7 +15,7 @@ You know what a function is. You've been told since algebra class. But here's th
 Simple enough. But here's what nobody tells you in algebra: the most interesting machines aren't the ones that chew on numbers. They're the ones that chew on <em>other machines</em>. We'll get there. First, let's meet some machines.
 </p>
 
-<h2>Four Machines</h2>
+<h2>Five Machines</h2>
 
 <h3>The Linear Machine: f(x) = 2x + 3</h3>
 <p>
@@ -65,6 +65,10 @@ You've been rounding since elementary school. You just didn't know it was a func
   <figcaption>Decimals go in, integers come out.</figcaption>
 </figure>
 
+<p>
+Now watch something sneaky. Walk toward 2.5 from the left: 2.49 rounds to 2. So does 2.499. So does 2.4999. You can get as close to 2.5 as you want and the output stays at 2. Now approach from the right: 2.51 rounds to 3. So does 2.501. So does 2.5001. Inputs that are almost identical produce outputs that jump by a whole integer. The machine's output <em>breaks</em> instead of sliding smoothly. Mathematicians call that a <em>discontinuity</em>, and an entire branch of mathematics — topology — is built around understanding which functions break and which don't.
+</p>
+
 <h3>The Reciprocal Machine: f(x) = 1/x</h3>
 <p>
 Take a number, divide 1 by it. Easy. Except for one tiny problem: try feeding it zero.
@@ -85,6 +89,27 @@ Take a number, divide 1 by it. Easy. Except for one tiny problem: try feeding it
 This machine has a "do not feed" sign, and the sign says <strong>0</strong>. Everything else? Fine. Zero? The gears jam, smoke comes out, the machine refuses. This is going to matter in a second.
 </p>
 
+<h3>The Sign Machine</h3>
+<p>
+Here's one that breaks a common misconception. Most people think every function has a formula with x's and exponents. Not this one. The sign machine has a simple rule: feed it a positive number, it returns 1. Feed it a negative number, it returns -1. Feed it zero, it returns 0. That's the whole machine. No formula, just a rule.
+</p>
+<figure>
+  <table>
+    <thead><tr><th>In</th><th>Out</th></tr></thead>
+    <tbody>
+      <tr><td>42</td><td>1</td></tr>
+      <tr><td>-0.003</td><td>-1</td></tr>
+      <tr><td>0</td><td>0</td></tr>
+      <tr><td>1,000,000</td><td>1</td></tr>
+    </tbody>
+  </table>
+  <figcaption>No formula. Just: positive → 1, negative → -1, zero → 0.</figcaption>
+</figure>
+
+<p>
+This matters because it shows that functions are far broader than what you see in algebra class. A function is anything that takes an input and produces exactly one output. It doesn't need to be a nice curve you can draw. Mathematicians in real analysis work with functions so weird they can't be graphed at all — like one that returns 1 for every fraction and 0 for every irrational number. Still a valid function. Still follows the one-input-one-output rule. You just can't picture it.
+</p>
+
 <h2>Two Signs on Every Machine</h2>
 
 <p>
@@ -96,7 +121,7 @@ Every machine comes with two labels bolted to the side:
 </ul>
 
 <p>
-Look at our 4 machines. Three of them will eat any real number you throw at them. The reciprocal machine won't touch zero. That's a domain difference.
+Look at our 5 machines. Four of them will eat any real number you throw at them. The reciprocal machine won't touch zero. That's a domain difference.
 </p>
 
 <figure>
@@ -107,6 +132,7 @@ Look at our 4 machines. Three of them will eat any real number you throw at them
       <tr><td>Squaring</td><td>Any real number</td><td>ℝ</td></tr>
       <tr><td>Rounding</td><td>Any real number</td><td>ℝ</td></tr>
       <tr><td>Reciprocal</td><td>Any real number except 0</td><td>ℝ \ &#123;0&#125;</td></tr>
+      <tr><td>Sign</td><td>Any real number</td><td>ℝ</td></tr>
     </tbody>
   </table>
   <figcaption>What each machine will accept.</figcaption>
@@ -117,7 +143,7 @@ Now flip it. What comes <em>out</em>?
 </p>
 
 <p>
-The linear machine can produce any real number. The squaring machine? Never anything negative. The rounding machine? Only integers. The reciprocal machine? Everything except zero.
+The linear machine can produce any real number. The squaring machine? Never anything negative. The rounding machine? Only integers. The reciprocal machine? Everything except zero. The sign machine? Just three values: -1, 0, and 1.
 </p>
 
 <figure>
@@ -128,6 +154,7 @@ The linear machine can produce any real number. The squaring machine? Never anyt
       <tr><td>Squaring</td><td>Nonnegative reals only</td><td>[0, ∞)</td></tr>
       <tr><td>Rounding</td><td>Integers only</td><td>ℤ</td></tr>
       <tr><td>Reciprocal</td><td>Any real number except 0</td><td>ℝ \ &#123;0&#125;</td></tr>
+      <tr><td>Sign</td><td>Just -1, 0, and 1</td><td>&#123;-1, 0, 1&#125;</td></tr>
     </tbody>
   </table>
   <figcaption>What each machine can produce.</figcaption>
@@ -155,6 +182,7 @@ Think about what "domain" actually does. You hand it a function — a whole mach
       <tr><td>Squaring</td><td>ℝ</td></tr>
       <tr><td>Rounding</td><td>ℝ</td></tr>
       <tr><td>Reciprocal</td><td>ℝ \ &#123;0&#125;</td></tr>
+      <tr><td>Sign</td><td>ℝ</td></tr>
     </tbody>
   </table>
   <figcaption>The Domain machine: feed it a function, get back a set.</figcaption>
@@ -172,6 +200,7 @@ Range works the same way. Hand it any machine, and it tells you what that machin
       <tr><td>Squaring</td><td>[0, ∞)</td></tr>
       <tr><td>Rounding</td><td>ℤ</td></tr>
       <tr><td>Reciprocal</td><td>ℝ \ &#123;0&#125;</td></tr>
+      <tr><td>Sign</td><td>&#123;-1, 0, 1&#125;</td></tr>
     </tbody>
   </table>
   <figcaption>The Range machine: feed it a function, get back a set.</figcaption>
@@ -200,16 +229,40 @@ Their outputs are sets: sometimes all real numbers, sometimes just the integers,
   <figcaption>Machines that inspect other machines.</figcaption>
 </figure>
 
+<h2>One More Machine: The Derivative</h2>
+
+<p>
+If you've taken calculus, you've already met another machine that eats machines. The derivative. Feed it a function, and it hands you back a <em>different</em> function — the one that describes how fast the original is changing.
+</p>
+
+<figure>
+  <table>
+    <thead><tr><th>Feed the Derivative Machine</th><th>It returns</th></tr></thead>
+    <tbody>
+      <tr><td>x²</td><td>2x</td></tr>
+      <tr><td>x³</td><td>3x²</td></tr>
+      <tr><td>sin(x)</td><td>cos(x)</td></tr>
+    </tbody>
+  </table>
+  <figcaption>Function in, function out. The derivative is a machine that eats machines.</figcaption>
+</figure>
+
+<p>
+Now here's a question: what's the <em>domain</em> of the derivative machine? It's pickier than Domain or Range. You can feed Domain any function and it will happily report a set. But the derivative machine won't accept just anything. Feed it a function with a sharp corner or a sudden jump — like our rounding machine — and it chokes. The derivative only works on functions that are smooth enough. Its domain is "differentiable functions," a smaller collection than "all functions." Even machines that eat machines have their limits.
+</p>
+
 <h2>Why This Is a Big Deal</h2>
 
 <p>
-We started with machines that eat numbers. Then we found machines that eat <em>machines</em>. That jump, from functions on numbers to functions on functions, is the jump from algebra to higher mathematics. It's the same idea that powers calculus (derivatives and integrals are functions that eat functions), programming (functions that take other functions as arguments), and modern physics.
+We started with machines that eat numbers. Then we found machines that eat <em>machines</em>: Domain, Range, and the Derivative. That jump, from functions on numbers to functions on functions, is the jump from algebra to higher mathematics. It's the same idea that powers calculus, programming (functions that take other functions as arguments), and modern physics.
 </p>
 
 <p>
 Most students hit this idea for the first time in college and feel like the ground shifted. But there's nothing here that requires anything beyond algebra. The machines are right there on the table. You just have to notice that the labels on the side are machines too.
 </p>
 
+<h2>A Warning at the Edge</h2>
+
 <p>
-That's the fun of mathematics. You understand a machine, you look up, and you realize someone built a machine that built <em>that</em> machine. And then you want to build the next one.
+One last thing. We said the range of the Domain machine is "all sets." That sounds fine until you ask a dangerous question: is the collection of all sets <em>itself</em> a set? If so, does it contain itself? Now consider a weirder collection: the set of all sets that <em>don't</em> contain themselves. Does that one contain itself? If it does, then by definition it shouldn't. If it doesn't, then by definition it should. Your brain should hurt. That's Russell's paradox, and it forced mathematicians in the early 1900s to tear down and rebuild the foundations of set theory. The thread we've been pulling — machines on machines, sets of sets — leads right to the edge of a cliff. That's not a reason to stop pulling. It's the reason mathematics is still being built.
 </p>
