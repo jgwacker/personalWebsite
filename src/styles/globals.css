@@ -44,10 +44,12 @@
   font-size: 0.875rem !important;
   color: #6B7280 !important;
   border-left: none !important;
-  padding-left: 7rem !important;
+  padding-left: 0 !important;
   margin-top: 0 !important;
   margin-bottom: 2.5rem !important;
-  max-width: 42rem !important;
+  max-width: 36rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   font-family: ui-serif, Georgia, 'Times New Roman', serif !important;
   font-weight: 400 !important;
   font-style: italic !important;
