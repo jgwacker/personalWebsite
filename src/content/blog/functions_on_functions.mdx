@@ -51,7 +51,7 @@ This one takes a number and multiplies it by itself. Watch what happens: negativ
 
 <h3>The Rounding Machine</h3>
 <p>
-You've been rounding since elementary school. You just didn't know it was a function. Feed it any number with a decimal, and it snaps to the nearest whole number. Try 2.49: you get 2. Try 2.51: you get 3. The output is always a clean integer.
+You've been rounding since elementary school. You just didn't know it was a function. Feed it any real number, and it snaps to the nearest integer. Try 2.49: you get 2. Try 2.51: you get 3. The output is always a clean integer.
 </p>
 <figure>
   <table>
@@ -107,7 +107,7 @@ Here's one that breaks a common misconception. Most people think every function 
 </figure>
 
 <p>
-This matters because it shows that functions are far broader than what you see in algebra class. A function is anything that takes an input and produces exactly one output. It doesn't need to be a nice curve you can draw. Mathematicians in real analysis work with functions so weird they can't be graphed at all — like one that returns 1 for every fraction and 0 for every irrational number. Still a valid function. Still follows the one-input-one-output rule. You just can't picture it.
+This matters because it shows that functions are far broader than what you see in algebra class. A function is anything that takes an input and produces exactly one output. It doesn't need to be a nice curve you can draw. Mathematicians work with functions so weird they can't be graphed at all — like one that returns 1 for every fraction and 0 for every irrational number. Still a valid function. Still follows the one-input-one-output rule. You just can't picture it.
 </p>
 
 <h2>Two Signs on Every Machine</h2>
@@ -171,7 +171,11 @@ Read that heading again. Domain and range aren't just labels. They're <em>machin
 </p>
 
 <p>
-Think about what "domain" actually does. You hand it a function — a whole machine — and it hands you back a set. The set of everything that machine will accept. Domain takes the linear machine and returns "all real numbers." Domain takes the reciprocal machine and returns "all real numbers except zero." It takes in a machine. It spits out a set. That's a function.
+Think about what "domain" actually does. You hand it a function — a whole machine — and it hands you back a set. The set of everything that machine will accept. Domain takes the linear machine and returns "all real numbers." Domain takes the reciprocal machine and returns "all real numbers except zero."
+</p>
+
+<p>
+It takes in a machine. It spits out a set. That's a function.
 </p>
 
 <figure>
@@ -251,18 +255,16 @@ If you've taken calculus, you've already met another machine that eats machines.
 Now here's a question: what's the <em>domain</em> of the derivative machine? It's pickier than Domain or Range. You can feed Domain any function and it will happily report a set. But the derivative machine won't accept just anything. Feed it a function with a sharp corner or a sudden jump — like our rounding machine — and it chokes. The derivative only works on functions that are smooth enough. Its domain is "differentiable functions," a smaller collection than "all functions." Even machines that eat machines have their limits.
 </p>
 
-<h2>Why This Is a Big Deal</h2>
+<h2>Why This Is a Big Deal (and a Warning at the Edge)</h2>
 
 <p>
-We started with machines that eat numbers. Then we found machines that eat <em>machines</em>: Domain, Range, and the Derivative. That jump, from functions on numbers to functions on functions, is the jump from algebra to higher mathematics. It's the same idea that powers calculus, programming (functions that take other functions as arguments), and modern physics.
+We started with machines that eat numbers. Then we found machines that eat <em>machines</em>: Domain, Range, and the Derivative. That jump, from functions on numbers to functions on functions, is the jump from algebra to higher mathematics. It's the same idea that powers calculus, programming, and modern physics. Nothing here requires anything beyond algebra. The machines are right there on the table. You just have to notice that the labels on the side are machines too.
 </p>
 
 <p>
-Most students hit this idea for the first time in college and feel like the ground shifted. But there's nothing here that requires anything beyond algebra. The machines are right there on the table. You just have to notice that the labels on the side are machines too.
+But there's a warning. We said the range of the Domain machine is "all sets." That sounds fine until you ask a dangerous question: is the collection of all sets <em>itself</em> a set? If so, does it contain itself? Now consider a weirder collection: the set of all sets that <em>don't</em> contain themselves. Does that one contain itself? If it does, then by definition it shouldn't. If it doesn't, then by definition it should. Your brain should hurt.
 </p>
 
-<h2>A Warning at the Edge</h2>
-
 <p>
-One last thing. We said the range of the Domain machine is "all sets." That sounds fine until you ask a dangerous question: is the collection of all sets <em>itself</em> a set? If so, does it contain itself? Now consider a weirder collection: the set of all sets that <em>don't</em> contain themselves. Does that one contain itself? If it does, then by definition it shouldn't. If it doesn't, then by definition it should. Your brain should hurt. That's Russell's paradox, and it forced mathematicians in the early 1900s to tear down and rebuild the foundations of set theory. The thread we've been pulling — machines on machines, sets of sets — leads right to the edge of a cliff. That's not a reason to stop pulling. It's the reason mathematics is still being built.
+That's Russell's paradox, and it forced mathematicians in the early 1900s to tear down and rebuild the foundations of set theory. The thread we've been pulling — machines on machines, sets of sets — leads right to the edge of a cliff. That's not a reason to stop pulling. It's the reason mathematics is still being built.
 </p>
