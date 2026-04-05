@@ -29,18 +29,29 @@
 .prose :where(code){ @apply font-normal; }
 
 /* post takeaway + summary */
-.post-takeaway{
-  @apply text-lg text-base-text border-l-4 border-base-accent pl-5 my-6;
-  font-weight: 400;
-  line-height: 1.5;
+.prose .post-takeaway{
+  font-size: 1.125rem !important;
+  color: var(--color-base-text, theme('colors.base-text')) !important;
+  border-left: 4px solid var(--color-base-accent, theme('colors.base-accent')) !important;
+  padding-left: 1.25rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
 }
 
-.post-summary{
-  @apply text-sm text-base-mute pl-5 border-l-4 border-base-border my-0 mb-10 max-w-2xl;
-  font-family: ui-serif, Georgia, 'Times New Roman', serif;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.7;
+.prose .post-summary{
+  font-size: 0.875rem !important;
+  color: var(--color-base-mute, theme('colors.base-mute')) !important;
+  border-left: 4px solid var(--color-base-border, theme('colors.base-border')) !important;
+  padding-left: 1.25rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 2.5rem !important;
+  max-width: 42rem !important;
+  font-family: ui-serif, Georgia, 'Times New Roman', serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  line-height: 1.7 !important;
 }
 
 /* pull quotes */
