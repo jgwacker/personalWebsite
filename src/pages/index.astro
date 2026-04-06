@@ -2,7 +2,8 @@
 import IndexLayout from '@layouts/IndexLayout.astro';
 import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog', (p) => !p.data.draft)).sort((a,b)=>+new Date(b.data.pubDate)-+new Date(a.data.pubDate)).slice(0,4);
-const research = (await getCollection('research', (p) => !p.data.draft)).slice(0,4);
+const allResearch = await getCollection('research', (p) => !p.data.draft);
+const research = allResearch.sort(() => Math.random() - 0.5).slice(0, 4);
 ---
 <IndexLayout>
   <section class="grid gap-10">
