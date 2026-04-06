@@ -35,6 +35,18 @@ For Si<sub>12</sub> through Si<sub>18</sub>, the structures are built from stack
 <h2>Recollections</h2>
 
 <p>
-<em>[To be filled in — this predates your particle physics career. How did you end up working with Kai-Ming Ho? What was your role? How does this connect to the rest of your scientific trajectory?]</em>
+I was an undergraduate at Iowa State, and I had taken Kai-Ming Ho's thermal physics course taught out of Kittel and Kroemer. I hadn't taken any quantum mechanics, which wasn't a formal requirement, but to say I was out of my depth would be an understatement. I worked incredibly hard on that course, struggling with Fermi-Dirac and Bose-Einstein statistics that I didn't understand going in. After the semester was over and I'd done reasonably well, Ho saw me in the hallway and offered me the chance to work with his group.
+</p>
+
+<p>
+Ho had pioneered using genetic algorithms in conjunction with simulated annealing to find the ground states of N-body carbon molecules, showing that many carbon clusters produced gorgeous shell structures. He was now extending the technique to silicon. The practical application was direct: if you could identify especially stable silicon structures, those might be what would break off during silicon wafer manufacturing. Understanding the clusters had real industrial relevance.
+</p>
+
+<p>
+When I sat down to look at the outputs of their computational runs, they had these blobs of 14, 15, 16 atom silicon clusters, over a thousand of them from each run. They all looked similar but were subtly different. The group was spinning them around on their desktops trying to classify them visually. You couldn't easily use average binding energy because a small dislocation of a single atom would spike the energy of an otherwise nearly identical structure. I was pretty lost looking at these things.
+</p>
+
+<p>
+I figured there had to be a way of classifying the structures without manual inspection. I realized that if you computed the interatomic distances of all pairs of atoms, that would produce a spectrum that was rotationally and translationally invariant: rotate or translate the molecule and the spectrum stays the same. And if a single atom was mildly displaced, the spectrum would change only slightly rather than catastrophically. I defined a function f(d) as the number of interatomic distances smaller than d for each molecule, then computed the integral of |f<sub>i</sub>(x) - f<sub>j</sub>(x)| dx to get a distance metric between any two structures. This let us take the thousand-plus molecules from each run and quickly identify the distinct ground states. In those days there was no Python, and few of the standard C++ libraries that would make this trivial today. It ended up being a few thousand lines of code, a substantial programming problem for an undergraduate. But it worked, and it let the group extend the analysis out to clusters of a few dozen atoms. My contribution wasn't the most important element of the science in the paper, but it was useful, and I was happy to find out later that I had been included as an author on a Nature paper.
 </p>
 
