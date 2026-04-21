@@ -9,7 +9,7 @@ draft: true
 <h2>The Problem: Single-Thread Collapse</h2>
 
 <p>
-Writing a physics paper involves many distinct cognitive tasks: deriving equations, searching literature, writing prose, making figures, checking consistency, and investigating subtle physics questions. Each task requires different tools, different rigor, and different amounts of context. A single conversation thread struggles to manage all of these. You lose context as the window fills. You duplicate work because the model doesn't remember what it searched yesterday. You can't parallelize: while the editor is reading the full paper, you can't simultaneously ask a question about atom loss decoherence. And when the conversation ends, everything the model learned about your paper vanishes.
+Writing a physics paper involves distinct cognitive tasks: deriving equations, searching literature, writing prose, checking consistency, investigating subtle physics questions. Each requires different tools and different amounts of context. A single conversation thread struggles to manage all of them. You lose context as the window fills. You duplicate work because the model doesn't remember what it searched yesterday. You can't parallelize. And when the conversation ends, everything the model learned about your paper vanishes.
 </p>
 
 <p>
@@ -103,19 +103,25 @@ The researcher searches arXiv and journal websites, provides full citations with
 </p>
 
 <p>
-In one session, it found roughly 35 new references covering atom interferometer geometries (Panda lattice AI, Overstreet gravitational AB effect, conjugate interferometers) and short-range force motivations (Randall-Sundrum, quantum dark forces, dilaton models, MICROSCOPE). All were integrated into the paper with natural prose.
+In one session, it found roughly 35 new references across atom interferometer geometries and short-range force motivations. All were integrated into the paper with natural prose. The cumulative database meant that a second literature search weeks later didn't re-surface the same 35 papers.
 </p>
 
 <h3>Writer</h3>
 
 <p>
-The writer is the only project-specific agent. It reads relevant sections of the LaTeX source, maintains consistent notation, compiles with pdflatex, and follows the project's style rules. It preloads the <code>verify-equation</code> skill to check any new equations it writes and the <code>make-figure</code> skill for figure updates. It is told never to guess algebraic results; it must verify with SymPy.
+The writer is the only project-specific agent. It reads relevant sections of the LaTeX source, maintains consistent notation, compiles with pdflatex, and follows the project's style rules. It preloads the <code>verify-equation</code> skill to check any new equations it writes and the <code>make-figure</code> skill for figure updates. It is told never to guess algebraic results; it must always verify with SymPy. The reason this agent is project-specific while the others are shared: it references the exact LaTeX file, the exact notation conventions (which variables are bold, which are hatted), and the exact compilation pipeline for this paper. Starting a new project means writing a new writer agent; the editor, researcher, and grad student carry over unchanged.
+</p>
+
+<h3>Agent Auditor</h3>
+
+<p>
+The agent auditor is a meta-agent that reads all agent definitions, CLAUDE.md files, the notes structure, and the symlinks, then produces a structured report on the health of the system. It searches the web for current Claude Code best practices and flags discrepancies. We ran it once; it discovered the subagent delegation limitation described below, which led to the most important architectural change in the project.
 </p>
 
 <h2>Skills Solve the Delegation Problem</h2>
 
 <p>
-The original design had a calculator agent that other agents could call to verify equations. This failed because of a Claude Code platform constraint: subagents cannot spawn other subagents. The editor couldn't delegate a spot-check to the calculator. The grad student couldn't call the calculator mid-investigation. We discovered this when the agent auditor (a meta-agent that evaluates the entire setup) flagged it as affecting three of our five agents.
+The original design had a calculator agent that other agents could call to verify equations. This failed because of a Claude Code platform constraint: subagents cannot spawn other subagents. The editor couldn't delegate a spot-check to the calculator. The grad student couldn't call the calculator mid-investigation. The agent auditor flagged this as affecting three of our five agents.
 </p>
 
 <p>
