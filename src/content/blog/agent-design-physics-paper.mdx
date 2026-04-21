@@ -9,11 +9,15 @@ draft: true
 <h2>The Problem: Single-Thread Collapse</h2>
 
 <p>
+Matthew Schwartz's <a href="https://www.anthropic.com/research/vibe-physics">"Vibe Physics"</a> experiment showed what a single-thread approach can accomplish: Claude Opus 4.5 completed a year-long theoretical physics calculation in two weeks, producing a <a href="https://arxiv.org/abs/2601.02484">published paper</a> on C-parameter resummation through 110+ drafts and 36 million tokens. Schwartz guided Claude entirely through text prompts, never editing files directly. The results were impressive, but Schwartz also reported that Claude fabricated results and took mathematical shortcuts that required his domain expertise to catch. He was the verification layer, and everything depended on him staying in the loop for every step.
+</p>
+
+<p>
 Writing a physics paper involves distinct cognitive tasks: deriving equations, searching literature, writing prose, checking consistency, investigating subtle physics questions. Each requires different tools and different amounts of context. A single conversation thread struggles to manage all of them. You lose context as the window fills. You duplicate work because the model doesn't remember what it searched yesterday. You can't parallelize. And when the conversation ends, everything the model learned about your paper vanishes.
 </p>
 
 <p>
-We hit all of these problems while writing a 49-page paper on atom interferometry ("Vibration-Immune Atom Interferometry Near Surfaces Using Mirror-Reflected Raman Beams"). The paper had 80+ references, 9 figures, 4 tables, 3 appendices with original calculations, and equations that needed symbolic verification. The fix was to decompose the cognitive tasks into specialized agents with persistent documentation, the same way a research group divides labor among people with different roles.
+We hit these problems while writing a 49-page paper on atom interferometry. The paper had 80+ references, 9 figures, 4 tables, 3 appendices with original calculations, and equations that needed symbolic verification. Rather than working in a single thread with manual oversight, we decomposed the cognitive tasks into specialized agents with persistent documentation and automated verification, the same way a research group divides labor among people with different roles.
 </p>
 
 <h2>Architecture: Two Layers and a Notes Directory</h2>
@@ -85,7 +89,7 @@ The key usage pattern: run the editor after every batch of changes, treating it 
 <h3>Grad Student (Opus)</h3>
 
 <p>
-The grad student's job is to work through a physics problem until it understands it well enough to explain it back. The typical trigger is an impasse: the writer or editor agents can't understand the physical geometry of a setup, or they keep making the same error because they lack the conceptual framework to avoid it. You send the grad student away with a specific claim to investigate, the same way you might tell an obstinate graduate student to "go away and think about it until you get it."
+Anthropic titled Schwartz's blog post "The AI grad student," and the metaphor is apt. Our grad student agent formalizes that pattern. Its job is to work through a physics problem until it understands it well enough to explain it back. The difference from Schwartz's approach: the grad student runs in its own context, produces a documented notebook, and uses the <code>verify-equation</code> skill to check its own work symbolically rather than depending on the human to catch fabrications. The typical trigger is an impasse: the writer or editor agents can't understand the physical geometry of a setup, or they keep making the same error because they lack the conceptual framework to avoid it. You send the grad student away with a specific claim to investigate, the same way you might tell an obstinate graduate student to "go away and think about it until you get it."
 </p>
 
 <p>
