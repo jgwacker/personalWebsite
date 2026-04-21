@@ -1,0 +1,189 @@
+---
+title: "Designing Agents and Skills for Writing a Physics Paper"
+pubDate: 2026-04-20
+description: "How we built a system of specialized Claude Code agents and reusable skills to write a 49-page atom interferometry paper, and what worked."
+tags: [AI, agents, Claude Code, physics, workflow]
+draft: true
+---
+
+<h2>The Problem: Single-Thread Collapse</h2>
+
+<p>
+Writing a physics paper involves many distinct cognitive tasks: deriving equations, searching literature, writing prose, making figures, checking consistency, and investigating subtle physics questions. Each task requires different tools, different rigor, and different amounts of context. A single conversation thread struggles to manage all of these. You lose context as the window fills. You duplicate work because the model doesn't remember what it searched yesterday. You can't parallelize: while the editor is reading the full paper, you can't simultaneously ask a question about atom loss decoherence. And when the conversation ends, everything the model learned about your paper vanishes.
+</p>
+
+<p>
+We hit all of these problems while writing a 49-page paper on atom interferometry ("Vibration-Immune Atom Interferometry Near Surfaces Using Mirror-Reflected Raman Beams"). The paper had 80+ references, 9 figures, 4 tables, 3 appendices with original calculations, and equations that needed symbolic verification. The fix was to decompose the cognitive tasks into specialized agents with persistent documentation, the same way a research group divides labor among people with different roles.
+</p>
+
+<h2>Architecture: Two Layers and a Notes Directory</h2>
+
+<p>
+Claude Code supports agent definitions at two levels: user-global (<code>{"~/.claude/agents/"}</code>) and project-specific (<code>{".claude/agents/"}</code>). We added a middle tier for academic writing: <code>{"~/Write/.claude/agents/"}</code>, containing agents and skills shared across all writing projects. Each project symlinks to this shared layer and adds its own project-specific agents.
+</p>
+
+```
+~/Write/.claude/              # Shared across all writing projects
+  CLAUDE.md                    # Shared workflow rules
+  agents/
+    editor.md                  # Full-paper editorial review
+    grad-student.md            # Deep physics investigation
+    researcher.md              # Literature search
+    agent-auditor.md           # Audits the agent setup itself
+  skills/
+    verify-equation/           # SymPy verification protocol
+    make-figure/               # matplotlib figure protocol
+    research-notes/            # Literature documentation protocol
+
+Draft2026/.claude/             # Project-specific
+  agents/
+    writer.md                  # References MirroredAI.tex specifically
+    editor.md → ~/Write        # Symlinks to shared agents
+    grad-student.md → ~/Write
+    researcher.md → ~/Write
+  skills/
+    verify-equation → ~/Write  # Symlinks to shared skills
+    make-figure → ~/Write
+    research-notes → ~/Write
+```
+
+<p>
+The shared layer defines agents that work on any academic paper: an editor that reads full documents and produces structured reports, a researcher that maintains a persistent literature database, a grad student that investigates physics claims. The project layer has a writer that knows the specific LaTeX file, notation conventions, and compilation commands for this paper. This separation means starting a new paper requires writing one project-specific agent definition and a set of symlinks, not rebuilding the entire system.
+</p>
+
+<p>
+Everything an agent produces goes into a structured <code>notes/</code> directory:
+</p>
+
+```
+notes/
+  editor/          # Timestamped editorial review logs
+  grad/            # Investigation notebooks
+  research/        # Search logs + cumulative paper database
+  verification/    # SymPy scripts + README
+  plots_figures/   # Figure scripts + README
+  plans/           # Implementation plans
+  audits/          # Agent setup audit reports
+```
+
+<h2>The Agents</h2>
+
+<h3>Editor (Opus)</h3>
+
+<p>
+The editor reads the entire LaTeX source in sequential chunks, writing notes incrementally to a timestamped log file as it reads rather than summarizing at the end. The output is a structured report with 9 sections: redundancy, logical gaps, ordering issues, sections that are too terse, sections that are too bloated, missing content, notation inconsistencies, figures and tables, and unverified calculations. It preloads the <code>verify-equation</code> skill so it can spot-check suspicious formulas directly.
+</p>
+
+<p>
+The key usage pattern: run the editor after every batch of changes, treating it as a regression test. Over 10 editorial passes (each taking roughly 8 minutes and producing a 200-400 line report), the editor caught a wrong Taylor expansion coefficient (1/3 that should have been 1/6), an inconsistent value of Φ_eff across sections, a leftover "butterfly future" reference that should have been "rose future" after a figure update, duplicate LaTeX labels, and missing discussions of Zeeman shifts and mean-field collisions. These are exactly the inconsistencies that accumulate during a multi-day writing process and that a human re-read tends to miss because you remember what you intended to write rather than what you actually wrote.
+</p>
+
+<h3>Grad Student (Opus)</h3>
+
+<p>
+The grad student's job is to work through a physics problem until it understands it well enough to explain it back. This is not about independent discovery. The typical trigger is an impasse: the writer or editor agents can't understand the physical geometry of a setup, or they keep making the same error because they lack the conceptual framework to avoid it. You send the grad student away with a specific claim to investigate, the same way you might tell an obstinate graduate student to "go away and think about it until you get it."
+</p>
+
+<p>
+The grad student restates the claim precisely, works through it systematically (using the <code>verify-equation</code> skill for calculations, web search for literature), checks limiting cases, follows implications, and returns a structured verdict. It maintains a lab notebook in <code>notes/grad/</code>. It is instructed to disagree with the advisor when the physics demands it, backed by calculation, and to quantify rather than qualify: "this effect contributes ~10⁻⁹ rad, below the systematic floor" rather than "this effect might matter."
+</p>
+
+<p>
+The MZ interferometer investigation illustrates the pattern. The writer and editor couldn't correctly reason about why a standard Mach-Zehnder interferometer behaves differently from the butterfly/rose configurations near a surface. The physical geometry was immediately obvious to me, but I couldn't get the agents past their misunderstanding through direct instruction. So I sent the grad student off to figure out the geometry from first principles. It came back with a clear analysis showing that the atom-shield distance is a free parameter for the standard MZ (only constrained for butterfly/rose), which meant the 10⁴ advantage of the new configurations is entirely from systematic cancellation, not signal geometry. That understanding, formalized in the grad student's notebook, could then be imported into the writer's context to resolve the impasse.
+</p>
+
+<p>
+A second investigation into atom loss decoherence produced a path-by-path analysis, a factorization proof, and the identification of orphaned amplitudes that dilute fringe contrast. This became Appendix C of the paper.
+</p>
+
+<h3>Researcher</h3>
+
+<p>
+The researcher searches arXiv and journal websites, provides full citations with arXiv IDs, and summarizes key results with specific numbers. It maintains two files using the <code>research-notes</code> skill: per-session search logs and a cumulative paper database (<code>all_papers_reviewed.md</code>) that persists across sessions. Each entry has a status field (cited, not cited, already cited) that gets updated when papers are added to the bibliography. The researcher reads the existing bibliography before suggesting new citations, so it doesn't re-recommend papers you've already referenced.
+</p>
+
+<p>
+In one session, it found roughly 35 new references covering atom interferometer geometries (Panda lattice AI, Overstreet gravitational AB effect, conjugate interferometers) and short-range force motivations (Randall-Sundrum, quantum dark forces, dilaton models, MICROSCOPE). All were integrated into the paper with natural prose.
+</p>
+
+<h3>Writer</h3>
+
+<p>
+The writer is the only project-specific agent. It reads relevant sections of the LaTeX source, maintains consistent notation, compiles with pdflatex, and follows the project's style rules. It preloads the <code>verify-equation</code> skill to check any new equations it writes and the <code>make-figure</code> skill for figure updates. It is told never to guess algebraic results; it must verify with SymPy.
+</p>
+
+<h2>Skills Solve the Delegation Problem</h2>
+
+<p>
+The original design had a calculator agent that other agents could call to verify equations. This failed because of a Claude Code platform constraint: subagents cannot spawn other subagents. The editor couldn't delegate a spot-check to the calculator. The grad student couldn't call the calculator mid-investigation. We discovered this when the agent auditor (a meta-agent that evaluates the entire setup) flagged it as affecting three of our five agents.
+</p>
+
+<p>
+The solution was to convert shared protocols from agents into skills. A skill in Claude Code is a reusable prompt that gets preloaded into an agent's context via the <code>skills:</code> frontmatter field. The agent does the work itself, following the skill's protocol. The <code>verify-equation</code> skill, for example, provides a step-by-step protocol:
+</p>
+
+<ol>
+<li>Write a self-contained SymPy script in <code>notes/verification/verify_&lt;topic&gt;.py</code></li>
+<li>Use assert statements with PASS/FAIL output</li>
+<li>Run the script</li>
+<li>Update <code>notes/verification/README.md</code> with the new entry</li>
+<li>Add a <code>%% Verified: notes/verification/&lt;script&gt;.py</code> comment in the LaTeX source</li>
+</ol>
+
+<p>
+Any agent that preloads this skill follows the same steps, producing the same artifacts. The editor, grad student, and writer all verify equations the same way, building a consistent audit trail. The editor checks for <code>%% Verified:</code> tags and flags unverified equations in its report.
+</p>
+
+<p>
+This turned out to be better than the original delegation design. There's no context-switching overhead; the agent has full access to its own conversation history while running the verification. The artifacts are uniform. And any new agent you create can inherit the protocol by adding one line to its frontmatter.
+</p>
+
+<p>
+We built three skills: <code>verify-equation</code> (SymPy verification), <code>make-figure</code> (matplotlib with consistent styling, LaTeX labels, and colorblind-friendly palettes), and <code>research-notes</code> (literature search documentation with cumulative database). Together, these produced 8 verification scripts (all tagged in the LaTeX source), publication-quality sensitivity curves, and a searchable database of 35+ reviewed papers.
+</p>
+
+<h2>What the Notes Directory Buys You</h2>
+
+<p>
+Every agent writes to <code>notes/</code>. The editor writes reading logs. The grad student writes investigation notebooks. The researcher writes search logs and a cumulative database. The verification skill produces scripts with a README. The figure skill produces scripts with a README. Plans are saved to <code>notes/plans/</code>. Each subdirectory has a README explaining its contents and naming conventions.
+</p>
+
+<p>
+The practical benefit: future sessions start with full context. The researcher checks the cumulative database before searching and skips papers already reviewed. The editor compares against previous review logs and tracks which issues persist versus which were fixed. Verification scripts connect paper claims to symbolic proofs. When a conversation runs out of context, the notes survive.
+</p>
+
+<p>
+We navigated the notes directory in Obsidian, which makes the connections between files visible as a graph rather than a flat listing. An investigation notebook links to the verification scripts it produced; those scripts link back to the LaTeX sections they validate; the editor's report references both. With 30+ files across 6 subdirectories, a browsable knowledge graph is more useful than <code>ls</code>.
+</p>
+
+<h2>What Worked, What Didn't</h2>
+
+<p>
+<strong>Editor as regression test.</strong> Running the editor after every batch of changes catches inconsistencies immediately. The "butterfly future" to "rose future" error was a one-word leftover from a figure rename, the kind of thing you only catch by reading the entire document, which the editor does systematically every time.
+</p>
+
+<p>
+<strong>Grad student as context-isolation pattern.</strong> When the main conversation can't get past a conceptual block, offloading the problem to a separate agent with its own context window lets it work through the reasoning without the baggage of the failed attempts. The result comes back as a clean notebook entry that the writer can import. The grad student doesn't need to be smarter than you; it needs to be able to think about one thing without distraction.
+</p>
+
+<p>
+<strong>Verification audit trail.</strong> Every important equation has a <code>%% Verified:</code> tag pointing to a SymPy script. When the editor flags an "unverified calculation," there's a clear path to verification. When a formula needs to change, the verification script catches the error before it propagates.
+</p>
+
+<p>
+<strong>Should have started with skills.</strong> We built the calculator and figure-maker as agents first, then restructured them as skills after the auditor discovered the subagent limitation. Starting with skills for shared protocols would have avoided the restructuring.
+</p>
+
+<p>
+<strong>Editor needs persistent issue tracking.</strong> The editor re-reads the entire paper each pass and sometimes re-flags resolved issues. A persistent "known issues" file that the editor reads at the start and updates at the end would reduce false positives. The V_CP/ℏ value was flagged 4 times despite being correct each time.
+</p>
+
+<p>
+<strong>Grad student's numerical iteration was messy.</strong> The atom loss investigation spawned 10 verification scripts (v1 through v10) as the grad student iterated on the correct velocity-dependent phase formula. A more structured numerical workflow, with clear intermediate results saved and tested, would have been more efficient.
+</p>
+
+<h2>The Numbers</h2>
+
+<p>
+Paper: 49 pages, ~3,300 lines of LaTeX, 80+ references, 9 figures, 4 tables, 3 appendices. Editorial passes: 10 (each ~8 minutes, ~300-line report). Grad student investigations: 3 (MZ distance, atom loss decoherence, negative standoff). Verification scripts: 8+ (all passing). Literature search: ~35 new references found and integrated. Agents: 5 (editor, grad student, researcher, writer, agent auditor). Skills: 3 (verify-equation, make-figure, research-notes). Notes files: 30+ across 6 subdirectories.
+</p>
