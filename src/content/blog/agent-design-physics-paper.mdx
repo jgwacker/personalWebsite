@@ -79,13 +79,13 @@ The editor reads the entire LaTeX source in sequential chunks, writing notes inc
 </p>
 
 <p>
-The key usage pattern: run the editor after every batch of changes, treating it as a regression test. Over 10 editorial passes (each taking roughly 8 minutes and producing a 200-400 line report), the editor caught a wrong Taylor expansion coefficient (1/3 that should have been 1/6), an inconsistent value of Φ_eff across sections, a leftover "butterfly future" reference that should have been "rose future" after a figure update, duplicate LaTeX labels, and missing discussions of Zeeman shifts and mean-field collisions. These are exactly the inconsistencies that accumulate during a multi-day writing process and that a human re-read tends to miss because you remember what you intended to write rather than what you actually wrote.
+The key usage pattern: run the editor after every batch of changes, treating it as a regression test. Over 10 editorial passes (each taking roughly 8 minutes and producing a 200-400 line report), the editor caught a wrong Taylor expansion coefficient (1/3 that should have been 1/6), an inconsistent value of Φ_eff across sections, a leftover "butterfly future" reference that should have been "rose future" after a figure update, duplicate LaTeX labels, and missing discussions of Zeeman shifts and mean-field collisions. A human re-read tends to miss these because you remember what you intended to write rather than what you actually wrote.
 </p>
 
 <h3>Grad Student (Opus)</h3>
 
 <p>
-The grad student's job is to work through a physics problem until it understands it well enough to explain it back. This is not about independent discovery. The typical trigger is an impasse: the writer or editor agents can't understand the physical geometry of a setup, or they keep making the same error because they lack the conceptual framework to avoid it. You send the grad student away with a specific claim to investigate, the same way you might tell an obstinate graduate student to "go away and think about it until you get it."
+The grad student's job is to work through a physics problem until it understands it well enough to explain it back. The typical trigger is an impasse: the writer or editor agents can't understand the physical geometry of a setup, or they keep making the same error because they lack the conceptual framework to avoid it. You send the grad student away with a specific claim to investigate, the same way you might tell an obstinate graduate student to "go away and think about it until you get it."
 </p>
 
 <p>
@@ -129,7 +129,7 @@ The original design had a calculator agent that other agents could call to verif
 </p>
 
 <p>
-The solution was to convert shared protocols from agents into skills. A skill in Claude Code is a reusable prompt that gets preloaded into an agent's context via the <code>skills:</code> frontmatter field. The agent does the work itself, following the skill's protocol. The <code>verify-equation</code> skill, for example, provides a step-by-step protocol:
+We converted shared protocols from agents into skills. The agent does the work itself, following the skill's protocol. The <code>verify-equation</code> skill provides a step-by-step protocol:
 </p>
 
 <ol>
@@ -145,21 +145,17 @@ Any agent that preloads this skill follows the same steps, producing the same ar
 </p>
 
 <p>
-This turned out to be better than the original delegation design. There's no context-switching overhead; the agent has full access to its own conversation history while running the verification. The artifacts are uniform. And any new agent you create can inherit the protocol by adding one line to its frontmatter.
+There's no context-switching overhead; the agent has full access to its own conversation history while running the verification. The artifacts are uniform. And any new agent inherits the protocol by adding one line to its frontmatter.
 </p>
 
 <p>
-We built three skills: <code>verify-equation</code> (SymPy verification), <code>make-figure</code> (matplotlib with consistent styling, LaTeX labels, and colorblind-friendly palettes), and <code>research-notes</code> (literature search documentation with cumulative database). Together, these produced 8 verification scripts (all tagged in the LaTeX source), publication-quality sensitivity curves, and a searchable database of 35+ reviewed papers.
+We built three skills: <code>verify-equation</code> (SymPy verification), <code>make-figure</code> (matplotlib with consistent styling and colorblind-friendly palettes), and <code>research-notes</code> (literature search documentation with cumulative database).
 </p>
 
 <h2>What the Notes Directory Buys You</h2>
 
 <p>
-Every agent writes to <code>notes/</code>. The editor writes reading logs. The grad student writes investigation notebooks. The researcher writes search logs and a cumulative database. The verification skill produces scripts with a README. The figure skill produces scripts with a README. Plans are saved to <code>notes/plans/</code>. Each subdirectory has a README explaining its contents and naming conventions.
-</p>
-
-<p>
-The practical benefit: future sessions start with full context. The researcher checks the cumulative database before searching and skips papers already reviewed. The editor compares against previous review logs and tracks which issues persist versus which were fixed. Verification scripts connect paper claims to symbolic proofs. When a conversation runs out of context, the notes survive.
+Every agent writes to <code>notes/</code>, and each subdirectory has a README explaining its contents and naming conventions. The practical benefit: future sessions start with full context. The researcher checks the cumulative database before searching and skips papers already reviewed. The editor compares against previous review logs and tracks which issues persist versus which were fixed. Verification scripts connect paper claims to symbolic proofs. When a conversation runs out of context, the notes survive.
 </p>
 
 <p>
@@ -169,7 +165,7 @@ We navigated the notes directory in Obsidian, which makes the connections betwee
 <h2>What Worked, What Didn't</h2>
 
 <p>
-<strong>Editor as regression test.</strong> Running the editor after every batch of changes catches inconsistencies immediately. The "butterfly future" to "rose future" error was a one-word leftover from a figure rename, the kind of thing you only catch by reading the entire document, which the editor does systematically every time.
+<strong>Editor as regression test.</strong> Running the editor after every batch of changes catches inconsistencies that accumulate during multi-day writing. The editor reads the entire document systematically every time, which you won't.
 </p>
 
 <p>
