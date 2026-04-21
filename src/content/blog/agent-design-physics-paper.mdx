@@ -19,6 +19,10 @@ We hit all of these problems while writing a 49-page paper on atom interferometr
 <h2>Architecture: Two Layers and a Notes Directory</h2>
 
 <p>
+Two Claude Code concepts matter here. An <em>agent</em> is a markdown file that defines a specialized role: what it does, which tools it can use, and what instructions it follows. When you invoke an agent, Claude Code spawns a separate conversation with that agent's prompt loaded. A <em>skill</em> is a reusable protocol (also a markdown file) that gets preloaded into an agent's context, giving it a step-by-step procedure for a specific task without spawning a separate conversation. Agents are actors; skills are recipes.
+</p>
+
+<p>
 Claude Code supports agent definitions at two levels: user-global (<code>{"~/.claude/agents/"}</code>) and project-specific (<code>{".claude/agents/"}</code>). We added a middle tier for academic writing: <code>{"~/Write/.claude/agents/"}</code>, containing agents and skills shared across all writing projects. Each project symlinks to this shared layer and adds its own project-specific agents.
 </p>
 
@@ -115,7 +119,7 @@ The writer is the only project-specific agent. It reads relevant sections of the
 <h3>Agent Auditor</h3>
 
 <p>
-The agent auditor is a meta-agent that reads all agent definitions, CLAUDE.md files, the notes structure, and the symlinks, then produces a structured report on the health of the system. It searches the web for current Claude Code best practices and flags discrepancies. We ran it once; it discovered the subagent delegation limitation described below, which led to the most important architectural change in the project.
+The agent auditor is a meta-agent that reads all agent definitions, CLAUDE.md files, the notes structure, and the symlinks, then produces a structured report on the health of the system. It searches the web for current Claude Code best practices and flags discrepancies. We ran it once; it discovered the subagent delegation limitation that led to the most important architectural change in the project.
 </p>
 
 <h2>Skills Solve the Delegation Problem</h2>
@@ -191,5 +195,5 @@ We navigated the notes directory in Obsidian, which makes the connections betwee
 <h2>The Numbers</h2>
 
 <p>
-Paper: 49 pages, ~3,300 lines of LaTeX, 80+ references, 9 figures, 4 tables, 3 appendices. Editorial passes: 10 (each ~8 minutes, ~300-line report). Grad student investigations: 3 (MZ distance, atom loss decoherence, negative standoff). Verification scripts: 8+ (all passing). Literature search: ~35 new references found and integrated. Agents: 5 (editor, grad student, researcher, writer, agent auditor). Skills: 3 (verify-equation, make-figure, research-notes). Notes files: 30+ across 6 subdirectories.
+Paper: 49 pages, ~3,300 lines of LaTeX, 80+ references, 9 figures, 4 tables, 3 appendices. Editorial passes: 10 (each ~8 minutes, ~300-line report). Grad student investigations: 3 (MZ distance, atom loss decoherence, negative standoff). Verification scripts: 8+ (all passing). Literature search: ~35 new references found and integrated. Agents: 5 (editor, grad student, researcher, writer, agent auditor). Skills: 3 (verify-equation, make-figure, research-notes). Notes files: 30+ across 6 subdirectories. None of this required a single conversation that held everything in context simultaneously; each agent worked in its own window, and the notes directory held the project together.
 </p>
