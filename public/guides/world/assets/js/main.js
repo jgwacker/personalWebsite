@@ -10,6 +10,15 @@
 (function () {
   "use strict";
 
+  // ---- favicon for jaywacker.com (idempotent; safe on file:// too) ----
+  if (typeof document !== "undefined" && !document.querySelector("link[rel='icon']")) {
+    var __fav = document.createElement("link");
+    __fav.rel = "icon";
+    __fav.type = "image/svg+xml";
+    __fav.href = "/favicon.svg";
+    document.head.appendChild(__fav);
+  }
+
   // ---- per-guide config (with safe fallbacks) ----
   var G = window.GUIDE || {};
   var SECTIONS   = G.sections   || [];
