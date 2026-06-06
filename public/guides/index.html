@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides — Jay Wacker</title>
+  <meta name="description" content="Short, illustrated interactive guides to current questions in the world and in science.">
+  <link rel="stylesheet" href="world/assets/css/styles.css">
+  <style>
+    /* tiny umbrella-only tweaks */
+    .umbrella-hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+    .umbrella-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); margin: 2rem 0; }
+    .umbrella-card { display: block; padding: 1.4rem 1.4rem 1.2rem; border: 1px solid var(--border, #d8d6cf); border-radius: 12px; background: #fff; transition: transform .12s ease, box-shadow .12s ease; text-decoration: none; color: inherit; }
+    .umbrella-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+    .umbrella-card .topic-icon { font-size: 1.8rem; line-height: 1; }
+    .umbrella-card h2 { margin: .6rem 0 .3rem; font-size: 1.4rem; }
+    .umbrella-card .meta { color: var(--mute, #6b6964); font-size: .9rem; margin: .5rem 0 0; }
+    .umbrella-card.coming { opacity: .65; cursor: default; pointer-events: none; }
+    .umbrella-card.coming::after { content: "Coming soon"; display: inline-block; margin-top: .8rem; font-size: .8rem; padding: .15rem .6rem; border: 1px dashed currentColor; border-radius: 999px; color: var(--mute, #6b6964); }
+    .umbrella-foot { color: var(--mute, #6b6964); font-size: .9rem; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border, #e8e5dc); }
+  </style>
+</head>
+<body data-page="umbrella">
+
+  <main class="wrap-wide" style="padding: 4rem 0 3rem">
+    <section class="umbrella-hero">
+      <span class="kicker">● Reading guides</span>
+      <h1>Guides</h1>
+      <p class="lead" style="max-width: 38rem">Short interactive guides on questions I'm working through. Each guide is a single topic broken into a handful of sections, with quizzes between them. Read in any order; everything runs in the browser.</p>
+    </section>
+
+    <div class="umbrella-grid">
+
+      <a class="umbrella-card" href="world/index.html">
+        <span class="topic-icon">🌎</span>
+        <h2>Guides to the World</h2>
+        <p>International relations as it happens — outbreaks and aid policy, frontier AI as great-power competition, Pacific independence movements.</p>
+        <p class="meta">5 guides · last updated June 2026</p>
+      </a>
+
+      <div class="umbrella-card coming">
+        <span class="topic-icon">🔭</span>
+        <h2>Guides to Science</h2>
+        <p>Physics and the questions science hasn't yet answered — dark matter, the hierarchy problem, what we actually know about the early universe. In planning.</p>
+      </div>
+
+    </div>
+
+    <p class="umbrella-foot">An independent educational project. Each guide cites its sources on its own page. Built by <a href="/">Jay Wacker</a>.</p>
+  </main>
+
+</body>
+</html>

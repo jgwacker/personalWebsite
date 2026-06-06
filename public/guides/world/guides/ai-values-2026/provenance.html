@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provenance and Watermarking | Contested Norms in AI</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body data-page="provenance">
+  <div id="site-header"></div>
+
+  <main class="wrap">
+    <header class="section-head">
+      <div class="num">Section 2</div>
+      <h1>Provenance and Watermarking</h1>
+      <p class="lead">Once the international system has named a norm violation, the next move is to build the instruments that make the violation visible and the norm enforceable. The instruments now being built around AI-generated content are technical standards for provenance, watermarking schemes, and platform-liability regimes. They are contested goods. Whichever versions consolidate over the next few years will set what "authentic" means online for the rest of the decade.</p>
+    </header>
+
+    <p>Three approaches dominate. Content provenance standards try to record where a digital file came from and what tools touched it. Watermarking systems try to mark AI-generated content as such. Platform-liability regimes try to make the large platforms answerable for what they amplify. Each has its own international politics. Each sits somewhere between early adoption and bitter contestation.</p>
+
+    <h2>C2PA: a cryptographic chain of custody for digital content</h2>
+    <div class="callout keyterm">
+      <span class="c-tag">Key term — Content provenance (C2PA)</span>
+      <p>The Coalition for Content Provenance and Authenticity is a Linux Foundation standard for cryptographic metadata that travels with a digital file. The metadata is signed and tamper-evident, and records who created the file and what tools modified it — a verifiable chain of custody for digital content. Adobe, the BBC, Microsoft, Google, OpenAI, Sony, and the five major camera manufacturers have all signed on. The Content Authenticity Initiative, which implements C2PA, now lists more than 3,700 member organizations.<sup class="cite"><a href="https://contentauthenticity.org/how-it-works" target="_blank" rel="noopener">CAI</a></sup></p>
+    </div>
+    <p>C2PA's strength is the breadth of its coalition. A standard that joins Adobe, Google, OpenAI, the major camera manufacturers, and the major news organizations begins to function as a genuine international technical norm. Its structural weakness is that the metadata can be stripped: an actor downloads a signed image, removes the cryptographic signature, and re-uploads. C2PA verifies that a piece of content is authentic; it does not, by itself, identify content as fake. Its usefulness therefore depends on platforms requiring signed content at upload, and no major platform currently does.</p>
+
+    <h2>Watermarking arrives, partially and unevenly</h2>
+    <p>Google's SynthID has now invisibly tagged more than ten billion pieces of AI-generated content — but only content produced by Google's own models.<sup class="cite"><a href="https://ai.google.dev/responsible/docs/safeguards/synthid" target="_blank" rel="noopener">SynthID</a></sup> An image from Midjourney or Stable Diffusion carries no SynthID mark. A 2025 research tool called UnMarker claimed a 79 percent removal rate against SynthID images; Google disputes the figure. Watermarking is a useful instrument, not a decisive one.</p>
+    <p>The international politics of watermarking turn on two questions: whether it is mandatory, and which technical standard counts. The EU AI Act requires watermarking for certain categories of AI-generated content. China's 2025 AI Content Labeling rules go further, mandating implicit labels on all AI-generated content shown to Chinese users. The United States has no federal watermarking mandate. The G7's Hiroshima AI Process Code of Conduct, adopted in October 2023, urges signatories to adopt watermarking but specifies no standard. The result is a patchwork: a single model's output is marked in China, conditionally marked in Europe, and entirely unmarked across most of the rest of the world.</p>
+
+    <h2>Platform liability: Section 230 holds, the DSA bites</h2>
+    <p>The deepest political fight in the section is over who is responsible for what platforms amplify. In the United States, Section 230 of the Communications Act has long shielded platforms from being treated as publishers of user-uploaded content. As of mid-2026 it remains intact. The Hawley–Blumenthal "No Section 230 Immunity for AI Act" and the bipartisan "Sunset to Reform Section 230 Act" have both stalled in the 119th Congress along familiar partisan lines.<sup class="cite"><a href="https://reason.com/2025/10/08/supreme-court-declines-to-address-section-230-in-two-cases-for-this-term/" target="_blank" rel="noopener">Reason</a></sup></p>
+    <p>In Europe the regime is the opposite. The Digital Services Act entered full force in February 2024. Very Large Online Platforms must label AI-generated content, conduct AI-specific risk assessments, and enforce their own terms of service. Enforcement actions followed almost immediately.</p>
+    <ul>
+      <li>The European Commission opened a DSA investigation into TikTok in December 2024 over its handling of the Romanian election.</li>
+      <li>The Commission levied a major fine against X in December 2025 for transparency violations and inadequate researcher access.</li>
+      <li>A European Democracy Shield initiative launched in November 2025 to coordinate cross-platform responses to electoral interference.</li>
+    </ul>
+    <p>The international consequence is sharp. The DSA is the most ambitious platform-liability regime in any major democracy; the United States is the largest platform-producing jurisdiction and runs the most permissive regime. American platforms operating in Europe must comply with European rules. As with the GDPR before it, the Brussels effect converts the regional regime into the global default. The platform-liability question has, in practice, become a question of whose jurisdiction sets the rules for the world's platforms.</p>
+
+    <h2>The collective-action problem at the edges</h2>
+    <p>Even where one platform acts, content moves. Meta's own threat report described disinformation migrating to "a decentralized network of smaller, emerging platforms lacking resources to combat" it — the cross-platform pattern any provenance or watermarking regime has to contend with. If only the largest four platforms enforce, defection by the rest produces the same outcome as no enforcement at all.</p>
+    <p>The constructivist reply is that norm enforcement need not reduce violations to zero to be effective. What matters is that violations are recognized as illegitimate by enough major actors that they incur costs even when they succeed. C2PA, SynthID, the DSA, and the national watermarking mandates collectively raise the cost of producing influential AI-generated content for malicious use. None of them stops production. Each reduces the return per dollar of effort.</p>
+
+    <div class="callout why">
+      <span class="c-tag">The shape of the emerging norm</span>
+      <p>Read together, the three approaches articulate a specific normative claim: AI-generated content should be technically identifiable as such, platforms should be answerable for what they amplify, and the burden of distinguishing authentic from synthetic should fall on infrastructure rather than on individual viewers. No major jurisdiction has codified that norm in full. Many are building pieces of it. The norm is forming through the cumulative pattern of national rules — the constructivist account of how international norms typically emerge before any treaty consolidates them.</p>
+    </div>
+
+    <section>
+      <h2>Check your understanding</h2>
+      <div class="quiz" data-quiz="provenance" data-next="human-rights.html" data-next-label="Next: The human-rights frame →"></div>
+    </section>
+
+    <div id="page-nav"></div>
+    <p class="source-note">Sources for this section are collected on the <a href="sources.html">Glossary &amp; Sources</a> page.</p>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="data/sections.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/quiz.js"></script>
+</body>
+</html>

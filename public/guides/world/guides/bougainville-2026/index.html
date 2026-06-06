@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bougainville — a learning project</title>
+  <meta name="description" content="An interactive guide to Bougainville's 2019 referendum, the 2026–27 ratification fight with Papua New Guinea, and the Pacific geopolitics around it.">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap-wide">
+        <span class="kicker">● Live case study · updated 6 June 2026</span>
+        <h1>Bougainville</h1>
+        <p class="lead">An island of 300,000 people, a 97.7% Yes vote, and a PNG Parliament that has not yet said yes.</p>
+        <p style="margin-top:1.2rem">
+          <a class="btn big" href="what-bougainville-is.html">Start with Section 1 →</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="wrap-wide">
+      <hr class="divider">
+
+      <p class="eyebrow">How this works</p>
+      <div class="split" style="align-items:start">
+        <div>
+          <p>Six short sections take you from the geography of one Melanesian island to a parliamentary vote scheduled for 30 August 2026 — and from there into a Pacific that is more militarized and more contested than at any time since the Cold War. Each section is built to be read in a few minutes, with maps, timelines, and callouts instead of walls of text.</p>
+          <p>At the end of every section there’s a quick <strong>multiple-choice quiz</strong> — answer, get instant feedback and a short explanation, and watch your progress fill in below. When you’ve finished all six, take the <a href="final-quiz.html">Final Challenge</a>.</p>
+        </div>
+        <div class="callout why" style="margin-top:0">
+          <span class="c-tag">Why it’s worth your time</span>
+          <p style="margin-bottom:0">Bougainville is where the textbook concepts of international relations — self-determination, territorial integrity, recognition, free association, soft balancing — stop being abstractions. A single island is about to test all of them at once, and the answer will shape the Pacific for a generation.</p>
+        </div>
+      </div>
+
+      <div id="progress-panel" class="progress-panel"></div>
+
+      <h2 style="margin-top:1.6rem">The six sections</h2>
+      <div id="section-grid" class="card-grid"></div>
+
+      <hr class="divider">
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(18rem,1fr))">
+        <a class="card" href="final-quiz.html">
+          <span class="badge-n" style="background:var(--gold-tint);color:#8a6510">★</span>
+          <h3>Final Challenge</h3>
+          <p class="blurb">A cumulative quiz drawing from every section, with a certificate at the end.</p>
+          <div class="card-foot"><span class="go" style="margin-left:auto">Take the challenge →</span></div>
+        </a>
+        <a class="card" href="sources.html">
+          <span class="badge-n" style="background:var(--navy-tint);color:var(--navy)">§</span>
+          <h3>Glossary &amp; Sources</h3>
+          <p class="blurb">Key terms defined in one place, plus every source the site draws on.</p>
+          <div class="card-foot"><span class="go" style="margin-left:auto">Look things up →</span></div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="data/sections.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/quiz.js"></script>
+</body>
+</html>

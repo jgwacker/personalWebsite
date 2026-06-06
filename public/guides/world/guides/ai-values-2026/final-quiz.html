@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Challenge | Contested Norms in AI</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body data-page="final">
+  <div id="site-header"></div>
+
+  <main class="wrap">
+    <header class="section-head">
+      <div class="num">Final Challenge</div>
+      <h1>Put It All Together</h1>
+      <p class="lead">Ten cumulative questions covering all five sections: disinformation as norm violation, provenance and watermarking, the human-rights frame, the papal moral frame, and indigenous data sovereignty. The constructivist lens, applied across the guide.</p>
+    </header>
+
+    <div id="cert-host"></div>
+    <section>
+      <div class="quiz" data-quiz="final" data-next="sources.html" data-next-label="Look up the sources →"></div>
+    </section>
+
+    <nav class="page-nav">
+      <a class="prv" href="indigenous.html">← 5. Indigenous data sovereignty</a>
+      <a class="nxt" href="sources.html">Glossary &amp; Sources →</a>
+    </nav>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="data/sections.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/quiz.js"></script>
+  <script>
+    document.addEventListener("quizcomplete", function (e) {
+      if (e.detail.id !== "final") return;
+      var pct = e.detail.pct, score = e.detail.score, total = e.detail.total;
+      var tier = pct === 100 ? "with Highest Honors"
+               : pct >= 80  ? "with Distinction"
+               : pct >= 60  ? "with a solid pass"
+               : "— a good first attempt";
+      var msg = pct >= 60
+        ? "You can read AI policy in constructivist terms — norms, framings, contested universals, and norm entrepreneurship. This is the lens that explains why the quietest fights about AI are often the most consequential."
+        : "You have now seen all the frames. A second pass through one or two sections will make them stick.";
+      var host = document.getElementById("cert-host");
+      host.innerHTML =
+        '<div class="cert">' +
+          '<div class="seal">⚖️</div>' +
+          '<p class="eyebrow">Certificate of Completion</p>' +
+          '<h2>Contested Norms in AI</h2>' +
+          '<p style="margin:.2rem 0 0">Completed the Final Challenge <strong>' + tier + '</strong></p>' +
+          '<p class="result-msg" style="margin:.4rem 0 .8rem">Score: <strong>' + score + ' / ' + total + ' (' + pct + '%)</strong></p>' +
+          '<p class="muted" style="max-width:50ch;margin:0 auto 1rem">' + msg + '</p>' +
+          '<button class="btn ghost" type="button" onclick="window.print()">🖨 Print or save this certificate</button>' +
+        '</div>';
+      host.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>

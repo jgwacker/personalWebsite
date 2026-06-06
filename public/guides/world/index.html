@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides to the World — interactive guides to international relations</title>
+  <meta name="description" content="A growing collection of short, illustrated guides to international relations as it happens.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="splash">
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Guides to the World</span>
+      </a>
+      <div class="nav-links" style="margin-left:auto">
+        <a href="#guides">Guides</a>
+        <a href="#how">How it works</a>
+        <a href="#more">What’s next</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap-wide">
+        <span class="kicker">● Interactive study guides</span>
+        <h1>Guides to the World</h1>
+        <p class="lead">A growing collection of short, illustrated guides to the international-relations stories the world is living through right now. Each one is built to be read in an evening — with maps, timelines, quizzes, and a clear-eyed look at what people actually disagree about.</p>
+        <p style="margin-top:1.2rem">
+          <a class="btn big" href="guides/ebola-2026/index.html">Open the first guide →</a>
+          <a class="btn ghost big" href="#how" style="margin-left:.4rem">How it works</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="wrap-wide">
+      <hr class="divider">
+
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+        <h2 id="guides" style="margin:0">The guides</h2>
+        <span id="guide-meta" class="muted" style="font-size:.9rem"></span>
+      </div>
+      <div id="guide-grid" class="card-grid" style="margin-top:1rem"></div>
+
+      <hr class="divider">
+
+      <h2 id="how">How it works</h2>
+      <div class="split">
+        <div>
+          <p>Every guide takes one current story and breaks it into <strong>six short sections</strong>. The reader moves from the basic facts (the disease, the conflict, the technology) to the international-relations concepts that explain why the story is everyone’s problem.</p>
+          <p>After each section there’s a quick <strong>multiple-choice quiz</strong> with instant feedback. When the sections are done, a cumulative <strong>Final Challenge</strong> earns a printable certificate. A Glossary &amp; Sources page lists every term and every citation.</p>
+          <p>Everything runs locally — open <code>index.html</code> in a browser and that’s it, no install, fully offline.</p>
+        </div>
+        <div>
+          <h4 style="margin-top:0">What you’ll find in every guide</h4>
+          <ul style="line-height:1.7">
+            <li>📚 Six short, illustrated sections — read each in a few minutes.</li>
+            <li>🧠 ~3–10 quiz questions per section, with explanations.</li>
+            <li>🗺️ Maps, timelines, stat strips — editorial reading, light dashboard.</li>
+            <li>⚖️ One <em>debate-forward</em> section that steelmans both sides.</li>
+            <li>🏅 A cumulative Final Challenge + printable certificate.</li>
+            <li>📑 Every fact sourced, with a dedicated Glossary &amp; Sources page.</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <h2 id="more">What’s next</h2>
+      <p>The grid above shows the topics in planning. Suggestions welcome — the best guides come from a real question someone is already chasing.</p>
+
+      <div class="callout why">
+        <span class="c-tag">For parents and teachers — adding a new guide</span>
+        <p>Each guide is a self-contained folder in <code>guides/</code> (the Ebola one is <code>guides/ebola-2026/</code>). To start a new guide, copy that folder, rewrite the content and the quizzes (in <code>data/quizzes.js</code>), edit the per-guide settings in <code>data/sections.js</code>, and register the guide in <code>assets/data/guides.js</code>. The shared design system, quiz engine, and nav come along for free. The full instructions are in the <a href="README.md">project README</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap-wide">
+      <div class="f-links">
+        <a href="index.html">Home</a>
+        <a href="#guides">Guides</a>
+        <a href="#how">How it works</a>
+        <a href="README.md">README</a>
+      </div>
+      <div class="f-note">An independent educational project. Each guide cites its sources on its own Sources page.</div>
+    </div>
+  </footer>
+
+  <script src="assets/data/guides.js"></script>
+  <script src="assets/js/splash.js"></script>
+</body>
+</html>

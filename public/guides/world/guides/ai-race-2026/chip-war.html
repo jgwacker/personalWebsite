@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Chip War | Great-Power Competition in AI</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body data-page="chip-war">
+  <div id="site-header"></div>
+
+  <main class="wrap">
+    <header class="section-head">
+      <div class="num">Section 3</div>
+      <h1>The Chip War</h1>
+      <p class="lead">In October 2022 the United States used its position in the supply chain to slow a peer competitor’s AI program. Four years on, the chip export controls are the decade’s clearest case of techno-economic statecraft against a great power. They have produced costly Chinese adaptation rather than capitulation — and a textbook illustration of the limits of unilateral coercion in a deeply interdependent economy.</p>
+    </header>
+
+    <p>This section walks the policy chronologically, then asks the realist questions: what did the United States spend, what did it gain, and how did the target adapt. The conclusion is conceptual. Even a partially successful unilateral action does not end a strategic competition; it reshapes the terrain on which the next round will be fought.</p>
+
+    <h2>The timeline</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-date">7 October 2022</div><div class="tl-body"><p>The Bureau of Industry and Security publishes sweeping export controls on advanced chips and the equipment that produces them. The rule targets China and Macau alone.<sup class="cite"><a href="https://cset.georgetown.edu/article/bis-2023-update-explainer/" target="_blank" rel="noopener">CSET</a></sup></p></div></div>
+      <div class="tl-item alert"><div class="tl-date">2022–2023</div><div class="tl-body"><p>The original rule contains a loophole. Nvidia sells slightly downgraded A800 and H800 chips designed to fall below the threshold; it books more than <strong>$9 billion</strong> in Chinese revenue before the rule is tightened.</p></div></div>
+      <div class="tl-item"><div class="tl-date">17 October 2023</div><div class="tl-body"><p>The updated rule closes the workaround, introduces a three-part test for what qualifies as an AI chip, and extends controls to <strong>44 additional countries</strong> to block re-export through third parties.</p></div></div>
+      <div class="tl-item"><div class="tl-date">2023–2024</div><div class="tl-body"><p>The Netherlands restricts ASML’s DUV machines. Japan adds 23 categories of semiconductor equipment to its export-control list in June 2023 and 21 more in April 2024. The chokepoint alliance holds.</p></div></div>
+      <div class="tl-item alert"><div class="tl-date">20 January 2025</div><div class="tl-body"><p>DeepSeek releases R1, matching U.S. frontier models on benchmarks. The training run relied largely on H800s purchased before the rule tightened. Nvidia’s stock falls <strong>17 percent in a single day</strong>.<sup class="cite"><a href="https://www.csis.org/analysis/deepseek-huawei-export-controls-and-future-us-china-ai-race" target="_blank" rel="noopener">CSIS</a></sup></p></div></div>
+      <div class="tl-item"><div class="tl-date">2025–2026</div><div class="tl-body"><p>The Trump administration tightens controls on Huawei’s Ascend stack and on chip-on-chip packaging exports, while loosening enforcement in selected allied jurisdictions for political reasons. The regime stays in place; its strategic logic begins to age.</p></div></div>
+    </div>
+
+    <h2>The leakage problem</h2>
+    <p>Unilateral export controls share a structural weakness: they require every firm in the supply chain to comply, and the controlled good is too valuable for compliance to be uniform. The chips moved.</p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num alert">$1B</div><div class="label">Nvidia chips smuggled to China in three months</div><div class="sub">FT investigation, 2024</div></div>
+      <div class="stat"><div class="num alert">8</div><div class="label">Distinct H100 smuggling networks documented</div><div class="sub">each handling &gt; $100M</div></div>
+      <div class="stat"><div class="num">~2M</div><div class="label">Huawei Ascend dies sourced from TSMC via shell firms</div><div class="sub">before controls tightened</div></div>
+      <div class="stat"><div class="num">&lt;600</div><div class="label">Staff at the BIS office writing these rules</div><div class="sub">on a ~$200M annual budget</div></div>
+    </div>
+    <p>The algorithms moved too. DeepSeek’s V3 and R1 were engineered around the constraints the controls imposed: limited inter-chip bandwidth, smaller cluster sizes, fewer training tokens per parameter. The mixture-of-experts architecture, sparse attention, and the “lightning indexer” all read as responses to a world in which compute is scarce. The export controls did not stop DeepSeek; they shaped the architecture DeepSeek chose.</p>
+
+    <h2>Did it work?</h2>
+    <p>The controls slowed China’s frontier at the leading edge and bought American laboratories a capability lead measured in years. SMIC’s 7nm yields remain poor; without EUV the 3nm threshold is effectively closed to Chinese fabs; DeepSeek matched 2024-era U.S. models on benchmarks but has not leapfrogged them.<sup class="cite"><a href="https://www.csis.org/analysis/balancing-ledger-export-controls-us-chip-technology-china" target="_blank" rel="noopener">CSIS</a></sup> That is the case for the policy.</p>
+    <p>The counter is that the same controls accelerated China’s domestic chip-self-sufficiency program — a program that without external pressure might have remained politically underfunded — while costing U.S. firms revenue and research-and-development capacity. If algorithmic efficiency continues to improve, the leverage value of compute controls falls with it.<sup class="cite"><a href="https://www.csis.org/analysis/limits-chip-export-controls-meeting-china-challenge" target="_blank" rel="noopener">limits</a></sup> The counter is real, but it argues against the durability of the leverage, not against the fact that the leverage has so far been exercised to effect.</p>
+
+    <h2>What realist theory predicted</h2>
+    <div class="callout keyterm">
+      <span class="c-tag">Key term — Strategic adaptation</span>
+      <p>Realist theory expects a target of economic coercion to respond in three overlapping stages: protest the action diplomatically, substitute around it where possible, and develop indigenous alternatives over time. The chip war produced all three from China — formal WTO complaints (rejected as legally weak), aggressive smuggling and shell-company sourcing, and the Big Fund III ($47 billion) underwriting a Huawei–SMIC stack as the long-run substitute. The pattern itself is unsurprising. What is surprising is how rapidly the substitution and indigenous stages overlapped.</p>
+    </div>
+
+    <h2>The deeper lesson</h2>
+    <p>The chip war is the cleanest available case study of three propositions in realist theory.</p>
+    <ol>
+      <li>Chokepoint control is a real source of coercive leverage, but only as long as the alliance holds and the controlled good remains essential.</li>
+      <li>Unilateral action against a peer competitor produces adaptation, not capitulation. The relevant questions are what the adaptation looks like and how fast it scales.</li>
+      <li>The strategic timeline matters more than the snapshot. A control regime that buys the controller five years is a partial victory. One that triggers a crash indigenous-substitute program may, in retrospect, look like an own goal.</li>
+    </ol>
+    <p>The chip war slowed China’s frontier at a real cost to U.S. firms, and it produced the alignment of Tokyo, Seoul, and The Hague that the policy needed to have teeth. Whether the trade was worth it is a judgment, not a calculation. Section 4 turns to what the United States, the Gulf, and China have built since the chip war became the new normal.</p>
+
+    <section>
+      <h2>Check your understanding</h2>
+      <div class="quiz" data-quiz="chip-war" data-next="buildout.html" data-next-label="Next: The compute buildout race →"></div>
+    </section>
+
+    <div id="page-nav"></div>
+    <p class="source-note">Sources for this section are collected on the <a href="sources.html">Glossary &amp; Sources</a> page.</p>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="data/sections.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/quiz.js"></script>
+</body>
+</html>

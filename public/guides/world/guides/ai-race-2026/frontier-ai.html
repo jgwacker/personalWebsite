@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontier AI in One Read | Great-Power Competition in AI</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+<body data-page="frontier-ai">
+  <div id="site-header"></div>
+
+  <main class="wrap">
+    <header class="section-head">
+      <div class="num">Section 1</div>
+      <h1>Frontier AI in One Read</h1>
+      <p class="lead">“Frontier AI” is no longer a marketing term — regulators have given it a numerical threshold, and roughly twelve models had crossed it by April 2026. The physical inputs that produce those models are concentrated in firms mostly outside the countries that consume them, and the assumption that only American laboratories could afford them broke on a single day in January 2025. The rest of this guide tracks who controls those inputs and what they have done with that control.</p>
+    </header>
+
+    <h2>1. Frontier AI has a regulatory definition</h2>
+    <div class="callout keyterm">
+      <span class="c-tag">Key term — Frontier AI</span>
+      <p>The EU AI Act classifies a model as carrying <strong>systemic risk</strong> when its training used at least <strong>10²⁵ floating-point operations</strong> — a run costing tens of millions of dollars on tens of thousands of advanced chips.<sup class="cite"><a href="https://artificialintelligenceact.eu/gpai-guidelines-overview/" target="_blank" rel="noopener">EU</a></sup> Roughly twelve models had crossed that line by April 2026. The Biden administration’s executive order set a higher U.S. threshold at 10²⁶ floating-point operations; the Trump administration rescinded the order on January 20, 2025, its first day in office.<sup class="cite"><a href="https://en.wikipedia.org/wiki/Executive_Order_14110" target="_blank" rel="noopener">EO 14110</a></sup> A “frontier” model, in regulatory usage, is one large enough that governments have decided it warrants a separate rulebook.</p>
+    </div>
+    <p>The leading 2025–26 systems — GPT-5.5, Claude 4.6, Gemini 3 Pro, Grok 4, Llama 4 — all cleared the EU threshold. They process million-token contexts, write working code, interpret images and video, and increasingly act as <strong>agents</strong> that plan and execute multi-step tasks. None of these capabilities existed at consumer scale four years ago, and the speed of progress is itself a strategic variable: governments are regulating a moving target.</p>
+
+    <h2>2. Compute is the only input governments can control</h2>
+    <p>A frontier model combines three ingredients. Two are weightless; one is not.</p>
+    <div class="card-grid">
+      <div class="card" style="cursor:default">
+        <h3>Compute</h3>
+        <p class="blurb">The chips and the electricity that run the training math. Production is concentrated in a handful of firms — Nvidia designs the chips, ASML makes the lithography machines that produce them. This is the chokepoint.</p>
+      </div>
+      <div class="card" style="cursor:default">
+        <h3>Data</h3>
+        <p class="blurb">Most of the public internet, plus licensed and synthetic corpora. Cheap to copy and hard to police across borders.</p>
+      </div>
+      <div class="card" style="cursor:default">
+        <h3>Algorithms</h3>
+        <p class="blurb">The recipes — transformers, RLHF, mixture-of-experts. Published in open papers and replicated worldwide within months.</p>
+      </div>
+    </div>
+    <div class="callout why">
+      <span class="c-tag">Why this is the realist story</span>
+      <p>Data and algorithms cross borders at the speed of a download. Chips do not. A single advanced lithography machine, built by the only firm in the world that makes them, costs hundreds of millions of dollars and takes more than a year to deliver. Compute is the only input on which export controls, sanctions, and investment screens can bite; data and algorithms slip through whatever fence states build around them.<sup class="cite"><a href="https://www.governance.ai/research-paper/computing-power-and-the-governance-of-artificial-intelligence" target="_blank" rel="noopener">GovAI</a></sup> Sections 2 and 3 follow the consequences of that single asymmetry.</p>
+    </div>
+
+    <h2>3. The American monopoly assumption broke in January 2025</h2>
+    <p>Through 2023 and 2024 the consensus in Western policy circles held that only a handful of American laboratories, backed by billions of dollars in chips, could train frontier models. On <strong>January 20, 2025</strong>, the Chinese laboratory DeepSeek released <strong>R1</strong>, a reasoning model derived from its V3 base that matched OpenAI’s benchmark scores. V3’s final pretraining run reportedly cost roughly <strong>$5.6 million</strong>.<sup class="cite"><a href="https://www.csis.org/analysis/deepseek-huawei-export-controls-and-future-us-china-ai-race" target="_blank" rel="noopener">CSIS</a></sup> Nvidia’s stock fell 17 percent that day. The right reading is not that frontier AI has become cheap — DeepSeek’s parent operates roughly 60,000 GPUs and around $1.6 billion in infrastructure. The right reading is that American dominance always rested on a thinner foundation than Washington had assumed.</p>
+    <p class="pullquote">A strategic technology whose chief input is concentrated in a few firms, and which a new entrant has just made meaningfully cheaper, is the textbook shape of a great-power problem.</p>
+
+    <h2>What follows</h2>
+    <p>Each remaining section unpacks a consequence of the picture above.</p>
+    <ul>
+      <li><strong>Section 2</strong> maps the supply chain — TSMC, ASML, Korean memory, Japanese chemicals, U.S. and Chinese fabs — and locates the leverage points.</li>
+      <li><strong>Section 3</strong> examines the chip war: what happened when the United States tried to convert chokepoint geography into strategic effect.</li>
+      <li><strong>Section 4</strong> tracks the parallel buildout — Stargate, the Gulf’s $130 billion bet, China’s domestic stack, and the energy politics those investments now drive.</li>
+      <li><strong>Section 5</strong> turns to military AI and autonomous weapons, where civilian supply chains meet the hardest questions in international security.</li>
+    </ul>
+
+    <section>
+      <h2>Check your understanding</h2>
+      <div class="quiz" data-quiz="frontier-ai" data-next="geography.html" data-next-label="Next: The geography of dependence →"></div>
+    </section>
+
+    <div id="page-nav"></div>
+    <p class="source-note">Sources for this section are collected on the <a href="sources.html">Glossary &amp; Sources</a> page.</p>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="data/sections.js"></script>
+  <script src="data/quizzes.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/quiz.js"></script>
+</body>
+</html>
