@@ -15,6 +15,7 @@ const guidePages = [
   'https://jaywacker.com/guides/world/guides/ai-race-2026/',
   'https://jaywacker.com/guides/world/guides/ai-rulebook-2026/',
   'https://jaywacker.com/guides/world/guides/ai-values-2026/',
+  'https://jaywacker.com/sierra-leone/',
 ];
 
 export default defineConfig({
