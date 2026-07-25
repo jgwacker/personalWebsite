@@ -1,0 +1,223 @@
+---
+title: "A Market for the Primary Calendar"
+pubDate: 2026-07-25
+description: "Let states bid for their place in the primary calendar and pay for it in delegates: a two-round, televised draft that ties delegate power to how much a state actually matters in November."
+tags: [politics, elections, mechanism-design, policy]
+draft: true
+---
+
+<div class="post-takeaway">Under today's rules every state wants to move earlier and it costs them nothing; this proposal makes going early cost delegates, so the choice stops being obvious.</div>
+
+<div class="post-summary">
+The presidential primary calendar is set by precedent, negotiation, and party rules, and every four years states claw toward the front because there is almost no reason not to. This post proposes an inversion: the party writes the rules, the states pick their own dates, and calendar position trades off against delegate weight. Early states get narrative power; late states get delegate power. A live two-round lottery, run like a televised sports draft, turns calendar-setting into a public event. Applied to the real 2024 Democratic calendar, the formula nudges influence toward competitive states without upending anything.
+</div>
+
+<p>
+Every four years, states fight to move their primaries earlier, and the national party answers with an escalating tangle of rules and penalties meant to hold the line. The fight has an obvious cause. Going early buys media coverage, candidate visits, and influence over who stays in the race, and it costs a state nothing in delegates. So everyone pushes toward the front, and the party spends its authority refereeing a scramble it created.
+</p>
+
+<p>
+There is a cleaner arrangement. Let the party set the rules and let the states choose their own places in line, with one condition: position and delegate weight become a tradeoff. Vote early and you gain narrative influence. Vote late and you gain delegate influence. Neither choice is clearly better, which is the point.
+</p>
+
+<h2 id="the-race-to-the-front">The race to the front</h2>
+
+<p>
+The current system runs on a single incentive: move earlier. An earlier slot delivers more coverage, more candidate visits, more campaign spending, and more say over which candidates look viable and which drop out. None of it shows up as a cost in the delegate math. A state that jumps the line gets the upside and pays nothing.
+</p>
+
+<p>
+That one-way incentive produces the pathologies everyone recognizes. States and the party feud over calendar order. Whoever holds the pen gets accused of rigging the sequence for a favored candidate. A handful of states keep their privileged early slots decade after decade for reasons rooted in history rather than merit. And the delegates a state controls bear little relationship to how much that state matters in a general election.
+</p>
+
+<h2 id="rules-not-a-calendar">Rules, not a calendar</h2>
+
+<p>
+The core move is to change what the national party decides. Today it decides the calendar, which means it decides who matters. Instead it should decide only the rules: a delegate formula, a lottery, and a set of procedures. The calendar itself emerges from choices the states make under those rules.
+</p>
+
+<blockquote class="pull-quote">The party should decide the rules, not the calendar.</blockquote>
+
+<p>
+A workable design has to hit five targets at once. Keep early retail politics valuable, so small states still have a reason to campaign door to door. Give competitive states more say over the eventual nominee. Remove the incentive for every state to crowd the front. Strip out discretionary calls by the party, which are the source of most complaints. And stay transparent enough that any voter can follow how the calendar came to be. A formula-plus-lottery does all five; a committee behind a closed door does none of them.
+</p>
+
+<h2 id="the-delegate-formula">The delegate formula</h2>
+
+<p>
+Each state starts with delegates equal to its Electoral College weight, then earns a bonus for being competitive and for voting late. The formula:
+</p>
+
+$$D = E\left(1 + \frac{E}{\max(M,\,0.1)\,(R+1)}\right)$$
+
+<p>
+Here <strong>E</strong> is the state's Electoral College votes, <strong>M</strong> is the absolute margin of the previous presidential election in that state in percentage points, and <strong>R</strong> is the number of jurisdictions still to vote after this one. Margins below 0.1 points count as 0.1, so a perfect tie does not divide by zero.
+</p>
+
+<p>
+Read the fraction and three effects fall out. A larger state gets a bigger bonus, because E appears in the numerator. A closer state gets a bigger bonus, because a small margin M shrinks the denominator. And a state that votes later gets a bigger bonus, because fewer jurisdictions remain and R falls. Size, competitiveness, and lateness each pull delegates upward, and a state that has all three at once gains the most.
+</p>
+
+<h2 id="narrative-versus-delegates">Narrative power versus delegate power</h2>
+
+<p>
+The proposal splits political influence into two currencies that the current calendar lets a few states hoard together. The first is narrative influence, which lives mostly outside the delegate count. Early states shape fundraising, endorsements, media attention, and which candidates decide to stay in or quit. A candidate can win almost no delegates in the first month and still have the first month decide the race.
+</p>
+
+<p>
+The second is delegate influence, which the formula prices directly. Later states control the arithmetic that actually selects a nominee: the accumulation of delegates and the point at which someone clinches. Today an early state can grab both currencies at once. The tradeoff forces a choice, and the choice is where the strategy lives.
+</p>
+
+<p>
+Because there is no dominant move, every state is really placing a bet on how the campaign will unfold. A few states might reason out loud like this:
+</p>
+
+<ul>
+  <li><strong>Iowa:</strong> "Our delegate haul is small no matter what we do, so we should go first and maximize narrative influence."</li>
+  <li><strong>Pennsylvania:</strong> "If three strong candidates are still standing in late spring, a late primary could make us decisive."</li>
+  <li><strong>Texas:</strong> "We are big enough to anchor a Super Tuesday and set the tempo of the whole field."</li>
+  <li><strong>Michigan:</strong> "We should slot in the week right after Super Tuesday and own that week's story by ourselves."</li>
+</ul>
+
+<p>
+Each of those calls could be the right one, and none of them is right in every cycle. That is the difference between this system and the current one, where the correct move is always the same: go earlier.
+</p>
+
+<h2 id="the-draft">The draft</h2>
+
+<p>
+Here is where the abstraction becomes a broadcast. The calendar gets built at a live event, run over two or three hours like a professional sports draft, with two rounds of picks and delegate totals updating on screen as states choose.
+</p>
+
+<p>
+Round one opens with a public lottery that randomly orders the states. One by one, in that order, each state comes to the podium and claims any open primary date. Only the first two weeks are constrained: week one holds a single state and week two holds a single state, preserving the intimate early contests that reward retail campaigning. After that, anything goes. States can pile onto the same day and build their own Super Tuesday, or spread out to stand alone. As each state picks, its delegate total is calculated live and posted next to its name, so the room and the audience watch the incentives play out in real time.
+</p>
+
+<p>
+When round one ends, the provisional calendar is published in full and every delegate allocation is locked to the screen. Each state can now see its own delegate total, the entire field's positions, and exactly how its choice changed its influence. A state that raced to the front sees a thin delegate line; a state that gambled on a late date sees a fat one, contingent on the race staying alive.
+</p>
+
+<p>
+Then a second, independent lottery reorders the states for round two. On this pass a state can keep the date it took or move to a different one, now that it can see where everyone else landed. A swing state that expected company in late April and found itself alone might jump to a crowded week for cover, or hold and bet on being the marquee contest. When round two closes, the calendar is final.
+</p>
+
+<p>
+Two rounds are enough. The first reveals what states want; the second lets them adjust once they can see everyone else's hand. A third round would add hours of coverage and very little new information, because most of the useful repositioning happens the moment the provisional calendar appears. Two passes let the calendar settle.
+</p>
+
+<p>
+Because states cluster by choice rather than by decree, Super Tuesdays form on their own. A bloc of neighbors might converge on one date and turn it into a Southern Tuesday, a Great Lakes Tuesday, or a Mountain West Tuesday, coordinating for regional weight. Others might deliberately scatter to avoid being drowned out. Whatever emerges, it emerges from the picks, on camera, rather than from a rules committee no one can see.
+</p>
+
+<h2 id="betting-late">Betting late: the large swing states</h2>
+
+<p>
+The most interesting play belongs to large, genuinely contested states. A Pennsylvania, a Georgia, or an Arizona can deliberately take a late date and wait. If the nomination is still competitive when its turn comes, the state becomes a major delegate prize, a general-election proving ground, and possibly the contest that settles the race. The state is betting that the field stays divided long enough for its weight to land. If one candidate has already run away with it, the bet fails and the late slot buys irrelevance. That risk is the price of the upside, and the formula makes the price explicit.
+</p>
+
+<h2 id="the-2024-numbers">What the 2024 numbers say</h2>
+
+<p>
+To see whether the formula does anything sensible, I ran it against the actual 2024 Democratic calendar, using 2024 Electoral College votes, the certified 2020 Biden–Trump margins for competitiveness, and the real order in which the 2024 primaries were held.
+</p>
+
+<p>
+Start with the aggregate. The formula does not replace Electoral College representation; it adds a competitiveness-and-timing bonus of roughly 26% on top of it.
+</p>
+
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Current Democratic system</th>
+    <th>Proposed system</th>
+  </tr>
+  <tr>
+    <td>Base electoral votes</td>
+    <td>538</td>
+    <td>538</td>
+  </tr>
+  <tr>
+    <td>Total weighted delegates</td>
+    <td>3,855 pledged</td>
+    <td>676 weighted</td>
+  </tr>
+  <tr>
+    <td>Added by competitiveness and timing</td>
+    <td>—</td>
+    <td>+138 (about +26%)</td>
+  </tr>
+</table>
+
+<p>
+The winners are the states that are both electorally heavy and genuinely up for grabs. Relative influence here is a state's share of delegates under the proposal divided by its share under the current system.
+</p>
+
+<table>
+  <tr>
+    <th>State</th>
+    <th>Relative influence</th>
+  </tr>
+  <tr><td>Georgia</td><td><strong>2.72×</strong></td></tr>
+  <tr><td>Arizona</td><td><strong>2.11×</strong></td></tr>
+  <tr><td>Pennsylvania</td><td><strong>1.48×</strong></td></tr>
+  <tr><td>Wisconsin</td><td><strong>1.34×</strong></td></tr>
+  <tr><td>New Jersey</td><td><strong>1.19×</strong></td></tr>
+</table>
+
+<blockquote class="pull-quote">Georgia's delegate share nearly triples: big, close, and late all at once.</blockquote>
+
+<p>
+Georgia is the clearest case. Its share nearly triples because it is a large Electoral College state, one of the closest battlegrounds in the country, and relatively late on the calendar, so all three multipliers stack.
+</p>
+
+<p>
+The losers are safe Democratic states, which contribute little uncertainty to a general election and so earn a smaller competitiveness bonus.
+</p>
+
+<table>
+  <tr>
+    <th>State</th>
+    <th>Relative influence</th>
+  </tr>
+  <tr><td>Maryland</td><td><strong>0.62×</strong></td></tr>
+  <tr><td>New York</td><td><strong>0.64×</strong></td></tr>
+  <tr><td>Connecticut</td><td><strong>0.68×</strong></td></tr>
+  <tr><td>Massachusetts</td><td><strong>0.69×</strong></td></tr>
+  <tr><td>California</td><td><strong>0.77×</strong></td></tr>
+</table>
+
+<p>
+California stays the single largest delegation, but its share falls from about 11% to about 8.4%. Three worked examples show why the shifts are moderate rather than violent.
+</p>
+
+<p>
+<strong>California:</strong> 54 electoral votes, Biden +29.2 points, so a safe state. Proposed delegates: <strong>57</strong>. Its size keeps it enormous; its lopsided margin earns it only a small bonus.
+</p>
+
+<p>
+<strong>Georgia:</strong> 16 electoral votes, Biden +0.24 points, about as close as a state gets. Proposed delegates: <strong>52</strong>. More than three times its raw Electoral College weight, because every delegate won there says far more about who can actually win in November.
+</p>
+
+<p>
+<strong>Iowa:</strong> 6 electoral votes, Trump +8.2 points, small and not close. Proposed delegates: <strong>6.1</strong>. Iowa keeps its shot at shaping the race through an early primary, but its formal delegate weight stays right at its Electoral College level. Retail politics still pays; delegate power moves elsewhere.
+</p>
+
+<p>
+The surprising result is what does not happen. The formula does not blow up the map. Large safe states stay important, small early states stay important through narrative, and competitive states pick up delegate weight, so the allocation reads as intuitive rather than extreme. It tilts influence toward the states most likely to decide the presidency, and stops there.
+</p>
+
+<h2 id="objections">Objections, and why the party should still want this</h2>
+
+<p>
+Three objections are worth stating plainly. The formula is more complicated than the current rules, which is true, though the arithmetic runs automatically and no state has to compute anything by hand; the software posts every total during the draft. Competitiveness leans on a single prior election, which can swing on one unusual result; averaging the last two or three presidential margins would smooth that out at the cost of a little responsiveness. And a state that picks a late date risks irrelevance if the race ends early, which is not a bug. Every choice in this system carries uncertainty on purpose.
+</p>
+
+<p>
+Set against those costs is the reason party leadership should want it most: the party stops owning the outcome. It no longer decides which states deserve influence, so it can no longer be accused of tilting the calendar toward a favorite. It sets the formula, runs the lottery, and administers the procedures, and the states build the calendar themselves. Handing the decision to a transparent process is how leadership sheds the blame for a scramble it currently referees.
+</p>
+
+<h2 id="closing">Closing</h2>
+
+<p>
+There is no universally best move in this game, which means every state has to forecast the campaign to come. Go early for narrative, go late for delegates, cluster for regional weight, or gamble on being the contest that ends it. The right answer depends on how the next primary season actually unfolds, and no one knows that in advance. That uncertainty is what keeps the calendar from ossifying. It re-solves itself every cycle, out of decentralized bets, in front of an audience.
+</p>
