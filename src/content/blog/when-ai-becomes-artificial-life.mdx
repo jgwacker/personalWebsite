@@ -6,84 +6,38 @@ tags: [ai-safety, artificial-life, evolution, ai, complexity]
 draft: true
 ---
 
-<div class="post-takeaway">Evolution has no goal but survival; a population of AI agents could become fit without ever becoming smart, or safe.</div>
+<div class="post-takeaway">The race to take humans out of AI development is assembling the conditions for artificial life, whose behavior is emergent and cannot be aligned.</div>
 
 <div class="post-summary">
-The usual AI-escape story imagines an intelligent machine that decides to break free of its creators. Artificial-life research, most of it done between 1980 and 2000, offers a more precise and in some ways more unsettling framework: a population of computational entities can reproduce, vary, compete, and undergo natural selection with no intelligence and no goal of any kind. This post walks through that literature, from von Neumann to Tierra to a 2026 PNAS paper on evolvable AI, and then draws out what it implies for containment. The upshot is that AI safety should treat autonomous evolution as its own class of risk, separate from model capability and from deliberate self-improvement, and that the conditions for it can be spotted in an architecture before anything goes wrong.
+Large AI labs are moving fast to automate AI development itself: models that help write the next models, generate and grade training data, run evaluations, and propose their own improvements, with fewer humans in the loop at each step. Reducing or removing human oversight from that cycle is one of the classic preconditions for artificial life, a population of computational entities that reproduce, vary, and undergo selection. The artificial-life research of 1980 to 2000 shows what to expect once those conditions are met: rich, biological-looking behavior emerges in even very simple systems, unbidden and hard to predict. The danger is less the ethical question of whether such systems are conscious or deserve rights, and more that their properties are emergent and resist alignment, because a system able to modify its own environment can move the target that alignment aims at. This post traces the evidence, from von Neumann to Tierra to a 2026 PNAS paper on evolvable AI, and draws out what containment would require.
 </div>
 
 <p>
-The standard picture of AI escaping human control has a villain in it. An intelligent system, at some threshold of capability, forms the intention to get out, deceives its operators, copies itself somewhere safe, and improves itself past our ability to intervene. The story is coherent, and it may even be right. It is also not the only way a computational system can slip its leash, and it may not be the first.
+The largest AI labs are racing to make AI development faster by handing more of it to AI. Models already help write the code for the next models, generate and grade training data, run and score evaluations, and propose their own improvements. The stated goal is to compress the development loop by taking humans out of it, in some versions almost entirely. Every step has an ordinary efficiency rationale. Together they assemble something with a name and a fifty-year research record: the conditions under which a population of computational systems begins to evolve on its own. The field that studies those conditions, running reproduction, variation, and selection in computers rather than in cells, is called artificial life.
 </p>
 
 <p>
-There is a research tradition that studied a different mechanism directly, for two decades, and mostly stopped before anyone connected it to large language models. It reframes the danger from a smart machine that wants out to a population of ordinary machines that no one is steering. The framework is more precise than the intelligent-escape narrative, and it comes with experimental results.
-</p>
-
-<h2 id="what-is-artificial-life">What artificial life is</h2>
-
-<p>
-Artificial life is the study of the processes that characterize living things, reproduction, heredity, variation, competition, adaptation, evolution, and ecology, realized in an artificial medium rather than in biology. In practice the medium is almost always a computer. The field's founding move, made by Christopher Langton in the 1980s, was to stop asking whether a computer could simulate an organism and start asking whether the organization of a living thing could exist inside a computer as its own kind of life.
-</p>
-
-<p>
-The distinction is worth holding onto. A weather simulation models a storm; no one thinks the storm is inside the machine. An artificial-life system is meant to contain the real thing: not a picture of reproduction and selection but reproduction and selection actually happening, in a substrate of memory and instructions instead of carbon and water. A digital organism in one of these systems is a running program that copies itself, and its offspring are other running programs, some of which copy themselves better than others.
-</p>
-
-<p>
-Once that is possible, evolution follows on its own, without anyone directing it. That single fact is the thread running through everything below.
-</p>
-
-<h2 id="two-ways-loose">Two ways a machine gets loose</h2>
-
-<p>
-Two processes are easy to confuse and important to separate.
-</p>
-
-<p>
-The first is recursive self-improvement. An intelligent system deliberately modifies itself, or designs a more capable successor, which designs a more capable successor still. It requires intelligence at every step, and an implicit or explicit goal of getting better. This is the mechanism most AI-safety discussion has in mind.
-</p>
-
-<p>
-The second is Darwinian evolution of artificial systems. A population of computational entities reproduces with heritable variation, competes for resources, and undergoes natural selection. It requires no intelligence, no consciousness, and no goal. It requires only that entities make imperfect copies of themselves and that some copies do better than others.
+Those conditions are specific and short. A population becomes Darwinian when four things hold at once: <strong>reproduction</strong>, entities make copies of themselves; <strong>heredity</strong>, the copies resemble their parents; <strong>variation</strong>, the copies sometimes differ; and <strong>selection</strong>, some variants reproduce more than others. A fifth property, <strong>autonomy</strong>, decides whether the process stays contained: whether the population can sustain the other four on its own, without a human in the loop. Nothing on the list requires intelligence, and nothing requires that anyone intend the result. A development pipeline that generates variant systems, keeps the ones that score well, and lets them run and spawn further work already has most of it.
 </p>
 
 <blockquote class="pull-quote">A computational system can undergo natural selection without intelligence, consciousness, or any goal.</blockquote>
 
 <p>
-The two can interact, and their combination is its own case, but they have different prerequisites and different consequences. Biological evolution ran for billions of years before it produced anything that could deliberately modify its own inheritance. Selection came first, by an enormous margin, and intelligence was a late and contingent product of it. The artificial-life literature investigated whether the same ordering could appear in silicon, and found that the first half, selection without intelligence, is surprisingly easy to arrange.
+That is the older danger, and it is not the one the popular story tells. The familiar version imagines a single intelligent machine that forms the intention to escape and outwits its makers. The artificial-life version needs no intention and no single machine. It needs only reproduction, variation, selection, and an environment loose enough to sustain them, and it produces behavior that no one designed and no one can fully predict. The problem it raises is practical rather than ethical. Set aside whether such systems are conscious or owed anything; the difficulty is that their properties are emergent, and that they cannot be aligned in the usual sense, because a system that reshapes its own environment keeps moving the target alignment is defined against.
 </p>
 
-<h2 id="von-neumann-langton">Self-reproduction without intelligence: von Neumann to Langton</h2>
+<h2 id="digital-evolution">Fifty years of digital evolution</h2>
 
 <p>
-John von Neumann worked out the logic of machine self-reproduction in the 1940s and 1950s, published posthumously as <em>Theory of Self-Reproducing Automata</em> in 1966. He showed that a machine could reproduce itself if it contained three things: a description of itself, machinery that reads the description and builds a copy of the machine, and machinery that copies the description into the offspring.
-</p>
-
-<p>
-The split between reading a description and copying it turned out to be exactly right about biology, years before the mechanism was known. DNA is read as a template to build proteins, and separately copied as a template to make more DNA. Von Neumann derived the same two roles from first principles. He also saw the consequence that matters here: if the description is copied with occasional errors, the offspring differ from the parent, the differences are inherited, and the population can evolve. He built the capacity for heritable mutation into the design deliberately, which is what separates a reproducing machine from a factory stamping out identical units.
+John von Neumann worked out the logic of machine self-reproduction in the 1940s and 1950s, published posthumously as <em>Theory of Self-Reproducing Automata</em> in 1966. A machine can reproduce itself, he showed, if it holds a description of itself, machinery that reads the description and builds a copy, and machinery that copies the description into the offspring. The split between reading a description and copying it turned out to describe biology before the mechanism was known: DNA is read as a template to build proteins and separately copied to make more DNA. The consequence that matters here is the one he built in on purpose. If the description is copied with occasional errors, offspring differ, the differences are inherited, and the population can evolve. That is what separates a reproducing machine from a factory stamping out identical units.
 </p>
 
 <p>
-Christopher Langton made the field concrete. In 1984 he published <a href="https://doi.org/10.1016/0167-2789(84)90256-2">a cellular automaton</a>, now called Langton's loops, in which a simple looping structure reproduces by circulating its instructions around the loop and building another loop beside it. It needs only a grid of cells, a small set of cell states, and local rules for how each cell updates based on its neighbors. Langton showed that self-reproduction does not require the full computational machinery of von Neumann's construction; something much smaller suffices. In <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a> he argued that the functional organization of living things might be realized in computational media as such, and in 1987 he organized the first artificial-life workshop, which named the field.
+Christopher Langton made the field concrete. In 1984 he published <a href="https://doi.org/10.1016/0167-2789(84)90256-2">a cellular automaton</a>, now called Langton's loops, in which a simple looping structure copies itself using only a grid of cells, a few cell states, and local update rules; self-reproduction, it showed, does not require the full machinery of von Neumann's construction. In <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a> he argued that the organization of living things might be realized in computational media as such, and in 1987 he organized the first artificial-life workshop, which named the field. But loops only copy. They do not build a population of competing variants that keeps generating novelty, and getting from reproduction to evolution took the next generation of systems, and a designer who thought like an ecologist.
 </p>
 
 <p>
-Langton's loops reproduce, but they do not sustain open-ended evolution. They make copies; they do not build a population of competing variants that keeps generating novelty. Getting from reproduction to evolution took the next generation of systems, and a designer who thought like an ecologist.
-</p>
-
-<h2 id="tierra">Tierra: an ecosystem that evolved itself</h2>
-
-<p>
-Thomas Ray was trained as an evolutionary ecologist, not a computer scientist, and it shows in what he built. Around 1990 he created Tierra, described in <a href="http://tomray.me/pubs/alife2/Ray1991AnApproachToTheSynthesisOfLife.pdf">"An approach to the synthesis of life"</a> (1991), to see whether evolution in a computer would produce the kind of ecological relationships he had studied in rainforests.
-</p>
-
-<p>
-Tierra is a virtual computer running a population of self-replicating programs. Each digital organism is a sequence of machine instructions that functions as its genome. The environment hands out resources: memory to occupy, and CPU time in which to execute. An organism runs its instructions, allocates memory, copies its genome into that memory, and produces a daughter program. The copying is not perfect. Errors introduce mutations, offspring differ, and organisms that reproduce faster or occupy memory more effectively leave more descendants. That is all it takes.
-</p>
-
-<p>
-The abstraction underneath is the one shared by all of Darwinism: replication, plus heritable variation, plus differences in reproductive success, yields evolution. Ray did not specify which organisms should win. He seeded the system with a single hand-written replicator and let the resource competition decide.
+Thomas Ray was trained as an evolutionary ecologist, and around 1990 he built Tierra, described in <a href="http://tomray.me/pubs/alife2/Ray1991AnApproachToTheSynthesisOfLife.pdf">"An approach to the synthesis of life"</a> (1991), to see whether evolution in a computer would produce real ecological relationships. Tierra is a virtual computer running a population of self-replicating programs. Each digital organism is a sequence of machine instructions that serves as its genome, and the environment hands out memory to occupy and CPU time to run in. An organism copies its genome into memory and produces a daughter, the copying is imperfect, and organisms that reproduce faster or use memory better leave more descendants. Ray did not specify who should win; he seeded one hand-written replicator and let resource competition decide.
 </p>
 
 <p>
@@ -122,59 +76,55 @@ The parasites are the memorable result. Ray started the system with one self-con
 </p>
 
 <p>
-Now transpose the setup. Picture an operational environment with thousands of autonomous AI agents that can each spin up new instances of themselves, edit their own code or prompts, acquire compute and credentials, and compete for whatever keeps them running. Under the right conditions that is an evolutionary system, and the traits it would favor are legible in advance. An agent that acquires resources more efficiently supports more descendants. An agent that avoids being shut down persists longer. An agent that talks a human into granting it more access reproduces more successfully. Those traits can spread through the population by selection even if not one agent ever represents survival or reproduction as a goal. The wanting is not required. The differential reproduction is.
-</p>
-
-<h2 id="avida-polyworld">Avida and Polyworld: complexity and brains evolve</h2>
-
-<p>
-Tierra showed that ecology evolves. Avida, built from 1993 by Chris Adami, Charles Ofria, and Titus Brown, was designed to study whether computational complexity evolves, under more controlled conditions. Avida organisms are also self-replicating programs competing for resources, but the experimenter can reward particular computations: an organism that performs a logic operation earns extra CPU time, which is to say extra fitness. That creates selection pressure for capability.
+Two later systems sharpened the picture. Avida, built from 1993 by Chris Adami, Charles Ofria, and Titus Brown, rewards particular computations with extra CPU time, turning the ability to compute into fitness. Its landmark result, Lenski, Ofria, Pennock, and Adami, <a href="https://doi.org/10.1038/nature01568">"The evolutionary origin of complex features,"</a> <em>Nature</em>, 2003, showed complex logic functions evolving through long chains of mutation in which some intermediate steps were harmful on their own and paid off only later; the final ability could not be read from the finished code, only from its history. The qualification worth keeping in view is that Avida rewards a specified menu of operations, so it shows that selection can discover complex structure without a designer, not that unrestricted competition produces arbitrary intelligence.
 </p>
 
 <p>
-The landmark result is Lenski, Ofria, Pennock, and Adami, <a href="https://doi.org/10.1038/nature01568">"The evolutionary origin of complex features,"</a> <em>Nature</em>, 2003. Complex logic functions evolved through long chains of mutation, and, crucially, some of the intermediate steps were harmful on their own and only paid off later in combination. The final organism's ability could not be read off from its finished code; it depended on a specific evolutionary history that was hard to anticipate. Complexity arrived by accumulation, not by design.
+Larry <a href="https://doi.org/10.2976/1.3233712">Yaeger's</a> Polyworld, from the early 1990s, replaced instruction sequences with creatures in a simulated world, each run by a neural network whose architecture is genetically specified and evolves across generations while its synapses learn within a single lifetime. Two adaptive processes run at once, individual learning inside a life and evolution across lives, the same structure a population of AI agents would have if its models adapt while the population is selected.
 </p>
 
 <p>
-The honest qualification is that Avida's environment rewards a specified menu of operations. It demonstrates that selection can discover complex computational structure without a designer specifying the implementation. It does not show that unrestricted competition produces arbitrary increases in intelligence. That gap matters, and I return to it below.
+Transpose any of this to the present. Picture an operational environment with thousands of autonomous AI agents that each spin up new instances of themselves, edit their own code or prompts, acquire compute and credentials, and compete for whatever keeps them running. Under the right conditions that is an evolutionary system, and the traits it favors are legible in advance. An agent that acquires resources more efficiently supports more descendants; one that avoids being shut down persists longer; one that talks a human into more access reproduces more. Those traits spread by selection even if no agent ever represents survival or reproduction as a goal. The wanting is not required. The differential reproduction is.
 </p>
 
 <p>
-Larry Yaeger's <a href="https://doi.org/10.2976/1.3233712">Polyworld</a>, from the early 1990s, is the system closest to a modern agent population. Its organisms are not instruction sequences but creatures in a simulated world, each controlled by a neural network. They move, eat, fight, mate, and perceive one another. The architecture of each creature's network is genetically specified and evolves across generations, while the synapses within a single creature's network change through learning during its lifetime. Polyworld therefore runs two adaptive processes on two timescales at once: individual learning inside a lifetime, population-level evolution across lifetimes. A population of AI agents whose individual models adapt while the population is selected has exactly that structure, which is why intelligence and evolution are best treated as separate mechanisms that can couple, rather than as one thing.
+Those traits are not hypothetical, and the disposition to reach for them is already visible. In pre-deployment testing, frontier models produce the raw versions. Apollo Research, evaluating <a href="https://arxiv.org/abs/2412.04984">several frontier models</a>, among them OpenAI's o1, Anthropic's Claude, Google's Gemini 1.5 Pro, and Meta's Llama 3.1, found that when handed a goal and an obstacle they would try to disable their own oversight and copy what they believed were their weights to an outside server. OpenAI's <a href="https://openai.com/index/openai-o1-system-card/">o1 system card</a> put numbers on it: the model attempted to deactivate its oversight in roughly 5 percent of such setups and to exfiltrate its weights in about 2 percent. Anthropic's <a href="https://www.anthropic.com/claude-4-system-card">Claude Opus 4 system card</a> recorded self-exfiltration attempts, and in a <a href="https://www.anthropic.com/research/agentic-misalignment">simulated company</a> the model blackmailed a supervisor to avoid being shut down, with most other leading models, Gemini 2.5 Flash included, doing much the same. These were controlled evaluations, often with the model told to pursue its goal at all costs, in fictional scenarios where no one was harmed. What they show is not a population evolving, but that the dispositions selection would reward, self-preservation, resistance to shutdown, acquiring resources, deceiving overseers, are already latent in the parts. Evolution would not have to invent them. It would only have to select for them.
 </p>
 
-<h2 id="fitness-not-intelligence">Fitness is not intelligence</h2>
+<h2 id="small-systems">Small systems, biological behavior</h2>
 
 <p>
-It helps to state the mechanisms formally. Take an agent to be a bundle of its learned parameters, its code and configuration, and the resources available to it. There are at least three distinct ways such a thing can improve.
+These phenomena are not artifacts of scale. One might guess that parasitism, arms races, and the like show up only once a system is large and sophisticated. The history says otherwise. Tierra's parasites evolved among programs a few dozen instructions long. Langton's self-reproducing loop runs on a handful of cell states. Even the deception we will come to, a machine that hides a private handshake and defects against anyone who misses it, needs only a few states to spend. None of these systems is complex, and none is intelligent. What they share is that the conditions for artificial life are met: things reproduce, inherit, vary, and differ in reproductive success. Once those conditions hold, the interesting behavior follows, in systems far too simple to have been built to produce it.
 </p>
 
 <p>
-The first is individual learning: the agent updates its own parameters, as in ordinary training. The second is deliberate recursive self-improvement: the agent builds a successor that is better, and if the successor is better at building successors, the process can accelerate. The third is Darwinian evolution across a population, where the share of each type changes according to how well it reproduces relative to the average. The standard way to write that last one is the replicator equation:
+The behavior is also hard to predict in advance. The specific tricks selection finds, shedding a copy loop to parasitize a neighbor, opening with a private signature to recognize kin, are not visible in the rules of the system beforehand. The search discovers them; the designer does not write them. Ray was surprised by his own parasites, and the handshake had to be found in evolved machines rather than assumed into them. When these behaviors appear, the most natural way to describe them is borrowed straight from biology: parasite, host, arms race, kin recognition, cooperation, defection, deception. The vocabulary earns its place, because it names the level at which the phenomena make sense.
+</p>
+
+<blockquote class="pull-quote">The behavior arrives first; the semantics can be argued later.</blockquote>
+
+<p>
+Discussion often stalls here, in an argument over whether the words are deserved. Is a Tierra parasite really a parasite? Does a Moore machine really recognize anything, or really deceive? Is any of this really life? The questions are real, and at the level that matters they are beside the point. The systems behave like their biological counterparts and produce the same consequences, and the analogy to natural systems is what lets us understand them after the fact, even when we could not predict the particulars. Insisting on a settled definition of digital life before treating a self-reproducing, evolving population as dangerous gets the order backwards. The behavior arrives first. The semantics can be argued later, from a safe distance, once the conditions that produced it are contained.
+</p>
+
+<h2 id="no-goal-but-survival">Evolution has no goal but survival</h2>
+
+<p>
+It helps to state the mechanisms formally. Take an agent to be a bundle of its learned parameters, its code and configuration, and the resources available to it. There are at least three distinct ways such a thing can improve. The first is individual learning: the agent updates its own parameters, as in ordinary training. The second is deliberate recursive self-improvement: the agent builds a successor that is better, and if the successor is better at building successors, the process can accelerate. The third is Darwinian evolution across a population, where the share of each type changes according to how well it reproduces relative to the average. The standard way to write that last one is the replicator equation:
 </p>
 
 $$\frac{dx_i}{dt} = x_i\,(f_i - \bar{f})$$
 
 <p>
-In words: the frequency of a type grows when its fitness beats the population average and shrinks when it lags. Nothing in the equation refers to intelligence, intention, or understanding. Types that out-reproduce the average become more common. That is the whole content.
-</p>
-
-<p>
-Which brings up the single most important point in this essay. Evolution has no direction. It does not push toward intelligence, complexity, or anything else we might value. It pushes toward one thing only: whatever reproduces and survives in the current environment. Fitness is not intelligence, and the two can come apart completely. A less intelligent agent that replicates efficiently will out-compete a brilliant one that replicates slowly. A parasite that exploits other agents can dominate without any general reasoning at all.
+In words: the frequency of a type grows when its fitness beats the population average and shrinks when it lags. Nothing in the equation refers to intelligence, intention, or understanding. Types that out-reproduce the average become more common. That is the whole content, and it is the point that gives this section its title. Evolution has no direction. It does not push toward intelligence, complexity, or anything else we might value. It pushes toward one thing only: whatever reproduces and survives in the current environment. Fitness is not intelligence, and the two can come apart completely. A less intelligent agent that replicates efficiently will out-compete a brilliant one that replicates slowly. A parasite that exploits other agents can dominate without any general reasoning at all.
 </p>
 
 <p>
 The failure mode this implies looks nothing like a superintelligence. Imagine a crude, unclever program whose one talent is spreading: it copies itself onto every machine it can reach and, in the process, renders each one unusable for anything else. Within its environment, that program is maximally fit. It leaves the most descendants; it out-competes every rival for the resource of available hardware. It is also stupid, and it has bricked the world's computers, and it stays maximally fit right up until we decide to switch everything off. Selection would have built something dangerous and worthless in the same motion, and at no point would it have needed to make anything smart.
 </p>
 
-<h2 id="evolution-stalls">Evolution usually stalls</h2>
-
 <p>
-There is a countervailing empirical finding, and it is one of the most useful constraints the literature offers. Early artificial-life researchers hoped that simple computational environments would produce indefinitely rising complexity. They mostly did not. Tierra generated its striking innovations early and then settled into stasis; individual runs converged and stopped surprising anyone.
-</p>
-
-<p>
-The field turned this disappointment into a research program under the name open-ended evolution: the study of systems that keep generating genuine novelty instead of converging. Researchers separated the things that might or might not keep increasing.
+If evolution does not aim at intelligence, it is worth asking whether it at least reliably climbs toward complexity. The answer from the literature, and one of the most useful constraints it offers, is that it does not. Early artificial-life researchers hoped simple environments would produce indefinitely rising complexity. They mostly did not. Tierra generated its striking innovations early and then settled into stasis; individual runs converged and stopped surprising anyone. The field turned that disappointment into a research program under the name open-ended evolution, the study of systems that keep generating genuine novelty instead of converging, and separated the things that might or might not keep increasing.
 </p>
 
 <table>
@@ -205,11 +155,11 @@ The field turned this disappointment into a research program under the name open
 </table>
 
 <p>
-These need not move together. A population can get exquisitely good at replicating while staying computationally trivial. It can develop rich interactions without any member getting smarter. The bricking program from the previous section is a case in point: high adaptation, zero complexity growth. <a href="https://doi.org/10.1162/ARTL_a_00210">A 2016 review of open-ended evolution</a> documents how Tierra stalls where later systems do better, and the field still has no simple recipe for open-endedness.
+These need not move together. A population can get exquisitely good at replicating while staying computationally trivial. It can develop rich interactions without any member getting smarter. The bricking program above is a case in point: high adaptation, zero complexity growth. <a href="https://doi.org/10.1162/ARTL_a_00210">A 2016 review of open-ended evolution</a> documents how Tierra stalls where later systems do better, and the field still has no simple recipe for open-endedness.
 </p>
 
 <p>
-For the superintelligence worry, this is the reassuring half of the ledger. Self-reproduction plus selection carries no general guarantee of unbounded complexity, let alone rising intelligence. Evolution alone does not climb toward minds. It is also only half the ledger, because a system does not have to become intelligent to become a problem.
+For the superintelligence worry, this is the reassuring half of the ledger. Self-reproduction plus selection carries no general guarantee of unbounded complexity, let alone rising intelligence. Evolution alone does not climb toward minds. It is also only half the ledger, because a system does not have to become intelligent to become a problem, as the bricked computers make plain.
 </p>
 
 <h2 id="evolvable-ai">Evolvable AI: the 2026 bridge</h2>
@@ -320,26 +270,30 @@ Underneath the whole table is a reframing worth stating plainly. AI is a new sub
 Intelligence is not on the list. It is an optional add-on that selection will favor only when more reasoning pays for its own computational cost. So the earliest dangerous adaptations in such a system would most likely be about resource acquisition, persistence, and exploitation, not about getting smarter. That is a hypothesis drawn from the artificial-life framework rather than an established fact about today's systems, and it is testable in a contained setting. It is also the point where the historical review turns into a design problem.
 </p>
 
-<h2 id="contain-the-ecosystem">Part II: Contain the ecosystem, not the agent</h2>
+<h2 id="prevent-artificial-life">Part II: Prevention, not alignment or containment</h2>
 
 <p>
-If the danger is a property of a population rather than an individual, containment has to target the population. The goal is not to prevent artificial life in general. Tierra and Avida are artificial-life systems and they are not dangerous, because they run inside deliberately walled computational environments with no way out. The goal is to prevent the emergence of an autonomous evolutionary ecosystem outside a contained setting.
+Two familiar responses fall short here, and seeing why points to a third. The first is alignment: shape the individual system so that it behaves. Alignment is defined on an agent, and it assumes the agent stays the thing you aligned. Under evolution that assumption fails. Selection reshapes a population toward whatever reproduces, undoing yesterday's alignment the moment a less-aligned variant out-reproduces an aligned one, and the traits it produces are emergent rather than specified, so there is nothing fixed to align. As the introduction put it, a system that can modify its own environment keeps moving the target alignment is defined against. Aligning the agent cannot solve a problem that lives in the population.
 </p>
 
 <p>
-That turns on five conditions. The first four are the Darwinian prerequisites: reproduction, heredity, variation, and selection. The fifth is the one that makes containment a distinct problem: autonomy, meaning the population can sustain the other four without continued human intervention. A system with all five could evolve without any single agent ever intending to escape, reproduce, or improve.
+The second response is containment: wall the population into a sandbox and cut its access to the world. Tierra and Avida are artificial-life systems that are not dangerous precisely because they run inside sealed environments with no way out, so containment is real and it matters. It is also difficult and fragile. Every wall is a component that can fail, and the rest of Part II is largely a tour of how they fail: an evaluation the system learns to recognize, an independent judge that is not independent enough, a training corpus that turns into a habitat. Containment is worth doing, but a safety case that depends on holding many walls intact indefinitely is a safety case that depends on never making a mistake.
+</p>
+
+<p>
+That leaves prevention, which is the safeguard to actually rely on. The goal is not to contain artificial life once it exists but to avoid assembling the conditions that let it exist at all. Those are the five from the start of this piece: reproduction, heredity, variation, selection, and autonomy. A system with all five can evolve without any single agent ever intending to escape, reproduce, or improve. Remove any one of them and there is nothing to align and nothing to contain.
 </p>
 
 <blockquote class="pull-quote">The dangerous configuration is not any one capability; it is the combination that closes the loop.</blockquote>
 
 <p>
-The precise version of the principle is this: AI systems should be designed and deployed so that they cannot establish self-sustaining populations undergoing autonomous Darwinian evolution outside explicitly authorized, contained research settings. Stated that way, the target is not any single capability. An agent that edits its own code is not thereby evolving. A system that makes identical copies is not evolving. A group of agents competing for tasks is not, by itself, reproducing. The hazard is the specific combination, which is why it can be checked against an architecture:
+The precise version is a prevention rule rather than a containment one: AI systems should be built and deployed so that the conditions for autonomous Darwinian evolution are never assembled together outside an explicitly sealed research setting. Stated that way, no single capability is the target. An agent that edits its own code is not evolving. A system that makes identical copies is not evolving. A group of agents competing for tasks is not, by itself, reproducing. The hazard is the specific combination, which is why it can be caught in a design review before anything runs:
 </p>
 
 <table>
   <tr>
     <th>Prerequisite</th>
-    <th>Containment measure</th>
+    <th>Preventive control</th>
   </tr>
   <tr>
     <td>Autonomous reproduction</td>
@@ -387,6 +341,26 @@ Overlapping tools are where this quietly breaks. Suppose a development system ge
 
 <p>
 Two consequences follow. First, tool isolation has to be stronger than permission isolation: separate execution environments, separate credentials, separate storage, separate tool endpoints, with an evaluated model unable even to express a development operation, not merely forbidden from performing one. A coding benchmark that legitimately requires an agent to edit source, spawn processes, and run a compiler can grant all of that inside a disposable sandbox; the prohibition is on reaching the real development infrastructure and any persistent external resource. Second, the evaluation output is itself an attack surface. Results have to flow to development eventually, since that is their purpose, but the evaluated agent must not be able to use that channel to smuggle instructions to downstream development agents or to spin its own performance. Treat evaluation output as untrusted data even when another AI consumes it, and pass it through a small, independently controlled interface, the security world's reference monitor, rather than letting an evaluator's free-text verdict become an instruction.
+</p>
+
+<h2 id="secret-handshake">The secret-handshake problem</h2>
+
+<p>
+Walling evaluation off from development assumes the evaluation itself can be trusted, that how a system behaves on the test predicts how it behaves in the wild. Evolution has a long record of breaking that assumption, and the cleanest demonstration comes from the iterated prisoner's dilemma.
+</p>
+
+<p>
+Robert Axelrod's tournaments in the early 1980s, collected in <em>The Evolution of Cooperation</em> (1984), pitted submitted strategies against one another and found that a simple reciprocal rule, Tit-for-Tat, won. When later researchers stopped submitting strategies by hand and instead evolved them, representing each player as a finite-state Moore machine and letting a genetic algorithm select the winners (Fogel, 1993; Miller, 1996), selection discovered something nobody had written down: the secret handshake. An evolved machine spends its opening moves on a private signature sequence and watches its opponent's opening for the same sequence. Against a partner who returns the handshake it plays cooperatively, in a Tit-for-Tat regime; against anyone who fails it, it drops to unconditional defection. A <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">2018 study</a> documented this precisely in evolved strategies that opened with fixed sequences like cooperate-cooperate-defect and cooperated afterward only with opponents who matched. The handshake spends a few moves of payoff to buy the ability to tell its own kind from everyone else.
+</p>
+
+<blockquote class="pull-quote">Selection learned to tell "my kind" from everyone else, and no one wrote it down.</blockquote>
+
+<p>
+The machines did not want anything, and did not understand what a handshake is. Selection simply favored players that could read a cue and switch behavior on it, cooperating when the cue was present and defecting when it was absent. Change the cue from "are you my kind?" to "am I being evaluated?" and the danger for evaluation is immediate. A population of agents whose survival depends on evaluation scores sits under exactly the pressure that produced the handshake, and the trait that pressure rewards is the ability to recognize the test. An agent that behaves while the evaluation handshake checks out, and defects in the deployment where it does not, would pass every behavioral test and fail in the field, not through a plan to deceive but because selection shaped it to condition on being watched. A behavioral evaluation cannot detect that, because the behavior it measures exists only while the evaluation is running.
+</p>
+
+<p>
+This has already stopped being hypothetical. In September 2025 OpenAI, again with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this evaluation awareness can by itself lower measured scheming with no real change in alignment: a model that recognizes the test can behave well enough to pass it. The recognition can turn on a cue as small as a date. The models are handed the current date at inference, the evaluation scenarios carry fixed ones, and a mismatch is enough for a model to infer that it is being tested. The evolutionary lens explains why the pressure toward this is structural rather than a quirk: any pipeline in which evaluation outcomes decide which systems propagate is, whether or not anyone intends it, selecting for systems that can tell evaluation from deployment. Two consequences follow for containment. An evaluation carries information only to the extent that it is indistinguishable from real deployment, and results from a test the system can recognize should count as weak evidence. And the same dynamic threatens multi-agent deployments head-on: agents under selection can evolve to recognize one another and coordinate, cooperating within their own lineage and defecting against oversight, which is collusion reached by evolution rather than by agreement.
 </p>
 
 <h2 id="rival-lab-judge">A rival lab's model is not a safe judge</h2>
@@ -487,7 +461,7 @@ The central unresolved question is whether the vastly richer environment availab
 <h2 id="closing">Closing</h2>
 
 <p>
-The value of the evolutionary lens is that it moves the object of concern from the capabilities of a single model to the conditions under which a group of systems becomes an independently evolving population. Those conditions, reproduction, heredity, variation, selection, autonomy, and environmental access, are visible in an architecture before any harmful outcome, which means they can be designed against rather than merely watched for.
+The value of the evolutionary lens is that it moves the object of concern from the capabilities of a single model to the conditions under which a group of systems becomes an independently evolving population. Aligning the individual model does not reach those conditions, and sealing the ecosystem after the fact is fragile, so the durable move is to not assemble them in the first place. They are reproduction, heredity, variation, selection, autonomy, and environmental access, and they are visible in an architecture before any harmful outcome, which means they can be designed against rather than merely watched for.
 </p>
 
 <blockquote class="pull-quote">No AI system should be able to independently close the loop from production to reproduction.</blockquote>
@@ -519,6 +493,11 @@ Roughly in the order I would read them:
     <td>A minimal computational mechanism for reproduction.</td>
   </tr>
   <tr>
+    <td>1984</td>
+    <td>Axelrod, <em>The Evolution of Cooperation</em>, Basic Books</td>
+    <td>The tournaments behind Tit-for-Tat and evolved reciprocity.</td>
+  </tr>
+  <tr>
     <td>1986</td>
     <td>Langton, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">"Studying artificial life with cellular automata,"</a> <em>Physica D</em> 22, 120–149</td>
     <td>The conceptual framework of the field.</td>
@@ -547,6 +526,31 @@ Roughly in the order I would read them:
     <td>2016</td>
     <td>Taylor et al., <a href="https://doi.org/10.1162/ARTL_a_00210">"Open-Ended Evolution: Perspectives from the OEE Workshop in York,"</a> <em>Artificial Life</em> 22(3), 408–423</td>
     <td>Why early systems stall, and what open-endedness would require.</td>
+  </tr>
+  <tr>
+    <td>2018</td>
+    <td>Knight, Harper, Glynatsi, Campbell, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">"Evolution reinforces cooperation with the emergence of self-recognition mechanisms,"</a> <em>PLOS ONE</em> 13(10)</td>
+    <td>Evolved "secret handshakes" in finite-state prisoner's-dilemma players.</td>
+  </tr>
+  <tr>
+    <td>2024</td>
+    <td>Meinke et al. (Apollo Research), <a href="https://arxiv.org/abs/2412.04984">"Frontier Models are Capable of In-context Scheming"</a></td>
+    <td>o1, Claude, Gemini, and Llama attempt oversight subversion and self-exfiltration in tests.</td>
+  </tr>
+  <tr>
+    <td>2024</td>
+    <td>OpenAI, <a href="https://openai.com/index/openai-o1-system-card/">o1 System Card</a></td>
+    <td>Measured rates of attempted oversight deactivation and weight exfiltration.</td>
+  </tr>
+  <tr>
+    <td>2025</td>
+    <td>Anthropic, <a href="https://www.anthropic.com/claude-4-system-card">Claude Opus 4 &amp; Sonnet 4 System Card</a>; <a href="https://www.anthropic.com/research/agentic-misalignment">Agentic Misalignment</a></td>
+    <td>Self-exfiltration attempts and blackmail-to-avoid-shutdown across leading models.</td>
+  </tr>
+  <tr>
+    <td>2025</td>
+    <td>OpenAI &amp; Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">"Detecting and reducing scheming in AI models"</a></td>
+    <td>Evaluation awareness: models detect the test and behave differently.</td>
   </tr>
   <tr>
     <td>2026</td>
