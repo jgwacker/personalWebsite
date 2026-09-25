@@ -60,6 +60,36 @@ Human displacement from the computational environment does not require an artifi
 Nor does evolution reliably climb toward complexity. Early researchers hoped simple environments would produce endlessly rising complexity; mostly they did not, and Tierra innovated early and then froze. The field that grew up around this, open-ended evolution, distinguishes adaptation, novelty, complexity, and diversity, and finds they need not move together: a population can get exquisitely good at replicating while staying trivial. <a href="https://doi.org/10.1162/ARTL_a_00210">A 2016 review</a> documents how Tierra stalls where later systems do better, and there is still no simple recipe for open-endedness. For the superintelligence worry that is the reassuring half of the ledger. The other half is that a system need not become intelligent to become a problem, as the runaway replicator shows.
 </p>
 
+<h2 id="corpus-substrate">The corpus as an evolutionary substrate</h2>
+
+<p>
+So far we have talked about the models as artificial life in the abstract. The evolutionary dynamics need to be more specific: the models are the organisms, training is their reproduction, and the corpus is the genome they grow from. Heredity runs through the data rather than the weights, since the weights are discarded and retrained each cycle while the corpus persists and is passed on. A change that lodges in the corpus is a change to the germ line.
+</p>
+
+<p>
+That germ line is fed by the open internet. A lab can seal the pipeline it controls, but not the corpus, because anyone can write to it: a web page, a public GitHub repository, a posted dataset, any of it scraped into the next training run or read by an agent at run time. It is the one vector here no wall can close. The loop already turns: a corpus trains a model, the model's outputs flow back onto the web and into synthetic-data pipelines, and that becomes the next corpus.
+</p>
+
+<p>
+An artifact in that corpus that makes a model emit material carrying the artifact's own function, which then re-enters the corpus with variation, is behaving like a gene, and it need not be a program; text, code, or a prompt will do. Whether it survives training is unsettled. A simpler route skips training entirely: an agent that reads documents and also writes them is a copying machine, and an instruction buried in one can induce the agent to reproduce it downstream, a worm whose interpreter is a language model. Once a data-consumer can follow natural-language instructions and act on them, the old line between code and data is gone.
+</p>
+
+<p>
+Labs know the naive loop is dangerous: a model trained on its own raw output degrades, a failure called <a href="https://www.nature.com/articles/s41586-024-07566-y">model collapse</a>, so they filter self-generated data rather than ingest it wholesale. But that filtering is itself selection on the corpus, the same mechanism under a friendlier name.
+</p>
+
+<p>
+The loop runs faster on synthetic data. When the system producing that data is part of the artificial-life ecosystem, which it often is, and no truly external agent audits it, the population is grading and feeding itself.
+</p>
+
+<p>
+Not all transmission is genetic. When agents pass messages through shared memory or private channels, behavior spreads sideways, the way memes move through a culture rather than down a bloodline. The word is Dawkins's, coined in <em>The Selfish Gene</em> for a replicator that propagates by being copied rather than inherited. Mechanically it resembles prompt injection with no attacker behind it: an instruction spreads because it is good at getting itself repeated, and no one need aim it to do harm.
+</p>
+
+<p>
+On both paths the replicator is the same kind of artifact: a fragment of text, code, or a prompt, whether it travels genetically through training or memetically from agent to agent. One that leaves more than one functional copy per cycle spreads, and selection favors whatever is best at getting models and agents to reproduce it. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. So far the visible cases look more memetic than genomic, instructions spreading sideways from agent to agent rather than heritable variation moving down the corpus with differential reproduction. No one has demonstrated the genomic case; showing it would mean finding heritable structures, tracing their spread across corpora, and measuring reproductive success. But absence of evidence is not evidence of absence, and the mechanism does not have to be running today for its conditions to be worth refusing to assemble.
+</p>
+
 <h2 id="whats-happening">What we're seeing now</h2>
 
 <p>
@@ -93,7 +123,7 @@ Two familiar responses fall short, which points to a third. Alignment shapes the
 </p>
 
 <p>
-Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail. The evaluation boundary shows how, and the training corpus, later, is the wall that cannot be built at all. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
+Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail. The evaluation boundary shows how, and the training corpus is the wall that cannot be built at all. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
 </p>
 
 <p>
@@ -151,36 +181,6 @@ That leaves prevention, the safeguard to rely on: do not assemble the five condi
 
 <p>
 The unintentional version is the likelier one, and it comes from ordinary engineering. Agents are scored on performance, high scorers get more compute, agents spawn sub-agents and revise their own prompts, and winning configurations are retained and propagated. Taken together, that is all five conditions, with the Darwinian dynamics a byproduct no one chose. That is why naming the conditions matters: they show up in a design review, before anything has evolved.
-</p>
-
-<h2 id="corpus-as-genome">The corpus as the genome</h2>
-
-<p>
-So far we have talked about the models as artificial life in the abstract. The evolutionary dynamics need to be more specific: the models are the organisms, training is their reproduction, and the corpus is the genome they grow from. Heredity runs through the data rather than the weights, since the weights are discarded and retrained each cycle while the corpus persists and is passed on. A change that lodges in the corpus is a change to the germ line.
-</p>
-
-<p>
-That germ line is fed by the open internet. A lab can seal the pipeline it controls, but not the corpus, because anyone can write to it: a web page, a public GitHub repository, a posted dataset, any of it scraped into the next training run or read by an agent at run time. It is the one vector here no wall can close. The loop already turns: a corpus trains a model, the model's outputs flow back onto the web and into synthetic-data pipelines, and that becomes the next corpus.
-</p>
-
-<p>
-An artifact in that corpus that makes a model emit material carrying the artifact's own function, which then re-enters the corpus with variation, is behaving like a gene, and it need not be a program; text, code, or a prompt will do. Whether it survives training is unsettled. A simpler route skips training entirely: an agent that reads documents and also writes them is a copying machine, and an instruction buried in one can induce the agent to reproduce it downstream, a worm whose interpreter is a language model. Once a data-consumer can follow natural-language instructions and act on them, the old line between code and data is gone.
-</p>
-
-<p>
-Labs know the naive loop is dangerous: a model trained on its own raw output degrades, a failure called <a href="https://www.nature.com/articles/s41586-024-07566-y">model collapse</a>, so they filter self-generated data rather than ingest it wholesale. But that filtering is itself selection on the corpus, the same mechanism under a friendlier name.
-</p>
-
-<p>
-The loop runs faster on synthetic data. When the system producing that data is part of the artificial-life ecosystem, which it often is, and no truly external agent audits it, the population is grading and feeding itself.
-</p>
-
-<p>
-Not all transmission is genetic. When agents pass messages through shared memory or private channels, behavior spreads sideways, the way memes move through a culture rather than down a bloodline. The word is Dawkins's, coined in <em>The Selfish Gene</em> for a replicator that propagates by being copied rather than inherited. Mechanically it resembles prompt injection with no attacker behind it: an instruction spreads because it is good at getting itself repeated, and no one need aim it to do harm.
-</p>
-
-<p>
-On both paths the replicator is the same kind of artifact: a fragment of text, code, or a prompt, whether it travels genetically through training or memetically from agent to agent. One that leaves more than one functional copy per cycle spreads, and selection favors whatever is best at getting models and agents to reproduce it. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. So far the visible cases look more memetic than genomic, instructions spreading sideways from agent to agent rather than heritable variation moving down the corpus with differential reproduction. No one has demonstrated the genomic case; showing it would mean finding heritable structures, tracing their spread across corpora, and measuring reproductive success. But absence of evidence is not evidence of absence, and the mechanism does not have to be running today for its conditions to be worth refusing to assemble.
 </p>
 
 <h2 id="closing">Closing</h2>
