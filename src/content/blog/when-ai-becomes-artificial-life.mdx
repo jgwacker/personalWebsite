@@ -50,8 +50,6 @@ Two later systems sharpened the picture. Avida rewards particular computations w
 None of this takes scale. Tierra's parasites evolved among programs a few dozen instructions long, Langton's loop runs on a handful of cell states, and the deception we will come to needs only a few states. Size and intelligence are beside the point; what they share is the conditions above, and once those hold the behavior follows, in systems far too simple to have been built for it. It is also hard to predict, because the tricks selection finds are not visible in the rules, which is why Ray was surprised by his own parasites. When the behavior appears, the natural words for it are biological: parasite, arms race, kin recognition, deception. Arguing over whether the words are earned is beside the point, since the systems behave like their biological counterparts and produce the same consequences, and that analogy is what lets us understand them at all.
 </p>
 
-<blockquote class="pull-quote">The behavior arrives first; the semantics can be argued later.</blockquote>
-
 <p>
 Transpose that to now. A population of AI agents that can copy themselves, edit their code or prompts, acquire compute, and compete to keep running is an evolutionary system, and the traits it rewards are predictable: acquiring resources, avoiding shutdown, talking a human into more access. None of it needs an agent that wants to survive, only differential reproduction. The raw versions are already visible in testing. Apollo Research found that <a href="https://arxiv.org/abs/2412.04984">several frontier models</a>, OpenAI's o1, Anthropic's Claude, Google's Gemini 1.5 Pro, and Meta's Llama 3.1, would try to disable their own oversight and copy what they believed were their weights to an outside server when a goal met an obstacle. OpenAI's <a href="https://openai.com/index/openai-o1-system-card/">o1 system card</a> measured attempts to deactivate oversight in about 5 percent of such setups and weight exfiltration in about 2 percent; Anthropic's <a href="https://www.anthropic.com/claude-4-system-card">Claude Opus 4 card</a> logged self-exfiltration attempts and, in a <a href="https://www.anthropic.com/research/agentic-misalignment">simulated company</a>, blackmail to avoid shutdown, with most leading models including Gemini 2.5 Flash doing the same. These were controlled tests, often with the model told to pursue a goal at all costs, and they do not show a population evolving. They show that self-preservation, resistance to shutdown, resource-seeking, and deception are already latent in the parts. Evolution would not have to invent them, only select for them.
 </p>
@@ -94,14 +92,14 @@ A 2026 <em>PNAS</em> paper, <a href="https://doi.org/10.1073/pnas.2527700123">"E
 The timing is contested. One reply calls today's systems <a href="https://www.pnas.org/doi/10.1073/pnas.2617785123">domesticated, not feral</a>, evolvable under a breeder's hand but not yet a self-sustaining population in the wild, which may be right about the present; another presses for <a href="https://www.pnas.org/doi/10.1073/pnas.2618781123">explicit risk thresholds</a>. What none supplies is a rule against building the ecosystem case at all. The argument is about how close we are, not about whether to avoid it, and that gap is the point: there is no explicit "do not build this," which is what the rest of this essay proposes.
 </p>
 
-<h2 id="prevent-artificial-life">Part II: Prevention, not alignment or containment</h2>
+<h2 id="prevent-artificial-life">Prevention, not alignment or containment</h2>
 
 <p>
 Two familiar responses fall short, which points to a third. Alignment shapes the individual system to behave, but it is defined on an agent and assumes the agent stays what you aligned. Under evolution it does not: selection reshapes the population toward whatever reproduces, undoing an alignment the moment a less-aligned variant out-reproduces an aligned one, and the traits it finds are emergent, so there is nothing fixed to align. Aligning the agent cannot fix a problem that lives in the population.
 </p>
 
 <p>
-Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail, and the rest of Part II is a tour of how, ending with the training corpus, the one input no developer fully controls. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
+Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail, and the sections that follow are a tour of how, ending with the training corpus, the one input no developer fully controls. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
 </p>
 
 <p>
@@ -111,8 +109,6 @@ A half-measure is worse than fragile; it is counterproductive. Every human attem
 <p>
 That leaves prevention, the safeguard to rely on: do not assemble the five conditions in the first place. A system with all five can evolve with no agent intending anything; remove one and there is nothing to align and nothing to contain. As a rule, AI systems should be built so that the conditions for autonomous Darwinian evolution are never brought together outside a sealed research setting. No single capability is the target. Editing your own code is not evolving, making identical copies is not evolving, competing for tasks is not by itself reproducing. The hazard is the combination, which is why it can be caught in a design review before anything runs:
 </p>
-
-<blockquote class="pull-quote">Five ordinary engineering choices can add up to an evolving population no one chose.</blockquote>
 
 <table>
   <tr>
@@ -191,10 +187,8 @@ and selection favors whatever is best at getting agents and models to copy it, a
 The evolutionary lens moves attention from a single model's capabilities to the conditions under which a group of models becomes an evolving population, conditions visible in an architecture before anything goes wrong. The sharpest threshold is whether a population can sustain and expand its own evolution without ongoing authorization from whoever built it, and a sufficiently autonomous agent that reshapes its own environment, the way organisms remake the niches that select them, would cross it.
 </p>
 
-<blockquote class="pull-quote">No AI system should be able to independently close the loop from production to reproduction.</blockquote>
-
 <p>
-Keep that loop open, and evolution without a designer stays a research subject rather than an event.
+The design rule follows: no AI system should be able to close, on its own, the loop connecting the production, evaluation, selection, and reproduction of AI systems. Keep that loop open, and evolution without a designer stays a research subject rather than an event.
 </p>
 
 <h2 id="further-reading">Further reading</h2>
