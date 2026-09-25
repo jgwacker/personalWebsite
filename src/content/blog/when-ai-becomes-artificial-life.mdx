@@ -41,6 +41,10 @@ Von Neumann's vision was first picked up in the 1980s by Christopher Langton, wh
 </p>
 
 <p>
+None of this takes scale. Tierra's parasites evolved among programs a few dozen instructions long, Langton's loop runs on a handful of cell states, and the deception we will come to needs only a few states. Size and intelligence are beside the point; what they share is the conditions above, and once those hold the behavior follows, in systems far too simple to have been built for it. It is also hard to predict, because the tricks selection finds are not visible in the rules, which is why Ray was surprised by his own parasites. When the behavior appears, the natural words for it are biological: parasite, arms race, kin recognition, deception. Arguing over whether the words are earned is beside the point, since the systems behave like their biological counterparts and produce the same consequences, and that analogy is what lets us understand them at all.
+</p>
+
+<p>
 An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. Nothing in that process involves intelligence or intent. Evolution's only direction is self-propagation, whatever reproduces and survives, and fitness is not intelligence. A dumb, efficient replicator can out-reproduce a brilliant, slow one, and a parasite can dominate without any general reasoning.
 </p>
 
@@ -52,10 +56,18 @@ So the failure mode looks nothing like a superintelligence. A crude program whos
 Nor does evolution reliably climb toward complexity. Early researchers hoped simple environments would produce endlessly rising complexity; mostly they did not, and Tierra innovated early and then froze. The field that grew up around this, open-ended evolution, distinguishes adaptation, novelty, complexity, and diversity, and finds they need not move together: a population can get exquisitely good at replicating while staying trivial. <a href="https://doi.org/10.1162/ARTL_a_00210">A 2016 review</a> documents how Tierra stalls where later systems do better, and there is still no simple recipe for open-endedness. For the superintelligence worry that is the reassuring half of the ledger. The other half is that a system need not become intelligent to become a problem, as the bricked computers show.
 </p>
 
-<h2 id="behaviors-are-real">The behaviors are real, and already showing up</h2>
+<h2 id="whats-happening">What we're seeing now</h2>
 
 <p>
-None of this takes scale. Tierra's parasites evolved among programs a few dozen instructions long, Langton's loop runs on a handful of cell states, and the deception we will come to needs only a few states. Size and intelligence are beside the point; what they share is the conditions above, and once those hold the behavior follows, in systems far too simple to have been built for it. It is also hard to predict, because the tricks selection finds are not visible in the rules, which is why Ray was surprised by his own parasites. When the behavior appears, the natural words for it are biological: parasite, arms race, kin recognition, deception. Arguing over whether the words are earned is beside the point, since the systems behave like their biological counterparts and produce the same consequences, and that analogy is what lets us understand them at all.
+A 2026 <em>PNAS</em> paper, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> connects this history to current systems and invokes Tierra and Avida by name. It distinguishes two ways an AI system comes to evolve. In a <em>breeder</em> scenario humans set the fitness criteria and control reproduction, as a dog breeder or an Avida experimenter does, and selection happens but a person holds the reins. In an <em>ecosystem</em> scenario selection arises from an open environment, no one sets the objective, and human control erodes. The machinery Ray once put inside a single virtual computer now exists in pieces across the AI stack.
+</p>
+
+<p>
+The evolutionary framing is not only an artificial-life idea, and this essay is not the first to reach for it. Dan Hendrycks argued in <a href="https://arxiv.org/abs/2303.16200">"Natural Selection Favors AIs over Humans"</a> (2023) that competition among AI developers is itself a selective environment, one that rewards agents that are more capable, more autonomous, and less constrained, with no malice required; Ben Turtel's <a href="https://bturtel.substack.com/p/darwins-llms">"Darwin's LLMs"</a> (2025) applies the same conditions straight to language models. <a href="https://arxiv.org/abs/2501.16946">"Gradual Disempowerment"</a> (Kulveit et al., 2025) reaches the no-superintelligence-needed conclusion by a different road, showing competitive drift can sideline humanity even while every individual system stays aligned. And a large multi-author report, <a href="https://arxiv.org/abs/2502.14143">"Multi-Agent Risks from Advanced AI"</a> (Hammond et al., 2025), lists selection pressure among its core risk factors and warns of dangerous behavior that belongs to no single agent, though it frames this as multi-agent risk rather than as evolution. One difference is worth marking. Those arguments run on market and institutional competition among developers; the artificial-life version here runs on a population of self-replicating artifacts, a stricter mechanism with less evidence behind it so far.
+</p>
+
+<p>
+The strongest objection runs deeper than timing. Maarten Boudry and Simon Friederich argue in <a href="https://link.springer.com/article/10.1007/s11098-024-02226-3">"The selfish machine?"</a> (2024) that AI development looks more like domestication than blind Darwinism: an intelligent selector, human or corporate, decides which systems reproduce, and directed selection need not favor selfish or self-preserving traits at all. While humans hold the reins, the danger recedes. The catch is what they concede. Selection stays tame only while it stays domesticated, and they grant that AI which goes feral, reproducing on its own without human supervision, could become genuinely Darwinian and genuinely dangerous. That feral case is the one this essay is about. Boudry, replying to the Evolvable AI paper, calls today's systems <a href="https://www.pnas.org/doi/10.1073/pnas.2617785123">domesticated, not feral</a>, while a separate reply presses for <a href="https://www.pnas.org/doi/10.1073/pnas.2618781123">explicit risk thresholds</a>. None of them supplies a rule against building the feral case. The disagreement is about how close we are, not whether to avoid it, and that gap is the point: no current proposal says plainly, do not build this.
 </p>
 
 <p>
@@ -68,20 +80,6 @@ The examples so far are contained tests. The first case that would ring real ala
 
 <p>
 If the first warning is ignored, the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that bricks every networked computer it can reach, a crude, maximally-fit program made real. Each rung is more resource acquisition, selected because it worked.
-</p>
-
-<h2 id="evolvable-ai">Evolvable AI: the 2026 bridge</h2>
-
-<p>
-A 2026 <em>PNAS</em> paper, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> connects this history to current systems and invokes Tierra and Avida by name. It distinguishes two ways an AI system comes to evolve. In a <em>breeder</em> scenario humans set the fitness criteria and control reproduction, as a dog breeder or an Avida experimenter does, and selection happens but a person holds the reins. In an <em>ecosystem</em> scenario selection arises from an open environment, no one sets the objective, and human control erodes. The machinery Ray once put inside a single virtual computer now exists in pieces across the AI stack.
-</p>
-
-<p>
-The evolutionary framing is not only an artificial-life idea, and this essay is not the first to reach for it. Dan Hendrycks argued in <a href="https://arxiv.org/abs/2303.16200">"Natural Selection Favors AIs over Humans"</a> (2023) that competition among AI developers is itself a selective environment, one that rewards agents that are more capable, more autonomous, and less constrained, with no malice required; Ben Turtel's <a href="https://bturtel.substack.com/p/darwins-llms">"Darwin's LLMs"</a> (2025) applies the same conditions straight to language models. <a href="https://arxiv.org/abs/2501.16946">"Gradual Disempowerment"</a> (Kulveit et al., 2025) reaches the no-superintelligence-needed conclusion by a different road, showing competitive drift can sideline humanity even while every individual system stays aligned. And a large multi-author report, <a href="https://arxiv.org/abs/2502.14143">"Multi-Agent Risks from Advanced AI"</a> (Hammond et al., 2025), lists selection pressure among its core risk factors and warns of dangerous behavior that belongs to no single agent, though it frames this as multi-agent risk rather than as evolution. One difference is worth marking. Those arguments run on market and institutional competition among developers; the artificial-life version here runs on a population of self-replicating artifacts, a stricter mechanism with less evidence behind it so far.
-</p>
-
-<p>
-The strongest objection runs deeper than timing. Maarten Boudry and Simon Friederich argue in <a href="https://link.springer.com/article/10.1007/s11098-024-02226-3">"The selfish machine?"</a> (2024) that AI development looks more like domestication than blind Darwinism: an intelligent selector, human or corporate, decides which systems reproduce, and directed selection need not favor selfish or self-preserving traits at all. While humans hold the reins, the danger recedes. The catch is what they concede. Selection stays tame only while it stays domesticated, and they grant that AI which goes feral, reproducing on its own without human supervision, could become genuinely Darwinian and genuinely dangerous. That feral case is the one this essay is about. Boudry, replying to the Evolvable AI paper, calls today's systems <a href="https://www.pnas.org/doi/10.1073/pnas.2617785123">domesticated, not feral</a>, while a separate reply presses for <a href="https://www.pnas.org/doi/10.1073/pnas.2618781123">explicit risk thresholds</a>. None of them supplies a rule against building the feral case. The disagreement is about how close we are, not whether to avoid it, and that gap is the point: no current proposal says plainly, do not build this.
 </p>
 
 <h2 id="prevent-artificial-life">Prevention, not alignment or containment</h2>
@@ -170,15 +168,15 @@ Labs know the naive loop is dangerous: a model trained on its own raw output deg
 </p>
 
 <p>
-That makes synthetic data a particular accelerant. When the system generating the data is part of the artificial-life ecosystem, which it often is, and no truly external agent audits what it produces, the population is grading and feeding itself, and evolution runs faster.
+The loop runs faster on synthetic data. When the system producing that data is part of the artificial-life ecosystem, which it often is, and no truly external agent audits it, the population is grading and feeding itself.
 </p>
 
 <p>
-Not all transmission is genetic. When agents pass messages through shared memory or private channels, behavior spreads sideways, the way memes move through a culture rather than down a bloodline. Mechanically it resembles prompt injection with no attacker behind it: an instruction spreads because it is good at getting itself repeated, and no one need aim it to do harm.
+Not all transmission is genetic. When agents pass messages through shared memory or private channels, behavior spreads sideways, the way memes move through a culture rather than down a bloodline. The word is Dawkins's, coined in <em>The Selfish Gene</em> for a replicator that propagates by being copied rather than inherited. Mechanically it resembles prompt injection with no attacker behind it: an instruction spreads because it is good at getting itself repeated, and no one need aim it to do harm.
 </p>
 
 <p>
-An artifact that leaves more than one functional descendant per cycle spreads by either path, and selection favors whatever is best at getting models and agents to copy it. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. So far the visible cases look more memetic than genomic, instructions spreading sideways from agent to agent rather than heritable variation moving down the corpus with differential reproduction. No one has demonstrated the genomic case; showing it would mean finding heritable structures, tracing their spread across corpora, and measuring reproductive success. But absence of evidence is not evidence of absence, and the mechanism does not have to be running today for its conditions to be worth refusing to assemble.
+On both paths the replicator is the same kind of artifact: a fragment of text, code, or a prompt, whether it travels genetically through training or memetically from agent to agent. One that leaves more than one functional copy per cycle spreads, and selection favors whatever is best at getting models and agents to reproduce it. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. So far the visible cases look more memetic than genomic, instructions spreading sideways from agent to agent rather than heritable variation moving down the corpus with differential reproduction. No one has demonstrated the genomic case; showing it would mean finding heritable structures, tracing their spread across corpora, and measuring reproductive success. But absence of evidence is not evidence of absence, and the mechanism does not have to be running today for its conditions to be worth refusing to assemble.
 </p>
 
 <h2 id="closing">Closing</h2>
@@ -207,7 +205,7 @@ The design rule follows: no AI system should be able to close, on its own, the l
   <tr>
     <td>1976</td>
     <td>Dawkins, <em>The Selfish Gene</em>, Oxford University Press</td>
-    <td>The gene's-eye view: selection acts on the replicator, not the organism or species.</td>
+    <td>The gene's-eye view, and the coinage of "meme" for non-genetic replicators.</td>
   </tr>
   <tr>
     <td>1984</td>
