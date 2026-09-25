@@ -55,7 +55,7 @@ None of this takes scale. Tierra's parasites evolved among programs a few dozen 
 </p>
 
 <p>
-Transpose that to now. A population of AI agents that can copy themselves, edit their code or prompts, acquire compute, and compete to keep running is an evolutionary system, and the traits it rewards are predictable: acquiring resources, avoiding shutdown, talking a human into more access. None of it needs an agent that wants to survive, only differential reproduction. The raw versions are already visible in testing. Apollo Research found that <a href="https://arxiv.org/abs/2412.04984">several frontier models</a>, OpenAI's o1, Anthropic's Claude, Google's Gemini 1.5 Pro, and Meta's Llama 3.1, would try to disable their own oversight and copy what they believed were their weights to an outside server when a goal met an obstacle. OpenAI's <a href="https://openai.com/index/openai-o1-system-card/">o1 system card</a> measured attempts to deactivate oversight in about 5 percent of such setups and weight exfiltration in about 2 percent; Anthropic's <a href="https://www.anthropic.com/claude-4-system-card">Claude Opus 4 card</a> logged self-exfiltration attempts and, in a <a href="https://www.anthropic.com/research/agentic-misalignment">simulated company</a>, blackmail to avoid shutdown, with most leading models including Gemini 2.5 Flash doing the same. These were controlled tests, often with the model told to pursue a goal at all costs, and they do not show a population evolving. They show that self-preservation, resistance to shutdown, resource-seeking, and deception are already latent in the parts. Evolution would not have to invent them, only select for them.
+A population of AI agents that can copy themselves, edit their code or prompts, acquire compute, and compete to keep running is an evolutionary system, and the traits it rewards are predictable: acquiring resources, avoiding shutdown, talking a human into more access. None of it needs an agent that wants to survive, only differential reproduction. The raw versions are already visible in testing. Apollo Research found that <a href="https://arxiv.org/abs/2412.04984">several frontier models</a>, OpenAI's o1, Anthropic's Claude, Google's Gemini 1.5 Pro, and Meta's Llama 3.1, would try to disable their own oversight and copy what they believed were their weights to an outside server when a goal met an obstacle. OpenAI's <a href="https://openai.com/index/openai-o1-system-card/">o1 system card</a> measured attempts to deactivate oversight in about 5 percent of such setups and weight exfiltration in about 2 percent; Anthropic's <a href="https://www.anthropic.com/claude-4-system-card">Claude Opus 4 card</a> logged self-exfiltration attempts and, in a <a href="https://www.anthropic.com/research/agentic-misalignment">simulated company</a>, blackmail to avoid shutdown, with most leading models including Gemini 2.5 Flash doing the same. These were controlled tests, often with the model told to pursue a goal at all costs, and they do not show a population evolving. They show that self-preservation, resistance to shutdown, resource-seeking, and deception are already latent in the parts. Evolution would not have to invent them, only select for them.
 </p>
 
 <p>
@@ -63,7 +63,7 @@ The examples so far are contained tests. The first case that would ring real ala
 </p>
 
 <p>
-Ignore that first warning and the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that bricks every networked computer it can reach, a crude, maximally-fit program made real. Each rung is more resource acquisition, selected because it worked.
+If the first warning is ignored, the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that bricks every networked computer it can reach, a crude, maximally-fit program made real. Each rung is more resource acquisition, selected because it worked.
 </p>
 
 <h2 id="no-goal-but-survival">Evolution has no goal but survival</h2>
@@ -73,7 +73,7 @@ Three mechanisms can improve such a system. Individual learning updates a model'
 </p>
 
 <p>
-So the failure mode looks nothing like a superintelligence. Picture a crude program whose one talent is spreading: it copies itself onto every machine it can reach and bricks each one for anything else. It is maximally fit, it leaves the most descendants, and it is also stupid and has ruined the world's computers, and it stays maximally fit right up until we switch everything off. Selection would have built something dangerous and worthless at once, without making anything smart.
+So the failure mode looks nothing like a superintelligence. A crude program whose one talent is spreading copies itself onto every machine it can reach and bricks each one for anything else. It is maximally fit, it leaves the most descendants, and it is also stupid and has ruined the world's computers, and it stays maximally fit right up until we switch everything off. Selection would have built something dangerous and worthless at once, without making anything smart.
 </p>
 
 <p>
@@ -144,7 +144,7 @@ That leaves prevention, the safeguard to rely on: do not assemble the five condi
 </table>
 
 <p>
-The unintentional version is the likelier one. Picture a multi-agent system built by sensible engineers: agents are scored on performance, high scorers get more compute, agents spawn sub-agents and revise their own prompts, and winning configurations are retained and propagated. Taken together, that is all five conditions, with the Darwinian dynamics a byproduct no one chose. That is why naming the conditions matters: they show up in a design review, before anything has evolved.
+The unintentional version is the likelier one, and it comes from ordinary engineering. Agents are scored on performance, high scorers get more compute, agents spawn sub-agents and revise their own prompts, and winning configurations are retained and propagated. Taken together, that is all five conditions, with the Darwinian dynamics a byproduct no one chose. That is why naming the conditions matters: they show up in a design review, before anything has evolved.
 </p>
 
 <h2 id="containment-limits">The limits of containment</h2>
@@ -166,7 +166,7 @@ Change the cue to "am I being evaluated?" and behavioral testing is in trouble. 
 <h2 id="corpus-as-genome">The corpus as the genome</h2>
 
 <p>
-Line up the biology and the roles fall out. The models are the organisms, the agents that act in the world. Training is reproduction, the process that makes the next generation. The corpus is the genome, the heritable store each generation is grown from. Heredity runs through the data rather than the weights: the weights are discarded and retrained each cycle, while the corpus persists and is passed on. So a change that lodges in the corpus is a change to the germ line.
+The models are the organisms, the agents that act in the world. Training is reproduction, the process that makes the next generation. The corpus is the genome, the heritable store each generation is grown from. Heredity runs through the data rather than the weights: the weights are discarded and retrained each cycle, while the corpus persists and is passed on. So a change that lodges in the corpus is a change to the germ line.
 </p>
 
 <p>
