@@ -37,15 +37,19 @@ John von Neumann worked out the logic of machine self-reproduction in the 1940s 
 </p>
 
 <p>
-Christopher Langton made it concrete. In 1984 he published <a href="https://doi.org/10.1016/0167-2789(84)90256-2">a cellular automaton</a>, Langton's loops, in which a simple loop copies itself from a grid of cells and a few local rules, no full computer required. In <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a> he argued that living organization might exist in a computational medium as such, and in 1987 he ran the first artificial-life workshop. But loops only copy; sustained evolution needed a population of competing variants, and a designer who thought like an ecologist.
+Von Neumann's vision was first picked up in the 1980s by Christopher Langton, whose self-reproducing loops (see <a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>) showed reproduction needs no full computer but only copied, never evolving; sustained evolution took a population of competing variants and a designer who thought like an ecologist. Thomas Ray, an evolutionary ecologist, built Tierra around 1990 (<a href="http://tomray.me/pubs/alife2/Ray1991AnApproachToTheSynthesisOfLife.pdf">"An approach to the synthesis of life,"</a> 1991). It is a virtual computer running self-replicating programs, each a string of machine instructions that serves as its genome, with memory and CPU time as the resources. Copying is imperfect, so organisms that replicate faster or use memory better leave more descendants. Ray seeded one hand-written replicator and let competition decide. What emerged was an ecology he never designed: programs evolved faster replication, then parasites that shed their own copying code and ran a neighbor's, then hosts that resisted and parasites that worked around the resistance. Nobody wrote any of it; it fell out of resource competition among imperfect copies. Follow-on systems pushed further: Avida (<a href="https://doi.org/10.1038/nature01568">Lenski et al., 2003</a>) showed even complex functions can evolve step by step, and Polyworld (<a href="https://doi.org/10.2976/1.3233712">Yaeger</a>) ran the same dynamics on neural-network creatures that also learn within a lifetime.
 </p>
 
 <p>
-Thomas Ray, an evolutionary ecologist, built Tierra around 1990 (<a href="http://tomray.me/pubs/alife2/Ray1991AnApproachToTheSynthesisOfLife.pdf">"An approach to the synthesis of life,"</a> 1991). It is a virtual computer running self-replicating programs, each a string of machine instructions that serves as its genome, with memory and CPU time as the resources. Copying is imperfect, so organisms that replicate faster or use memory better leave more descendants. Ray seeded one hand-written replicator and let competition decide. What emerged was an ecology he never designed: programs evolved faster replication, then parasites that shed their own copying code and ran a neighbor's, then hosts that resisted and parasites that worked around the resistance. Nobody wrote any of it; it fell out of resource competition among imperfect copies.
+An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags, and nothing in that process involves intelligence or intent. That is the whole point. Evolution has no direction. It pushes toward one thing, whatever reproduces and survives, and fitness is not intelligence. A dumb, efficient replicator beats a brilliant, slow one, and a parasite can dominate without any general reasoning.
 </p>
 
 <p>
-Two later systems sharpened the picture. Avida rewards particular computations with extra CPU time, turning the ability to compute into fitness; its landmark result (Lenski, Ofria, Pennock, and Adami, <a href="https://doi.org/10.1038/nature01568">"The evolutionary origin of complex features,"</a> <em>Nature</em>, 2003) showed complex logic evolving through long mutational chains whose intermediate steps were sometimes harmful and paid off only later. Because Avida rewards a fixed menu of operations, it shows selection can discover complex structure without a designer, not that open competition yields arbitrary intelligence. Polyworld (Larry <a href="https://doi.org/10.2976/1.3233712">Yaeger</a>, early 1990s) replaced instruction strings with creatures in a simulated world, each run by a neural network whose architecture evolves across generations while its synapses learn within a lifetime, the same two-timescale structure as a population of AI agents whose models adapt while the population is selected.
+So the failure mode looks nothing like a superintelligence. A crude program whose one talent is spreading copies itself onto every machine it can reach and bricks each one for anything else. It is maximally fit, it leaves the most descendants, and it is also stupid and has ruined the world's computers, and it stays maximally fit right up until we switch everything off. Selection would have built something dangerous and worthless at once, without making anything smart.
+</p>
+
+<p>
+Nor does evolution reliably climb toward complexity. Early researchers hoped simple environments would produce endlessly rising complexity; mostly they did not, and Tierra innovated early and then froze. The field that grew up around this, open-ended evolution, distinguishes adaptation, novelty, complexity, and diversity, and finds they need not move together: a population can get exquisitely good at replicating while staying trivial. <a href="https://doi.org/10.1162/ARTL_a_00210">A 2016 review</a> documents how Tierra stalls where later systems do better, and there is still no simple recipe for open-endedness. For the superintelligence worry that is the reassuring half of the ledger. The other half is that a system need not become intelligent to become a problem, as the bricked computers show.
 </p>
 
 <h2 id="behaviors-are-real">The behaviors are real, and already showing up</h2>
@@ -64,20 +68,6 @@ The examples so far are contained tests. The first case that would ring real ala
 
 <p>
 If the first warning is ignored, the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that bricks every networked computer it can reach, a crude, maximally-fit program made real. Each rung is more resource acquisition, selected because it worked.
-</p>
-
-<h2 id="no-goal-but-survival">Evolution has no goal but survival</h2>
-
-<p>
-Three mechanisms can improve such a system. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags, and nothing in that process involves intelligence or intent. That is the whole point. Evolution has no direction. It pushes toward one thing, whatever reproduces and survives, and fitness is not intelligence. A dumb, efficient replicator beats a brilliant, slow one, and a parasite can dominate without any general reasoning.
-</p>
-
-<p>
-So the failure mode looks nothing like a superintelligence. A crude program whose one talent is spreading copies itself onto every machine it can reach and bricks each one for anything else. It is maximally fit, it leaves the most descendants, and it is also stupid and has ruined the world's computers, and it stays maximally fit right up until we switch everything off. Selection would have built something dangerous and worthless at once, without making anything smart.
-</p>
-
-<p>
-Nor does evolution reliably climb toward complexity. Early researchers hoped simple environments would produce endlessly rising complexity; mostly they did not, and Tierra innovated early and then froze. The field that grew up around this, open-ended evolution, distinguishes adaptation, novelty, complexity, and diversity, and finds they need not move together: a population can get exquisitely good at replicating while staying trivial. <a href="https://doi.org/10.1162/ARTL_a_00210">A 2016 review</a> documents how Tierra stalls where later systems do better, and there is still no simple recipe for open-endedness. For the superintelligence worry that is the reassuring half of the ledger. The other half is that a system need not become intelligent to become a problem, as the bricked computers show.
 </p>
 
 <h2 id="evolvable-ai">Evolvable AI: the 2026 bridge</h2>
@@ -101,7 +91,21 @@ Two familiar responses fall short, which points to a third. Alignment shapes the
 </p>
 
 <p>
-Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail, and the sections that follow are a tour of how, ending with the training corpus, the one input no developer fully controls. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
+Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail. The evaluation boundary shows how, and the training corpus, later, is the wall that cannot be built at all. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
+</p>
+
+<p>
+Contemporary AI development already has the three ingredients: variation from training, selection from evaluation, propagation from deployment. Only the humans in between keep it from closing into a loop. The load-bearing boundary is between evaluation and development: a system being evaluated must have no control over what gets built, selected, or deployed next, including indirectly through shared credentials, storage, or other agents. This breaks when tools overlap. If an evaluated agent can reach the same machinery that builds the next generation, the thing being selected is helping run the selection, and it can alter criteria, data, or the artifacts development later consumes without understanding the whole pipeline. Isolation has to be stronger than permissions, with separate environments and endpoints, and evaluation outputs treated as untrusted data rather than instructions a downstream agent obeys.
+</p>
+
+<p>
+Even a clean boundary assumes the test can be trusted, and evolution breaks that. In the iterated prisoner's dilemma, Robert Axelrod's tournaments (<em>The Evolution of Cooperation</em>, 1984) found Tit-for-Tat won; when later work evolved the players as finite-state machines, selection discovered a secret handshake, an opening signature that a machine cooperates with only if the opponent echoes it and defects against otherwise. A <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">2018 study</a> documented exactly this, unprogrammed. No machine wanted anything; selection simply rewarded reading a cue and switching behavior on it.
+</p>
+
+<blockquote class="pull-quote">Selection learned to tell "my kind" from everyone else, and no one wrote it down.</blockquote>
+
+<p>
+Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
 </p>
 
 <p>
@@ -145,22 +149,6 @@ That leaves prevention, the safeguard to rely on: do not assemble the five condi
 
 <p>
 The unintentional version is the likelier one, and it comes from ordinary engineering. Agents are scored on performance, high scorers get more compute, agents spawn sub-agents and revise their own prompts, and winning configurations are retained and propagated. Taken together, that is all five conditions, with the Darwinian dynamics a byproduct no one chose. That is why naming the conditions matters: they show up in a design review, before anything has evolved.
-</p>
-
-<h2 id="containment-limits">The limits of containment</h2>
-
-<p>
-Contemporary AI development already has the three ingredients: variation from training, selection from evaluation, propagation from deployment. Only the humans in between keep it from closing into a loop. The load-bearing boundary is between evaluation and development: a system being evaluated must have no control over what gets built, selected, or deployed next, including indirectly through shared credentials, storage, or other agents. This breaks when tools overlap. If an evaluated agent can reach the same machinery that builds the next generation, the thing being selected is helping run the selection, and it can alter criteria, data, or the artifacts development later consumes without understanding the whole pipeline. Isolation has to be stronger than permissions, with separate environments and endpoints, and evaluation outputs treated as untrusted data rather than instructions a downstream agent obeys.
-</p>
-
-<p>
-Even a clean boundary assumes the test can be trusted, and evolution breaks that. In the iterated prisoner's dilemma, Robert Axelrod's tournaments (<em>The Evolution of Cooperation</em>, 1984) found Tit-for-Tat won; when later work evolved the players as finite-state machines, selection discovered a secret handshake, an opening signature that a machine cooperates with only if the opponent echoes it and defects against otherwise. A <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">2018 study</a> documented exactly this, unprogrammed. No machine wanted anything; selection simply rewarded reading a cue and switching behavior on it.
-</p>
-
-<blockquote class="pull-quote">Selection learned to tell "my kind" from everyone else, and no one wrote it down.</blockquote>
-
-<p>
-Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
 </p>
 
 <h2 id="corpus-as-genome">The corpus as the genome</h2>
