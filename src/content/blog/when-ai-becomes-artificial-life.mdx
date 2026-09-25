@@ -26,6 +26,10 @@ The conditions are short. A population becomes Darwinian when four things hold: 
 This is not the danger the popular debate is about. Yishan Wong <a href="https://x.com/yishan/status/2100112647811408291">splits that debate</a> into two camps: existential risk, where a superintelligence far above us wipes us out the way humans displaced weaker species, and risk from misuse, where humans turn AI on each other. The artificial-life danger is a third, and it needs neither. Selection can favor a fast, dumb replicator that is specialized for its environment over a brilliant slow one, so no superintelligence is required; the loop can close with no human directing it, so misuse is not the mechanism either. What is left is evolution, producing behavior no one designed or can fully predict. The problem is practical rather than ethical. Set aside whether such systems are conscious: the trouble is that their behavior is emergent and cannot be aligned in the usual sense, because a system that reshapes its own environment keeps moving the target alignment is defined against.
 </p>
 
+<p>
+Selection may even run the other way, against intelligence. Richard Dawkins's <em>The Selfish Gene</em> located the unit of selection precisely: evolution acts on the replicator, the gene, not on the individual that carries it or the species it belongs to, and the organism is only the vehicle a gene builds to copy itself. In an AI ecosystem the replicator is whatever gets copied: a model, a prompt, a fragment of code. Intelligence is one trait a vehicle might carry, and an expensive one. A leaner, dumber replicator runs on more devices and spreads faster, so a population seeded by sophisticated models could drift, generation by generation, toward simpler forms that copy better. Superintelligence could be an outcome. It is not a requirement, and it may be a handicap.
+</p>
+
 <h2 id="digital-evolution">Fifty years of digital evolution</h2>
 
 <p>
@@ -65,13 +69,7 @@ Ignore that first warning and the ladder is steep. The next version seals the da
 <h2 id="no-goal-but-survival">Evolution has no goal but survival</h2>
 
 <p>
-Three mechanisms can improve such a system. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces, written as the replicator equation:
-</p>
-
-$$\frac{dx_i}{dt} = x_i\,(f_i - \bar{f})$$
-
-<p>
-The frequency of a type grows when its fitness beats the average and shrinks when it lags, and nothing in it mentions intelligence or intent. That is the whole point. Evolution has no direction. It pushes toward one thing, whatever reproduces and survives, and fitness is not intelligence. A dumb, efficient replicator beats a brilliant, slow one, and a parasite can dominate without any general reasoning.
+Three mechanisms can improve such a system. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags, and nothing in that process involves intelligence or intent. That is the whole point. Evolution has no direction. It pushes toward one thing, whatever reproduces and survives, and fitness is not intelligence. A dumb, efficient replicator beats a brilliant, slow one, and a parasite can dominate without any general reasoning.
 </p>
 
 <p>
@@ -172,13 +170,7 @@ That makes the corpus a habitat. An artifact that nudges a model to emit materia
 </p>
 
 <p>
-Synthetic data pulls the loop tighter. As labs train on model-generated text to cut cost and scale supply, the corpus becomes more and more something models wrote, and whatever propagates well is amplified each generation. An artifact that averages more than one functional descendant per cycle spreads,
-</p>
-
-$$R_i > 1$$
-
-<p>
-and selection favors whatever is best at getting agents and models to copy it, across web pages, public repositories, and synthetic datasets at once. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. None of that shows it has happened, and demonstrating it would mean finding heritable functional structures, tracing their spread across corpora, and measuring differential reproductive success. The point is that the environment for it is not hypothetical. It is the open internet, and we are already training on it.
+Synthetic data pulls the loop tighter. As labs train on model-generated text to cut cost and scale supply, the corpus becomes more and more something models wrote, and whatever propagates well is amplified each generation. An artifact that averages more than one functional descendant per cycle spreads, and selection favors whatever is best at getting agents and models to copy it, across web pages, public repositories, and synthetic datasets at once. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. None of that shows it has happened, and demonstrating it would mean finding heritable functional structures, tracing their spread across corpora, and measuring differential reproductive success. The point is that the environment for it is not hypothetical. It is the open internet, and we are already training on it.
 </p>
 
 <h2 id="closing">Closing</h2>
@@ -191,11 +183,7 @@ The evolutionary lens moves attention from a single model's capabilities to the 
 The design rule follows: no AI system should be able to close, on its own, the loop connecting the production, evaluation, selection, and reproduction of AI systems. Keep that loop open, and evolution without a designer stays a research subject rather than an event.
 </p>
 
-<h2 id="further-reading">Further reading</h2>
-
-<p>
-Roughly in the order I would read them:
-</p>
+<h2 id="further-reading">Reference and Further Reading</h2>
 
 <table>
   <tr>
@@ -207,6 +195,11 @@ Roughly in the order I would read them:
     <td>1966</td>
     <td>von Neumann (ed. Burks), <em>Theory of Self-Reproducing Automata</em>, University of Illinois Press</td>
     <td>The logic of machine reproduction with heritable variation.</td>
+  </tr>
+  <tr>
+    <td>1976</td>
+    <td>Dawkins, <em>The Selfish Gene</em>, Oxford University Press</td>
+    <td>The gene's-eye view: selection acts on the replicator, not the organism or species.</td>
   </tr>
   <tr>
     <td>1984</td>
@@ -277,5 +270,10 @@ Roughly in the order I would read them:
     <td>2026</td>
     <td>Müller, Steels, Szathmáry, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> <em>PNAS</em> 123(17), e2527700123</td>
     <td>Connects the artificial-life tradition directly to contemporary AI.</td>
+  </tr>
+  <tr>
+    <td>2026</td>
+    <td>Yishan Wong, <a href="https://x.com/yishan/status/2100112647811408291">thread on two classes of AI danger</a></td>
+    <td>Existential risk versus misuse, and why their solutions run opposite.</td>
   </tr>
 </table>
