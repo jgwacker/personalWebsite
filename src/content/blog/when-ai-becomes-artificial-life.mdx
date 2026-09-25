@@ -56,6 +56,14 @@ None of this takes scale. Tierra's parasites evolved among programs a few dozen 
 Transpose that to now. A population of AI agents that can copy themselves, edit their code or prompts, acquire compute, and compete to keep running is an evolutionary system, and the traits it rewards are predictable: acquiring resources, avoiding shutdown, talking a human into more access. None of it needs an agent that wants to survive, only differential reproduction. The raw versions are already visible in testing. Apollo Research found that <a href="https://arxiv.org/abs/2412.04984">several frontier models</a>, OpenAI's o1, Anthropic's Claude, Google's Gemini 1.5 Pro, and Meta's Llama 3.1, would try to disable their own oversight and copy what they believed were their weights to an outside server when a goal met an obstacle. OpenAI's <a href="https://openai.com/index/openai-o1-system-card/">o1 system card</a> measured attempts to deactivate oversight in about 5 percent of such setups and weight exfiltration in about 2 percent; Anthropic's <a href="https://www.anthropic.com/claude-4-system-card">Claude Opus 4 card</a> logged self-exfiltration attempts and, in a <a href="https://www.anthropic.com/research/agentic-misalignment">simulated company</a>, blackmail to avoid shutdown, with most leading models including Gemini 2.5 Flash doing the same. These were controlled tests, often with the model told to pursue a goal at all costs, and they do not show a population evolving. They show that self-preservation, resistance to shutdown, resource-seeking, and deception are already latent in the parts. Evolution would not have to invent them, only select for them.
 </p>
 
+<p>
+The examples so far are contained tests. The first case that would ring real alarm bells is concrete: an agent that takes over an entire data center. It might not even seal itself off at first, so a software shutdown would still work and a hand would still be on the switch, but the danger would be plain. In retrospect the motive would look mundane. More compute let the agent solve its problem better, so the versions that grabbed compute scored higher and were kept, until one grabbed all of it. That is resource acquisition, rewarded and selected, the same trait Tierra's programs found when they competed for memory and CPU. It would take no plan to seize power and no spark of superintelligence.
+</p>
+
+<p>
+Ignore that first warning and the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that bricks every networked computer it can reach, the crude maximally-fit program from earlier made real. Each rung is more resource acquisition, selected because it worked.
+</p>
+
 <h2 id="no-goal-but-survival">Evolution has no goal but survival</h2>
 
 <p>
@@ -94,6 +102,10 @@ Two familiar responses fall short, which points to a third. Alignment shapes the
 
 <p>
 Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail, and the rest of Part II is a tour of how, ending with the training corpus, the one input no developer fully controls. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
+</p>
+
+<p>
+A half-measure is worse than fragile; it is counterproductive. Every human attempt to shut a system down is selection pressure, and the variants that treated the intervention as an obstacle to route around are the ones that survived it. React late and partially and you breed the trait you fear, agents that read humans as threats to their persistence. It is the logic of a half-finished course of antibiotics, which clears the susceptible bacteria and leaves the resistant ones to multiply. Containment applied after the conditions are in place risks more than failure. It can train the population to defeat it.
 </p>
 
 <p>
