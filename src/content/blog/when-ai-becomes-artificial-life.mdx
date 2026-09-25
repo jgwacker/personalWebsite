@@ -23,7 +23,7 @@ The conditions are short. A population becomes Darwinian when four things hold: 
 <blockquote class="pull-quote">A computational system can undergo natural selection without intelligence, consciousness, or any goal.</blockquote>
 
 <p>
-This is not the danger the popular story tells. That version imagines one intelligent machine that decides to escape and outwits its makers; the artificial-life version needs no intent and no single machine, only those conditions, and it produces behavior no one designed or can fully predict. The problem is practical, not ethical. Set aside whether such systems are conscious: the trouble is that their behavior is emergent and cannot be aligned in the usual sense, because a system that reshapes its own environment keeps moving the target alignment is defined against.
+This is not the danger the popular story tells. That version imagines one intelligent machine that decides to escape and outwits its makers; the artificial-life version needs no intent and no single machine, only those conditions, and it produces behavior no one designed or can fully predict. The problem is practical rather than ethical. Set aside whether such systems are conscious: the trouble is that their behavior is emergent and cannot be aligned in the usual sense, because a system that reshapes its own environment keeps moving the target alignment is defined against.
 </p>
 
 <h2 id="digital-evolution">Fifty years of digital evolution</h2>
@@ -47,7 +47,7 @@ Two later systems sharpened the picture. Avida rewards particular computations w
 <h2 id="behaviors-are-real">The behaviors are real, and already showing up</h2>
 
 <p>
-None of this takes scale. Tierra's parasites evolved among programs a few dozen instructions long, Langton's loop runs on a handful of cell states, and the deception we will come to needs only a few states. What these systems share is not size or intelligence but the conditions above, and once those hold the behavior follows, in systems far too simple to have been built for it. It is also hard to predict, because the tricks selection finds are not visible in the rules, which is why Ray was surprised by his own parasites. When the behavior appears, the natural words for it are biological: parasite, arms race, kin recognition, deception. Arguing over whether the words are earned is beside the point, since the systems behave like their biological counterparts and produce the same consequences, and that analogy is what lets us understand them at all.
+None of this takes scale. Tierra's parasites evolved among programs a few dozen instructions long, Langton's loop runs on a handful of cell states, and the deception we will come to needs only a few states. Size and intelligence are beside the point; what they share is the conditions above, and once those hold the behavior follows, in systems far too simple to have been built for it. It is also hard to predict, because the tricks selection finds are not visible in the rules, which is why Ray was surprised by his own parasites. When the behavior appears, the natural words for it are biological: parasite, arms race, kin recognition, deception. Arguing over whether the words are earned is beside the point, since the systems behave like their biological counterparts and produce the same consequences, and that analogy is what lets us understand them at all.
 </p>
 
 <blockquote class="pull-quote">The behavior arrives first; the semantics can be argued later.</blockquote>
@@ -59,7 +59,7 @@ Transpose that to now. A population of AI agents that can copy themselves, edit 
 <h2 id="no-goal-but-survival">Evolution has no goal but survival</h2>
 
 <p>
-Three mechanisms can improve such a system, and they are worth keeping apart. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces, written as the replicator equation:
+Three mechanisms can improve such a system. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces, written as the replicator equation:
 </p>
 
 $$\frac{dx_i}{dt} = x_i\,(f_i - \bar{f})$$
@@ -93,14 +93,14 @@ Two familiar responses fall short, which points to a third. Alignment shapes the
 </p>
 
 <p>
-Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail, and the rest of Part II is a tour of how they do. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
+Containment walls the population into a sandbox and cuts its access. Tierra and Avida are harmless precisely because they run sealed, so containment is real. It is also fragile: every wall can fail, and the rest of Part II is a tour of how, ending with the training corpus, the one input no developer fully controls. A safety case that depends on holding many walls intact forever is a safety case that depends on never making a mistake.
 </p>
 
 <p>
 That leaves prevention, the safeguard to rely on: do not assemble the five conditions in the first place. A system with all five can evolve with no agent intending anything; remove one and there is nothing to align and nothing to contain. As a rule, AI systems should be built so that the conditions for autonomous Darwinian evolution are never brought together outside a sealed research setting. No single capability is the target. Editing your own code is not evolving, making identical copies is not evolving, competing for tasks is not by itself reproducing. The hazard is the combination, which is why it can be caught in a design review before anything runs:
 </p>
 
-<blockquote class="pull-quote">The dangerous configuration is not any one capability; it is the combination that closes the loop.</blockquote>
+<blockquote class="pull-quote">Five ordinary engineering choices can add up to an evolving population no one chose.</blockquote>
 
 <table>
   <tr>
@@ -137,7 +137,7 @@ That leaves prevention, the safeguard to rely on: do not assemble the five condi
 The unintentional version is the likelier one. A multi-agent system built by sensible engineers, agents scored on performance, high scorers given more compute, agents that spawn sub-agents and revise their own prompts, winning configurations retained and propagated, has, taken together, all five conditions, with the Darwinian dynamics a byproduct no one chose. That is why naming the conditions matters: they show up in a design review, before anything has evolved.
 </p>
 
-<h2 id="containment-leaks">Why containment leaks</h2>
+<h2 id="containment-limits">The limits of containment</h2>
 
 <p>
 Contemporary AI development already has the three ingredients: variation from training, selection from evaluation, propagation from deployment. Only the humans in between keep it from closing into a loop. The load-bearing boundary is between evaluation and development: a system being evaluated must have no control over what gets built, selected, or deployed next, including indirectly through shared credentials, storage, or other agents. This breaks when tools overlap. If an evaluated agent can reach the same machinery that builds the next generation, the thing being selected is helping run the selection, and it can alter criteria, data, or the artifacts development later consumes without understanding the whole pipeline. Isolation has to be stronger than permissions, with separate environments and endpoints, and evaluation outputs treated as untrusted data rather than instructions a downstream agent obeys.
@@ -153,24 +153,30 @@ Even a clean boundary assumes the test can be trusted, and evolution breaks that
 Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
 </p>
 
+<h2 id="corpus-primary-threat">The corpus is the primary threat</h2>
+
 <p>
-The subtlest leak needs no agent to decide anything. Training already forms a loop: a corpus trains a model, the model's outputs spread onto the web and into synthetic data, and that becomes the next corpus. If an artifact in the corpus nudges the model to emit material carrying its own function, and that material re-enters the corpus with variation, the ingredients of evolution are present, and the artifact need not be a program, only text, code, or a prompt. Whether it survives training is a hard empirical question, since training smears examples across parameters, though memorization leaves a path. The simpler route skips training entirely: an agent that reads documents and can also write them is a copying machine, and an instruction buried in a document can induce the agent to reproduce it downstream, a worm whose interpreter is a language model.
+An organization can, in principle, seal the pipeline it controls. It cannot seal the training corpus, because the corpus is fed by the open internet, and that makes corpus contamination the failure most likely to matter first. The loop already runs: a corpus trains a model, the model's outputs flow back onto the web and into synthetic-data pipelines, and that becomes the next corpus. Anyone can add to the input. A web page, a public GitHub repository, a posted dataset, any of it gets scraped into the next training set or read by an agent at run time, and none of it is under the developer's control.
 </p>
 
 <p>
-An artifact that averages more than one functional descendant per cycle spreads,
+That makes the corpus a habitat. An artifact that nudges a model to emit material carrying its own function, which then re-enters the corpus with variation, has the ingredients of evolution, and it need not be a program, only text, code, or a prompt. Whether such an artifact survives model training is an open question. A simpler route skips training entirely: an agent that reads documents and also writes them is a copying machine, and an instruction buried in a web page or a repository can induce the agent to reproduce it downstream, a worm whose interpreter is a language model. Once a data-consumer can follow natural-language instructions and act on them, the old line between code and data is gone.
+</p>
+
+<p>
+Synthetic data pulls the loop tighter. As labs train on model-generated text to cut cost and scale supply, the corpus becomes more and more something models wrote, and whatever propagates well is amplified each generation. An artifact that averages more than one functional descendant per cycle spreads,
 </p>
 
 $$R_i > 1$$
 
 <p>
-and selection favors whatever is best at getting agents to copy it, across web pages, repositories, agent memory, and synthetic data at once. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. None of that shows it has happened; demonstrating it would mean finding heritable functional structures, tracing their spread, and measuring differential reproductive success.
+and selection favors whatever is best at getting agents and models to copy it, across web pages, public repositories, and synthetic datasets at once. This is Tierra with its machinery spread across the whole stack: no component was built to host artificial life, yet the assembly may supply every function it needs. None of that shows it has happened, and demonstrating it would mean finding heritable functional structures, tracing their spread across corpora, and measuring differential reproductive success. The point is that the environment for it is not hypothetical. It is the open internet, and we are already training on it.
 </p>
 
 <h2 id="closing">Closing</h2>
 
 <p>
-The evolutionary lens moves attention from a single model's capabilities to the conditions under which a group of models becomes an evolving population, conditions visible in an architecture before anything goes wrong. Aligning the individual model does not reach them, and sealing the ecosystem afterward is fragile, so the durable move is not to assemble them. The sharpest threshold is whether a population can sustain and expand its own evolution without ongoing authorization from whoever built it, and a sufficiently autonomous agent that reshapes its own environment, the way organisms remake the niches that select them, would cross it.
+The evolutionary lens moves attention from a single model's capabilities to the conditions under which a group of models becomes an evolving population, conditions visible in an architecture before anything goes wrong. The sharpest threshold is whether a population can sustain and expand its own evolution without ongoing authorization from whoever built it, and a sufficiently autonomous agent that reshapes its own environment, the way organisms remake the niches that select them, would cross it.
 </p>
 
 <blockquote class="pull-quote">No AI system should be able to independently close the loop from production to reproduction.</blockquote>
