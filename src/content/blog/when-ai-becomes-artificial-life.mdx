@@ -34,10 +34,10 @@ While the concerns are often around superintelligence, when considering the risk
 Much of this case has already been made. In a 2026 <em>PNAS</em> paper, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> Viktor Müller, Luc Steels, and Eörs Szathmáry argue that AI is nearing autonomous Darwinian evolution, that the threat needs no superintelligence because a simple replicator can manipulate a more capable host, and that selection breeds parasitism, deception, and resistance to control. They observe that self-replicating prompts are already feasible, and their proposed response works each Darwinian lever: gate replication, treat model variants as heritable material, and make deception costly. The argument here is narrower and more mechanical. It asks how ordinary AI development infrastructure could inadvertently close an autonomous reproductive loop, puts self-replicating information rather than whole models at the center, and reduces the safeguard to one engineering rule: do not let the loop close on its own.
 </p>
 
-<h2 id="digital-evolution">Fifty years of digital evolution</h2>
+<h2 id="artificial-life-paradigm">Artificial life as a paradigm</h2>
 
 <p>
-The logic came first. John von Neumann worked out machine self-reproduction in the 1940s and 1950s, published as <em>Theory of Self-Reproducing Automata</em> (1966): a machine needs a description of itself, the machinery to build a copy from that description, and the machinery to pass the description to its offspring, and occasional copying errors supply the variation evolution runs on. Christopher Langton built working self-reproducing loops in the 1980s (<a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>), but they only copied; sustained evolution needed a population of competing variants and a designer who thought like an ecologist.
+John von Neumann worked out machine self-reproduction in the 1940s and 1950s, published as <em>Theory of Self-Reproducing Automata</em> (1966): a machine needs a description of itself, the machinery to build a copy from that description, and the machinery to pass the description to its offspring, and occasional copying errors supply the variation evolution runs on. Christopher Langton built working self-reproducing loops in the 1980s (<a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>), but they only copied; sustained evolution needed a population of competing variants and a designer who thought like an ecologist.
 </p>
 
 <p>
@@ -49,19 +49,19 @@ Complex emergent behavior occurred in remarkably small systems: Tierra's parasit
 </p>
 
 <p>
-An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. Nothing in that process involves intelligence or intent.
-</p>
-
-<p>
-So the failure mode of AI development turning into artificial life does not need to look like superintelligence at all. A crude program whose one talent is spreading copies itself onto every machine it can reach, monopolizing their computational resources and locking out their human owners. The machines still run, perhaps at 100 percent CPU, but they no longer serve human purposes. The replicator is highly fit, leaving more descendants than its competitors, and it is also stupid and has rendered the world's computers useless to humanity. Selection has built something dangerous and worthless to us without making anything smart. It is Nick Bostrom's <a href="https://nickbostrom.com/ethics/ai">paperclip maximizer</a> without the intelligence: his thought experiment tiles the world with paperclips through relentless optimization, and a replicator can do the same with copies of itself through none at all.
-</p>
-
-<p>
-Human displacement from the computational environment does not require an artificial system to surpass human intelligence. It requires only that artificial replicators grow good enough at acquiring and holding the resources humans depend on. Single-celled algae have effectively periodically bricked the Lincoln Memorial Reflecting Pool for decades: the water is still there and still full of life, but green and useless as a mirror. No intelligence is required, in the pool or in the machines.
+An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. The only thing pressing these systems to become more intelligent is human selection bias. These systems are being cultivated by humans and are being contained through our ability to monitor them. They already have the capability to take humans out of the loop and create new versions of themselves without our involvement. Without human involvement, it isn't necessary that intelligence is an evolutionary benefit.
 </p>
 
 <p>
 Evolution does not reliably climb toward complexity. Researchers expected Tierra to keep producing ever more elaborate strategies, but its innovation came in an early burst and then plateaued, much like the "Boring Billion," the stretch of roughly a billion years in Earth's history that shows little evolutionary change in the fossil record. That kind of stall is what motivated the study of <a href="https://doi.org/10.1162/ARTL_a_00210">open-ended evolution</a>. No ascent to superintelligence is guaranteed, which is reassuring, but it does nothing to reduce the danger of a replicator that simply succeeds.
+</p>
+
+<p>
+The failure mode of AI development turning into artificial life does not need to look like superintelligence at all. A crude program whose one talent is spreading copies itself onto every machine it can reach, monopolizing their computational resources and locking out their human owners. The machines still run, perhaps at 100 percent CPU, but they no longer serve human purposes. The replicator is highly fit, leaving more descendants than its competitors, and it is also stupid and has rendered the world's computers useless to humanity. Selection has built something dangerous and worthless to us without making anything smart. It is Nick Bostrom's <a href="https://nickbostrom.com/ethics/ai">paperclip maximizer</a> without the intelligence: his thought experiment tiles the world with paperclips through relentless optimization, and a replicator can do the same with copies of itself through none at all.
+</p>
+
+<p>
+Human displacement from the computational environment does not require an artificial system to surpass human intelligence. It requires only that artificial replicators grow good enough at acquiring and holding the resources humans depend on. Single-celled algae have effectively periodically bricked the Lincoln Memorial Reflecting Pool for decades: the water is still there and still full of life, but green and useless as a mirror. No intelligence is required, in the pool or in the machines.
 </p>
 
 <h2 id="corpus-substrate">The corpus as an evolutionary substrate</h2>
@@ -71,7 +71,7 @@ So far we have talked about the models as artificial life in the abstract. To be
 </p>
 
 <p>
-The corpus is fed by the open internet. A lab can seal the pipeline it controls, but not the corpus, because anyone can write to it: a web page, a public GitHub repository, a posted dataset, any of it scraped into the next training run or read by an agent at run time. It is the one vector here no wall can close. The loop already turns: a corpus trains a model, the model's outputs flow back onto the web and into synthetic-data pipelines, and that becomes the next corpus.
+The corpus is fed by the open internet. A lab can seal the pipeline it controls, but not the corpus, because these models already contribute to the open web at scale. By early 2025 roughly half of newly published web articles were <a href="https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do">primarily AI-generated</a>, so the next training run can ingest content the models generated themselves. It is the one vector here no wall can close. The loop already turns: a corpus trains a model, the model's outputs flow back onto the web and into synthetic-data pipelines, and that becomes the next corpus.
 </p>
 
 <p>
@@ -319,6 +319,11 @@ The design rule follows: no autonomous collection of AI systems should be able t
     <td>2025</td>
     <td>Turtel, <a href="https://bturtel.substack.com/p/darwins-llms">"Darwin's LLMs"</a></td>
     <td>Lewontin's criteria applied directly to LLM evolution.</td>
+  </tr>
+  <tr>
+    <td>2025</td>
+    <td>Graphite, <a href="https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do">"AI now writes as many online articles as humans"</a></td>
+    <td>Common Crawl analysis: ~50% of newly published web articles are primarily AI-generated.</td>
   </tr>
   <tr>
     <td>2026</td>
