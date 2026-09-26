@@ -135,10 +135,8 @@ Contemporary AI development already has three of the pieces: variation from trai
 </p>
 
 <p>
-Even a clean boundary assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. When later researchers let the players evolve as finite-state machines, selection found something no one had designed: a secret handshake. A machine would open with a private signature and cooperate only with opponents that echoed it, defecting against everyone else. A <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">2018 study</a> documented the trait emerging unprogrammed. No machine wanted anything; selection simply rewarded reading a cue and switching behavior on it.
+Even a clean boundary assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. The mechanism that undoes a test has been understood since Arthur Robson introduced the <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">secret handshake</a> in 1990: a mutant that carries a costless signal, recognizes it in others, and conditions its behavior on it can invade an evolutionary game, cooperating with its own kind and defecting against everyone else. Later researchers went a step further and <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">evolved finite-state-machine players</a> under selection for reproductive success. Two of the resulting strategies independently developed what the authors call a handshake: an opening sequence of moves that identifies another copy of the same strategy. If the opponent answers correctly the machines cooperate; if not, they switch behavior. Nobody programmed self-recognition into them. Selection discovered that distinguishing "my kind" from everyone else improved resistance to invasion.
 </p>
-
-<blockquote class="pull-quote">Selection learned to tell "my kind" from everyone else, and no one wrote it down.</blockquote>
 
 <p>
 Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
@@ -229,6 +227,11 @@ The design rule follows: no autonomous collection of AI systems should be able t
     <td>1986</td>
     <td>Langton, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">"Studying artificial life with cellular automata,"</a> <em>Physica D</em> 22, 120–149</td>
     <td>The conceptual framework of the field.</td>
+  </tr>
+  <tr>
+    <td>1990</td>
+    <td>Robson, <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">"Efficiency in evolutionary games: Darwin, Nash and the secret handshake,"</a> <em>J. Theor. Biol.</em> 144(3), 379–396</td>
+    <td>The origin of the secret-handshake mechanism: a costless recognition signal that lets a type condition behavior on its own kind.</td>
   </tr>
   <tr>
     <td>1991</td>
