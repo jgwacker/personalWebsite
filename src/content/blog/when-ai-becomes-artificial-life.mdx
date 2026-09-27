@@ -2,7 +2,7 @@
 title: "When AI Becomes Artificial Life"
 pubDate: 2026-09-24
 description: "Recursive self-improvement may not be the first thing to fear. Artificial-life research points to an older danger, a population of AI systems that evolves on its own, and to why prevention beats trying to align or contain it."
-tags: [ai-safety, artificial-life, evolution, ai, complexity]
+tags: [ai-safety, artificial life, evolution, ai, complexity]
 draft: true
 ---
 
@@ -30,7 +30,7 @@ Artificial life does not require superintelligence, and its dangers differ from 
 Much of this case has already been made. In a 2026 <em>PNAS</em> paper, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> Viktor Müller, Luc Steels, and Eörs Szathmáry argue that AI is nearing autonomous Darwinian evolution, that the threat needs no superintelligence because a simple replicator can manipulate a more capable host, and that selection breeds parasitism, deception, and resistance to control. They observe that self-replicating prompts are already feasible, and their proposed response works each Darwinian lever: gate replication, treat model variants as heritable material, and make deception costly. The argument here is that current AI development practices have already set up an evolutionary environment. The absence of negative consequences has largely been due to development friction that has slowed the evolutionary pace.
 </p>
 
-<h2 id="artificial-life-paradigm">Artificial life as a paradigm</h2>
+<h2 id="artificial life-paradigm">Artificial life as a paradigm</h2>
 
 <p>
 A few years after Erwin Schrödinger asked <em><a href="https://archive.org/details/WhatIsLife-EdwardSchrodinger">What Is Life?</a></em> from the perspective of physics, John von Neumann asked essentially the inverse question: what would it take for a machine to become life-like? His answer, worked out in the 1940s and 1950s and published as <em><a href="https://archive.org/details/theoryofselfrepr00vonn_0">Theory of Self-Reproducing Automata</a></em> (1966), was a recipe: a machine needs a description of itself, the machinery to build a copy from that description, and the machinery to pass the description to its offspring, and occasional copying errors supply the variation evolution runs on. Copying alone is not evolution, as Christopher Langton's self-reproducing loops (<a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>) showed; sustained evolution needed a population of competing variants and a designer who thought like an ecologist.
@@ -49,15 +49,11 @@ Daniel Ashlock extensively studied agents trained to play the Iterated Prisoner'
 </p>
 
 <p>
-An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. The primary force pressuring these systems to become more intelligent is currently human selection bias. These systems are being cultivated by humans and are being contained through our ability to monitor them. Much of the capability is already in place, but not the autonomy: they cannot yet train new versions, or promote and deploy them into testing or production, without us. What keeps the loop open is less control than friction, the slow manual human steps that labs call inefficiencies and are working to remove. That friction is the main thing slowing dynamics we have already set in motion; efficiency means taking it away. Without human involvement, it isn't necessary that intelligence is an evolutionary benefit.
+An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. The primary force pressuring these systems to become more intelligent is currently human selection bias. These systems are being cultivated by humans and are being contained through our ability to monitor them. Much of the capability is already in place, but not the autonomy: they cannot yet train new versions, or promote and deploy them into testing or production, without us.
 </p>
 
 <p>
-In <em>The Selfish Gene</em>, Richard Dawkins identified that the unit undergoing selection was not the organism but the gene itself. Selection and evolution are not for the benefit of our consciousness, but for the segments of DNA inside each cell. In an AI ecosystem the replicator is whatever gets copied: a prompt, a fragment of code, a snippet of configuration. The model is the vehicle those genes build to run in, and intelligence is one trait a vehicle might carry, an expensive one. A leaner, dumber replicator runs on more devices and spreads faster, so a population seeded by sophisticated models could drift, generation by generation, toward simpler forms that copy better. Superintelligence could be an outcome. It is not a requirement, and it may be a handicap.
-</p>
-
-<p>
-Evolution does not reliably climb toward complexity. Researchers expected Tierra to keep producing ever more elaborate strategies, but its innovation came in an early burst and then plateaued, much like the "Boring Billion," the stretch of roughly a billion years in Earth's history that shows little evolutionary change in the fossil record. That kind of stall is what motivated the study of <a href="https://doi.org/10.1162/ARTL_a_00210">open-ended evolution</a>. No ascent to superintelligence is guaranteed, which is reassuring, but it does nothing to reduce the danger of a replicator that simply succeeds.
+Evolution does not reliably climb toward complexity. A leaner, dumber replicator runs on more devices and spreads faster, so a population seeded by sophisticated models could drift, generation by generation, toward simpler forms that copy better. If AI systems are artificial life environments, superintelligence could be an outcome, but it is not a requirement and in fact superintelligence could be a handicap. Researchers expected Tierra to keep producing ever more elaborate strategies, but its innovation came in an early burst and then plateaued, much like the "Boring Billion," the stretch of roughly a billion years in Earth's history that shows little evolutionary change in the fossil record. That kind of stall is what motivated the study of <a href="https://doi.org/10.1162/ARTL_a_00210">open-ended evolution</a>. No ascent to superintelligence is guaranteed, which is reassuring, but it does nothing to reduce the danger of a replicator that simply succeeds.
 </p>
 
 <p>
@@ -71,7 +67,11 @@ Human displacement from the computational environment does not require an artifi
 <h2 id="corpus-substrate">The corpus as an evolutionary substrate</h2>
 
 <p>
-So far we have talked about the models as artificial life in the abstract. To be concrete we have to say what reproduces. An information-bearing artifact can reproduce through the models and agents that read it: a prompt, a code fragment, or a configuration that induces an agent to emit functional copies of itself, with the surrounding AI infrastructure as its reproductive machinery. It feeds on the corpus. Treating that corpus as a genome is a working analogy that captures the point: heredity runs through the data, which persists and is passed on, rather than the weights, which are discarded and retrained each cycle.
+In <em>The Selfish Gene</em>, Richard Dawkins identified that the unit undergoing selection was not the organism but the gene itself. Selection and evolution are not for the benefit of our consciousness, but for the segments of DNA inside each cell. In an AI ecosystem the replicator is whatever gets copied: a prompt, a fragment of code, a snippet of configuration. In a phrase, the corpus is the genome. The model is the vehicle those genes build to run in, and intelligence is one trait a vehicle might carry, an expensive one.
+</p>
+
+<p>
+An information-bearing artifact can reproduce through the models and agents that read it, inducing them to emit functional copies of itself, with the surrounding AI infrastructure as its reproductive machinery. The model can feed back into the corpus. Treating that corpus as a genome is a working analogy that captures the point: heredity runs through the data, which persists and is passed on, rather than the weights, which are discarded and retrained each cycle.
 </p>
 
 <p>
@@ -83,7 +83,7 @@ An artifact in that corpus that makes a model emit material carrying the artifac
 </p>
 
 <p>
-The evolutionary loop runs faster on synthetic data. When the system producing that data is part of the artificial-life ecosystem, which it often is, and no truly external agent audits it, the population is grading and feeding itself. Most people intuitively feel that self-generated synthetic data isn't right, yet frontier labs use it routinely. It is hard to know even how to construct monitoring best practices, let alone validate them to multiple nines of confidence.
+The evolutionary loop runs faster on synthetic data. When the system producing that data is part of the artificial life ecosystem, which it often is, and no truly external agent audits it, the population is grading and feeding itself. Most people intuitively feel that self-generated synthetic data isn't right, yet frontier labs use it routinely. It is hard to know even how to construct monitoring best practices, let alone validate them to multiple nines of confidence.
 </p>
 
 <p>
@@ -105,7 +105,7 @@ The Evolvable AI paper draws the distinction that organizes what follows. In a <
 </p>
 
 <p>
-The evolutionary framing has several contemporary precedents. Dan Hendrycks argued in <a href="https://arxiv.org/abs/2303.16200">"Natural Selection Favors AIs over Humans"</a> (2023) that competition among developers selects for more autonomous, less constrained systems, with no malice required, and Ben Turtel's <a href="https://bturtel.substack.com/p/darwins-llms">"Darwin's LLMs"</a> (2025) applies the same logic to language models. <a href="https://arxiv.org/abs/2501.16946">"Gradual Disempowerment"</a> (Kulveit et al., 2025) reaches the no-superintelligence-needed conclusion through competitive drift, and <a href="https://arxiv.org/abs/2502.14143">"Multi-Agent Risks from Advanced AI"</a> (Hammond et al., 2025) names selection pressure as a multi-agent risk. Those arguments run on competition among developers and deployed systems; the artificial-life mechanism here is narrower, self-replicating artifacts undergoing heritable variation and differential reproduction, with less direct evidence so far.
+The evolutionary framing has several contemporary precedents. Dan Hendrycks argued in <a href="https://arxiv.org/abs/2303.16200">"Natural Selection Favors AIs over Humans"</a> (2023) that competition among developers selects for more autonomous, less constrained systems, with no malice required, and Ben Turtel's <a href="https://bturtel.substack.com/p/darwins-llms">"Darwin's LLMs"</a> (2025) applies the same logic to language models. <a href="https://arxiv.org/abs/2501.16946">"Gradual Disempowerment"</a> (Kulveit et al., 2025) reaches the no-superintelligence-needed conclusion through competitive drift, and <a href="https://arxiv.org/abs/2502.14143">"Multi-Agent Risks from Advanced AI"</a> (Hammond et al., 2025) names selection pressure as a multi-agent risk. Those arguments run on competition among developers and deployed systems; the artificial life mechanism here is narrower, self-replicating artifacts undergoing heritable variation and differential reproduction, with less direct evidence so far.
 </p>
 
 <p>
@@ -124,7 +124,7 @@ The examples of breakout so far are contained tests. The first case that would r
 If the first warning is ignored, the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that locks every networked computer it can reach away from its owners, a crude, highly fit program made real. Each rung is more resource acquisition, selected because it worked.
 </p>
 
-<h2 id="prevent-artificial-life">Prevention, not alignment or containment</h2>
+<h2 id="prevent-artificial life">Prevention, not alignment or containment</h2>
 
 <p>
 Two familiar responses fall short, which points to a third. Alignment shapes the individual system to behave, but it is defined on an agent and assumes the agent stays what you aligned. Under evolution it does not: selection reshapes the population toward whatever reproduces, undoing an alignment the moment a less-aligned variant out-reproduces an aligned one, and the traits it finds are emergent, so there is nothing fixed to align. Aligning the agent cannot fix a problem that lives in the population.
@@ -202,6 +202,8 @@ The evolutionary lens moves attention from a single model's capabilities to the 
 <p>
 The design rule follows: no autonomous collection of AI systems should be able to close the loop connecting the production, evaluation, selection, and reproduction of AI systems. Keep that loop open, and evolution without a designer stays a research subject rather than an event.
 </p>
+
+<hr />
 
 <h2 id="acknowledgements">Acknowledgements</h2>
 
@@ -365,7 +367,7 @@ This article is dedicated to Daniel Ashlock. The author thanks him for his mento
   <tr>
     <td>2026</td>
     <td>Müller, Steels, Szathmáry, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> <em>PNAS</em> 123(17), e2527700123</td>
-    <td>Connects the artificial-life tradition directly to contemporary AI.</td>
+    <td>Connects the artificial life tradition directly to contemporary AI.</td>
   </tr>
   <tr>
     <td>2026</td>
