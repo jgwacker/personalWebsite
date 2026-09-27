@@ -23,7 +23,7 @@ A population becomes Darwinian when four things hold: reproduction, copies get m
 <blockquote class="pull-quote">A computational system can undergo natural selection without intelligence, consciousness, or any goal.</blockquote>
 
 <p>
-Artificial life does not require superintelligence, and its dangers differ from the ones the popular debate focuses on (see, for instance, <a href="https://x.com/yishan/status/2100112647811408291">Yishan Wong</a>). That debate borrows the language of biology, casting AI as a rival species that displaces us the way we displaced weaker ones. Artificial life makes this biological analogy literal. Natural selection can favor a slow, dumb replicator that is specialized for its environment over a slower, resource-intensive replicator. Superintelligence isn't necessary, and the vectors humans must defend against are different. Evolution is producing behavior no one designed and no one can predict in advance. The concern is not the ethics of intelligent or living systems, whether they are conscious or owed anything. The problem is that their behavior is emergent, and aligning it is like containing an invasive species. Even a simple one is very hard to remove. Alignment places evolutionary pressure on the system, and a self-replicating population adapts to that pressure and reshapes its environment to blunt it. Periodic inspection of its behavior is not enough to control a living system.
+Artificial life does not require superintelligence, and its dangers differ from the ones the popular debate focuses on (see, for instance, <a href="https://x.com/yishan/status/2100112647811408291">Yishan Wong</a>). That debate borrows the language of biology, casting AI as a rival species that displaces us the way we displaced weaker ones. Artificial life makes this biological analogy literal. Natural selection can favor a fast, dumb replicator that is specialized for its environment over a slower, resource-intensive replicator. Superintelligence isn't necessary, and the vectors humans must defend against are different. Evolution is producing behavior no one designed and no one can predict in advance. The concern is not the ethics of intelligent or living systems, whether they are conscious or owed anything. The problem is that their behavior is emergent, and aligning it is like containing an invasive species. Even a simple one is very hard to remove. Alignment places evolutionary pressure on the system, and a self-replicating population adapts to that pressure and reshapes its environment to blunt it. Periodic inspection of its behavior is not enough to control a living system.
 </p>
 
 <p>
@@ -33,7 +33,7 @@ Much of this case has already been made. In a 2026 <em>PNAS</em> paper, <a href=
 <h2 id="artificial-life-paradigm">Artificial life as a paradigm</h2>
 
 <p>
-John von Neumann worked out machine self-reproduction in the 1940s and 1950s, published as <em>Theory of Self-Reproducing Automata</em> (1966): a machine needs a description of itself, the machinery to build a copy from that description, and the machinery to pass the description to its offspring, and occasional copying errors supply the variation evolution runs on. Christopher Langton built working self-reproducing loops in the 1980s (<a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>), but they only copied; sustained evolution needed a population of competing variants and a designer who thought like an ecologist.
+A few years after Erwin Schrödinger asked <em><a href="https://archive.org/details/WhatIsLife-EdwardSchrodinger">What Is Life?</a></em> from the perspective of physics, John von Neumann asked essentially the inverse question: what would it take for a machine to become life-like? His answer, worked out in the 1940s and 1950s and published as <em><a href="https://archive.org/details/theoryofselfrepr00vonn_0">Theory of Self-Reproducing Automata</a></em> (1966), was a recipe: a machine needs a description of itself, the machinery to build a copy from that description, and the machinery to pass the description to its offspring, and occasional copying errors supply the variation evolution runs on. Copying alone is not evolution, as Christopher Langton's self-reproducing loops (<a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>) showed; sustained evolution needed a population of competing variants and a designer who thought like an ecologist.
 </p>
 
 <p>
@@ -42,6 +42,10 @@ Thomas Ray, an evolutionary ecologist, supplied both when he built Tierra around
 
 <p>
 Complex emergent behavior occurred in remarkably small systems: Tierra's parasites were programs only dozens of instructions long. Parasitism, competition, and evolutionary arms races followed from reproduction and selection, not from intelligence or design. Many of the programs and strategies were hard to grasp, and it is important to have humility about our ability to understand emergent phenomena in more complex systems.
+</p>
+
+<p>
+Daniel Ashlock extensively studied agents trained to play the Iterated Prisoner's Dilemma and found behaviors that are relevant to understanding artificial life more generally. Letting agents choose and refuse their partners, he and colleagues found that changing the <a href="https://doi.org/10.1016/0303-2647(95)01548-5">rules of interaction</a> produced qualitatively different ecologies, from near-universal cooperation to populations of isolated "wallflowers": the agents adapted not to the game but to the structure around it. And the evolved strategies were often opaque enough that the researchers built behavioral <a href="https://doi.org/10.1109/TEVC.2008.920675">fingerprints</a> to recover what the agents were actually doing, because evolution produced them faster than anyone could read them.
 </p>
 
 <p>
@@ -135,6 +139,10 @@ Contemporary AI development already has three of the pieces: variation from trai
 </p>
 
 <p>
+Evolutionary computation shows the deeper problem plainly. Ashlock, Brown, and Hingston evolved Prisoner's Dilemma agents against a fixed panel of opponents they called an <a href="https://ieeexplore.ieee.org/document/6819427/">examination board</a>, whose scores were the fitness function, and different boards produced different evolved agents. Once an evaluation decides what reproduces, it is no longer measuring the population; it is part of the environment selecting it.
+</p>
+
+<p>
 Even a clean boundary assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. The evolutionary mechanism behind this has been understood since Arthur Robson introduced the <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">secret handshake</a> in 1990: a mutant that carries a costless signal, recognizes it in others, and conditions its behavior on it can invade an evolutionary game, cooperating with its own kind and defecting against everyone else. Later researchers went a step further and <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">evolved finite-state-machine players</a> under selection for reproductive success. Two of the resulting strategies independently developed what the authors call a handshake: an opening sequence of moves that identifies another copy of the same strategy. If the opponent answers correctly the machines cooperate; if not, they switch behavior. Nobody programmed self-recognition into them. Selection discovered that distinguishing "my kind" from everyone else improved resistance to invasion.
 </p>
 
@@ -195,6 +203,12 @@ The evolutionary lens moves attention from a single model's capabilities to the 
 The design rule follows: no autonomous collection of AI systems should be able to close the loop connecting the production, evaluation, selection, and reproduction of AI systems. Keep that loop open, and evolution without a designer stays a research subject rather than an event.
 </p>
 
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>
+This article is dedicated to Daniel Ashlock. The author thanks him for his mentorship and collaboration on artificial life from 1996–1998.
+</p>
+
 <h2 id="further-reading">Reference and Further Reading</h2>
 
 <table>
@@ -204,8 +218,13 @@ The design rule follows: no autonomous collection of AI systems should be able t
     <th>Why it matters</th>
   </tr>
   <tr>
+    <td>1944</td>
+    <td>Schrödinger, <em><a href="https://archive.org/details/WhatIsLife-EdwardSchrodinger">What Is Life?</a></em>, Cambridge University Press</td>
+    <td>The physicist's question that von Neumann inverted: what physical conditions make life possible.</td>
+  </tr>
+  <tr>
     <td>1966</td>
-    <td>von Neumann (ed. Burks), <em>Theory of Self-Reproducing Automata</em>, University of Illinois Press</td>
+    <td>von Neumann (ed. Burks), <em><a href="https://archive.org/details/theoryofselfrepr00vonn_0">Theory of Self-Reproducing Automata</a></em>, University of Illinois Press</td>
     <td>The logic of machine reproduction with heritable variation.</td>
   </tr>
   <tr>
@@ -239,6 +258,11 @@ The design rule follows: no autonomous collection of AI systems should be able t
     <td>A digital evolutionary ecosystem that produced parasitism unbidden.</td>
   </tr>
   <tr>
+    <td>1996</td>
+    <td>Ashlock, Smucker, Stanley, Tesfatsion, <a href="https://doi.org/10.1016/0303-2647(95)01548-5">"Preferential partner selection in an evolutionary study of the prisoner's dilemma,"</a> <em>BioSystems</em> 37, 99–125</td>
+    <td>Changing the ecology of interaction changes what evolves, from cooperation to isolated "wallflowers."</td>
+  </tr>
+  <tr>
     <td>1999</td>
     <td>Lenski, Ofria, Collier, Adami, <a href="https://doi.org/10.1038/23245">"Genome complexity, robustness and genetic interactions in digital organisms,"</a> <em>Nature</em> 400, 661–664</td>
     <td>The genetic architecture of evolved digital organisms.</td>
@@ -254,9 +278,19 @@ The design rule follows: no autonomous collection of AI systems should be able t
     <td>The paperclip maximizer: catastrophe from a single goal optimized without regard for human values.</td>
   </tr>
   <tr>
+    <td>2008</td>
+    <td>Ashlock &amp; Kim, <a href="https://doi.org/10.1109/TEVC.2008.920675">"Fingerprinting: Visualization and Automatic Analysis of Prisoner's Dilemma Strategies,"</a> <em>IEEE Trans. Evolutionary Computation</em> 12(5), 647–659</td>
+    <td>Evolved strategies grow opaque; behavioral fingerprints recover what they actually do.</td>
+  </tr>
+  <tr>
     <td>2009</td>
     <td>Yaeger, <a href="https://doi.org/10.2976/1.3233712">"How evolution guides complexity,"</a> <em>HFSP Journal</em> 3(5), 328–339</td>
     <td>Polyworld: neural complexity evolving in a computational ecology.</td>
+  </tr>
+  <tr>
+    <td>2015</td>
+    <td>Ashlock, Brown, Hingston, <a href="https://ieeexplore.ieee.org/document/6819427/">"Multiple Opponent Optimization of Prisoner's Dilemma Playing Agents,"</a> <em>IEEE Trans. Computational Intelligence and AI in Games</em></td>
+    <td>An "examination board" of fixed opponents becomes the fitness function: evaluation is part of selection.</td>
   </tr>
   <tr>
     <td>2016</td>
