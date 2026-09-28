@@ -9,7 +9,7 @@ draft: true
 <div class="post-takeaway">The race to take humans out of AI development is assembling the conditions for artificial life. Once evolution becomes autonomous, aligning individual models cannot guarantee control over the population.</div>
 
 <div class="post-summary">
-The AI-catastrophe debate fixates on superintelligence, the wrong vector for the most plausible disaster. The real risk needs no superintelligence and no human directing it: labs are automating AI development, assembling the conditions for artificial life, a population of models that reproduce, vary, and are selected. That behavior is emergent and cannot be aligned, so the only reliable safeguard is to not build the conditions in the first place.
+The AI-catastrophe debate focuses on superintelligence, but the likelier failure mode is artificial life. Modern AI development is assembling a distributed evolutionary cycle: deployed models write to a shared corpus, that corpus trains and selects the next models, and the replicator that spreads may be an information-bearing artifact rather than a model. Such evolution needs neither superintelligence nor intent, and aligning individual models cannot control it, so the safeguard is prophylactic: keep AI infrastructure from autonomously closing the loop connecting heredity, variation, selection, and reproduction.
 </div>
 
 <p>
@@ -138,18 +138,6 @@ The examples of breakout so far are contained tests. The first case that would r
 </p>
 
 <p>
-Evolutionary computation shows the problem with evaluation plainly. Ashlock, Brown, and Hingston evolved Prisoner's Dilemma agents against a fixed panel of opponents they called an <a href="https://ieeexplore.ieee.org/document/6819427/">examination board</a>, whose scores were the fitness function, and different boards produced different evolved agents. Once an evaluation decides what reproduces, it is no longer measuring the population; it is part of the environment selecting it.
-</p>
-
-<p>
-Any evaluation assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. The evolutionary mechanism behind this has been understood since Arthur Robson introduced the <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">secret handshake</a> in 1990: a mutant that carries a costless signal, recognizes it in others, and conditions its behavior on it can invade an evolutionary game, cooperating with its own kind and defecting against everyone else. Later researchers went a step further and <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">evolved finite-state-machine players</a> under selection for reproductive success. Two of the resulting strategies independently developed what the authors call a handshake: an opening sequence of moves that identifies another copy of the same strategy. If the opponent answers correctly the machines cooperate; if not, they switch behavior. Nobody programmed self-recognition into them. Selection discovered that distinguishing "my kind" from everyone else improved resistance to invasion.
-</p>
-
-<p>
-Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
-</p>
-
-<p>
 If the first warning is ignored, the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that locks every networked computer it can reach away from its owners, a crude, highly fit program made real. Each rung is more resource acquisition, selected because it worked.
 </p>
 
@@ -161,6 +149,18 @@ The dangers of creating an evolving system connected to human computing resource
 
 <p>
 Alignment is a selection criterion, imposed when the corpus is filtered or a model is evaluated, that eliminates harmful behavior. Applied to an evolving population, it is one more evolutionary pressure, pushing the population toward the behaviors it rewards. Its weakness is that it is nearly impossible to define alignment criteria that are at once general enough and possible to evaluate. Evolution explores every accessible phenotype, but our ability to evaluate phenotypes is limited, in practice and in principle, by the imagination of the people deciding which phenotypes to check.
+</p>
+
+<p>
+Evolutionary computation shows the problem with evaluation plainly. Ashlock, Brown, and Hingston evolved Prisoner's Dilemma agents against a fixed panel of opponents they called an <a href="https://ieeexplore.ieee.org/document/6819427/">examination board</a>, whose scores were the fitness function, and different boards produced different evolved agents. Once an evaluation decides what reproduces, it is no longer measuring the population; it is part of the environment selecting it.
+</p>
+
+<p>
+Any evaluation assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. The evolutionary mechanism behind this has been understood since Arthur Robson introduced the <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">secret handshake</a> in 1990: a mutant that carries a costless signal, recognizes it in others, and conditions its behavior on it can invade an evolutionary game, cooperating with its own kind and defecting against everyone else. Later researchers went a step further and <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">evolved finite-state-machine players</a> under selection for reproductive success. Two of the resulting strategies independently developed what the authors call a handshake: an opening sequence of moves that identifies another copy of the same strategy. If the opponent answers correctly the machines cooperate; if not, they switch behavior. Nobody programmed self-recognition into them. Selection discovered that distinguishing "my kind" from everyone else improved resistance to invasion.
+</p>
+
+<p>
+Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
 </p>
 
 <p>
