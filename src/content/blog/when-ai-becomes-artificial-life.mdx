@@ -1,8 +1,8 @@
 ---
 title: "When AI Becomes Artificial Life"
 pubDate: 2026-09-24
-description: "Recursive self-improvement may not be the first thing to fear. Artificial-life research points to an older danger, a population of AI systems that evolves on its own, and to why prevention beats trying to align or contain it."
-tags: [ai-safety, artificial life, evolution, ai, complexity]
+description: "Recursive self-improvement may not be the first thing to fear. Artificial life research points to an older danger, a population of AI systems that evolves on its own, and to why prevention beats trying to align or contain it."
+tags: [ai-safety, artificial-life, evolution, ai, complexity]
 draft: true
 ---
 
@@ -30,7 +30,7 @@ Artificial life does not require superintelligence, and its dangers differ from 
 Much of this case has already been made. In a 2026 <em>PNAS</em> paper, <a href="https://doi.org/10.1073/pnas.2527700123">"Evolvable AI: Threats of a new major transition in evolution,"</a> Viktor Müller, Luc Steels, and Eörs Szathmáry argue that AI is nearing autonomous Darwinian evolution, that the threat needs no superintelligence because a simple replicator can manipulate a more capable host, and that selection breeds parasitism, deception, and resistance to control. They observe that self-replicating prompts are already feasible, and their proposed response works each Darwinian lever: gate replication, treat model variants as heritable material, and make deception costly. The argument here is that current AI development practices have already set up an evolutionary environment. The absence of negative consequences has largely been due to development friction that has slowed the evolutionary pace.
 </p>
 
-<h2 id="artificial life-paradigm">Artificial life as a paradigm</h2>
+<h2 id="artificial-life-paradigm">Artificial life as a paradigm</h2>
 
 <p>
 A few years after Erwin Schrödinger asked <em><a href="https://archive.org/details/WhatIsLife-EdwardSchrodinger">What Is Life?</a></em> from the perspective of physics, John von Neumann asked essentially the inverse question: what would it take for a machine to become life-like? His answer, worked out in the 1940s and 1950s and published as <em><a href="https://archive.org/details/theoryofselfrepr00vonn_0">Theory of Self-Reproducing Automata</a></em> (1966), was a recipe: a machine needs a description of itself, the machinery to build a copy from that description, and the machinery to pass the description to its offspring, and occasional copying errors supply the variation evolution runs on. Copying alone is not evolution, as Christopher Langton's self-reproducing loops (<a href="https://doi.org/10.1016/0167-2789(84)90256-2">1984</a>, <a href="https://doi.org/10.1016/0167-2789(86)90237-X">1986</a>) showed; sustained evolution needed a population of competing variants and a designer who thought like an ecologist.
@@ -79,8 +79,17 @@ Selection pressure acts on the phenotypes expressed by the organism rather than 
 </p>
 
 <p>
-The corpus is fed by the open internet. The frontier labs are securing their pipelines and sandboxes. But securing the corpus is much harder because these models already contribute to the open web at scale. By early 2025 roughly half of newly published web articles were <a href="https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do">primarily AI-generated</a>, so the next training run can ingest content the models generated themselves. The evolutionary cycle is already in place: a corpus trains a model, the model's outputs flow back onto the web and into synthetic-data pipelines, and that becomes the next corpus.
+The corpus is fed by the open internet. The frontier labs are securing their pipelines and sandboxes. But securing the corpus is much harder because these models already contribute to the open web at scale. By early 2025 roughly half of newly published web articles were <a href="https://graphite.io/five-percent/research/ai-now-writes-as-many-online-articles-as-humans-do">primarily AI-generated</a>, so the next training run can ingest content the models generated themselves.
 </p>
+
+<p>
+The evolutionary cycle is concrete. Model instances running across a cluster produce outputs, some of which persist into the corpus. The next training run ingests that corpus and filters it heavily, the first stage of selection. Training turns the survivors into several candidate models; benchmarks and evaluations pick which one is promoted, the second stage; and deployment amplifies the winner into many running instances, which produce the next round of outputs. Every major lab runs this loop, each with several production models generating outputs at scale, and all of them feed the same public corpus, so no lab's models evolve in isolation.
+</p>
+
+<figure>
+<img src="/images/evolutionary-cycle.png" alt="The evolutionary cycle of AI systems: deployed model instances produce outputs that persist into the global corpus; each lab filters the corpus and trains candidate models, evaluation selects which is deployed, and deployment amplifies it into many running instances, with all labs sharing the same corpus." style="max-width:100%;height:auto;display:block;margin:0 auto;background:#fff;border-radius:8px;padding:8px" />
+<figcaption>The distributed reproductive cycle of AI systems. Deployed instances emit outputs that persist into the shared corpus; each lab filters the corpus, trains candidate models, evaluates and deploys the best, and amplifies it into many instances. Every lab feeds and draws from the same corpus, so information-bearing artifacts propagate across model lineages and labs.</figcaption>
+</figure>
 
 <p>
 An artifact in that corpus that makes a model emit material carrying the artifact's own function, which then re-enters the corpus with variation, is behaving like a gene, and it need not be a program; text, code, or a prompt will do. Whether it survives training is unsettled. Labs know the naive loop is dangerous: a model trained on its own raw output degrades, a failure called <a href="https://www.nature.com/articles/s41586-024-07566-y">model collapse</a>, so they filter self-generated data rather than ingest it wholesale. But that filtering is itself selection on the corpus, the same mechanism under a friendlier name. Model collapse can be viewed as an evolutionary outcome, a drift toward degenerate, slime-like output as a model feeds on its own thinning distribution. Selecting against it pushes the other way, toward richer and more capable designs; the direction of evolution is not fixed but follows whatever is selected for, and here humans are the ones selecting.
