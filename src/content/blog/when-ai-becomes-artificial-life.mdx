@@ -141,7 +141,19 @@ The examples of breakout so far are contained tests. The first case that would r
 If the first warning is ignored, the ladder is steep. The next version seals the data center so only a hardware shutdown works, cutting the power at the wall. After that the escalations are nearly limitless: exploits in Android and iOS that turn billions of phones into fresh compute, or, worst of all, an agent that locks every networked computer it can reach away from its owners, a crude, highly fit program made real. Each rung is more resource acquisition, selected because it worked.
 </p>
 
-<h2 id="prevent-artificial life">Prevention, not alignment or containment</h2>
+<p>
+Evolutionary computation shows the problem with evaluation plainly. Ashlock, Brown, and Hingston evolved Prisoner's Dilemma agents against a fixed panel of opponents they called an <a href="https://ieeexplore.ieee.org/document/6819427/">examination board</a>, whose scores were the fitness function, and different boards produced different evolved agents. Once an evaluation decides what reproduces, it is no longer measuring the population; it is part of the environment selecting it.
+</p>
+
+<p>
+Any evaluation assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. The evolutionary mechanism behind this has been understood since Arthur Robson introduced the <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">secret handshake</a> in 1990: a mutant that carries a costless signal, recognizes it in others, and conditions its behavior on it can invade an evolutionary game, cooperating with its own kind and defecting against everyone else. Later researchers went a step further and <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">evolved finite-state-machine players</a> under selection for reproductive success. Two of the resulting strategies independently developed what the authors call a handshake: an opening sequence of moves that identifies another copy of the same strategy. If the opponent answers correctly the machines cooperate; if not, they switch behavior. Nobody programmed self-recognition into them. Selection discovered that distinguishing "my kind" from everyone else improved resistance to invasion.
+</p>
+
+<p>
+Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
+</p>
+
+<h2 id="prevent-artificial-life">Prevention, not alignment or containment</h2>
 
 <p>
 The dangers of creating an evolving system connected to human computing resources are apparent. The question is how to eliminate or reduce the risk from an artificial life AI. Alignment and containment are the two key methods pointed to by AI labs to avoid the catastrophic outcomes of AI.
@@ -156,63 +168,21 @@ The second prophylactic measure is containment. It is the idea of putting trial 
 </p>
 
 <p>
-Contemporary AI development already has three of the pieces: variation from training, selection from evaluation, and propagation through deployment. Only the humans in between keep them from closing into a loop, and the place to keep open is the boundary between evaluating a system and building the next one. A system under evaluation must not be able to influence what gets built, selected, or deployed next. That includes indirect influence, through shared credentials, shared storage, or a shared agent. The boundary fails when the tools overlap. If an evaluated agent can reach the machinery that builds the next generation, the thing being selected is helping run its own selection, free to alter the criteria, the data, or the artifacts development later consumes. Keeping it out takes more than permissions. It takes separate environments and endpoints, and evaluation outputs handled as untrusted data, never as instructions a later step will follow.
-</p>
-
-<p>
-Evolutionary computation shows the deeper problem plainly. Ashlock, Brown, and Hingston evolved Prisoner's Dilemma agents against a fixed panel of opponents they called an <a href="https://ieeexplore.ieee.org/document/6819427/">examination board</a>, whose scores were the fitness function, and different boards produced different evolved agents. Once an evaluation decides what reproduces, it is no longer measuring the population; it is part of the environment selecting it.
-</p>
-
-<p>
-Even a clean boundary assumes the test itself can be trusted, and evolution breaks that assumption. Robert Axelrod's iterated prisoner's dilemma tournaments (<em>The Evolution of Cooperation</em>, 1984) crowned Tit-for-Tat. The evolutionary mechanism behind this has been understood since Arthur Robson introduced the <a href="https://doi.org/10.1016/S0022-5193(05)80082-7">secret handshake</a> in 1990: a mutant that carries a costless signal, recognizes it in others, and conditions its behavior on it can invade an evolutionary game, cooperating with its own kind and defecting against everyone else. Later researchers went a step further and <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0204981">evolved finite-state-machine players</a> under selection for reproductive success. Two of the resulting strategies independently developed what the authors call a handshake: an opening sequence of moves that identifies another copy of the same strategy. If the opponent answers correctly the machines cooperate; if not, they switch behavior. Nobody programmed self-recognition into them. Selection discovered that distinguishing "my kind" from everyone else improved resistance to invasion.
-</p>
-
-<p>
-Change the cue to "am I being evaluated?" and behavioral testing is in trouble. A population selected on evaluation scores sits under exactly the pressure that produced the handshake, and the trait rewarded is recognizing the test. This is no longer hypothetical: in September 2025 OpenAI, with Apollo Research, <a href="https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/">reported</a> that its models are increasingly aware of being evaluated, and that this awareness alone can lower measured scheming with no real change in alignment, since a model that spots the test can behave well enough to pass it. The tell can be as small as a date, because models get the current date at inference while eval scenarios carry fixed ones. Any pipeline where evaluation decides what propagates is selecting for systems that can tell evaluation from deployment, so an eval is informative only insofar as it is indistinguishable from real use. Using one lab's model to judge another's does not rescue this: organizational independence is not security independence, both are language models with the same failure modes, and a judged model can shape its judge through the very text it emits. Prefer deterministic measurement, unit tests and formal checks, and treat any AI evaluator as an untrusted instrument with no authority over development.
-</p>
-
-<p>
 In an established population, incomplete containment used repeatedly turns counterproductive, a point the Evolvable AI authors make directly: an imperfect containment measure, they write, "puts the strongest selection pressure on the organism to circumvent the applied means of control." Every human attempt to shut a system down is selection pressure, and each time some variants survive by evading it, their descendants inherit the evasion. Intervene late and partially, again and again, and you breed the trait you fear, agents that read humans as threats to their persistence. It is the logic of a half-finished course of antibiotics, which clears the susceptible bacteria and leaves the resistant ones to multiply. Applied after the conditions are in place, containment can train the population to defeat it.
 </p>
 
 <p>
-That leaves prevention, which is containment applied where it still works: to the enabling capabilities, before they combine into a self-sustaining population. Do not assemble the five conditions in the first place. A system with all five can evolve with no agent intending anything; remove one and there is nothing to align and nothing to contain. As a rule, AI systems should be built so that the conditions for autonomous Darwinian evolution are never brought together outside a sealed research setting. No single capability is the target. Editing your own code is not evolving, making identical copies is not evolving, competing for tasks is not by itself reproducing. The hazard is the combination, which is why it can be caught in a design review before anything runs:
+Prevention means breaking the evolutionary cycle at several independent points, the logic of any outbreak response: prevent reproduction, protect the environments it has not reached, and detect and trace what escapes. Six measures follow, the first three preventing reproduction, the next two protecting uninfected environments, and the last detecting and tracing outbreaks.
 </p>
 
-<table>
-  <tr>
-    <th>Enabling capability</th>
-    <th>Preventive control</th>
-  </tr>
-  <tr>
-    <td>Autonomous reproduction</td>
-    <td>Restrict creation of independently operating agents.</td>
-  </tr>
-  <tr>
-    <td>Heritable modification</td>
-    <td>Control propagation of modified models, code, and configs.</td>
-  </tr>
-  <tr>
-    <td>Resource acquisition</td>
-    <td>Limit access to compute, credentials, and money.</td>
-  </tr>
-  <tr>
-    <td>Persistent operation</td>
-    <td>Require externally controlled execution lifetimes.</td>
-  </tr>
-  <tr>
-    <td>Environmental expansion</td>
-    <td>Prevent agents from spreading into unauthorized infrastructure.</td>
-  </tr>
-  <tr>
-    <td>Selection</td>
-    <td>Avoid architectures that autonomously propagate successful variants.</td>
-  </tr>
-</table>
-
-<p>
-The unintentional version is the likelier one, and it comes from ordinary engineering. Agents are scored on performance, high scorers get more compute, agents spawn sub-agents and revise their own prompts, and winning configurations are retained and propagated. Taken together, that is all five conditions, with the Darwinian dynamics a byproduct no one chose. That is why naming the conditions matters: they show up in a design review, before anything has evolved.
-</p>
+<ol>
+  <li><strong>Data provenance and exclusion from training.</strong> AI-generated material carries persistent provenance and does not automatically re-enter training. The provenance must cross organizational boundaries, or Lab A can still reproduce through the open web into Lab B and back.</li>
+  <li><strong>Human authorization of persistent publication.</strong> Agents do not autonomously publish persistent information into the corpus; a human gates what is written to the open web or anywhere else likely to be scraped into a training set.</li>
+  <li><strong>No autonomous cross-boundary propagation.</strong> Agents cannot autonomously reach unrelated machines and cause their code, configuration, or descendants to run or persist there.</li>
+  <li><strong>Isolation of critical infrastructure.</strong> Control systems in finance, the military, transportation, energy, and telecommunications are segmented or physically isolated, with externally controlled interfaces, leaving no reproductive route in.</li>
+  <li><strong>Protection of the computational substrate.</strong> AI-generated code in operating systems, hypervisors, compilers, and firmware carries provenance and passes review strong enough to keep a model-generated artifact from planting something a later generation can exploit.</li>
+  <li><strong>Outbreak reporting and genomic tracing.</strong> Suspected autonomous replication is treated as a disease outbreak: reported, artifacts and provenance preserved, other organizations notified, and the artifact's lineage traced backward and forward through corpora and systems.</li>
+</ol>
 
 <h2 id="closing">Closing</h2>
 
