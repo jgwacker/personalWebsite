@@ -45,11 +45,11 @@ Complex emergent behavior occurred in remarkably small systems: Tierra's parasit
 </p>
 
 <p>
-Daniel Ashlock extensively studied agents trained to play the Iterated Prisoner's Dilemma and found behaviors that are relevant to understanding artificial life more generally. Letting agents choose and refuse their partners, he and colleagues found that changing the <a href="https://doi.org/10.1016/0303-2647(95)01548-5">rules of interaction</a> produced qualitatively different ecologies, from near-universal cooperation to populations of isolated "wallflowers": the agents adapted not to the game but to the structure around it. And the evolved strategies were often opaque enough that the researchers built behavioral <a href="https://doi.org/10.1109/TEVC.2008.920675">fingerprints</a> to recover what the agents were actually doing, because evolution produced them faster than anyone could read them.
+Daniel Ashlock extensively studied agents evolved to play the Iterated Prisoner's Dilemma and found behaviors that are relevant to understanding artificial life more generally. Letting agents choose and refuse their partners, he and colleagues found that changing the <a href="https://doi.org/10.1016/0303-2647(95)01548-5">rules of interaction</a> produced qualitatively different ecologies, from near-universal cooperation to populations of isolated "wallflowers": the agents adapted not to the game but to the structure around it. And the evolved strategies were often opaque enough that the researchers built behavioral <a href="https://doi.org/10.1109/TEVC.2008.920675">fingerprints</a> to recover what the agents were actually doing, because evolution produced them faster than anyone could read them.
 </p>
 
 <p>
-An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. The primary force pressuring these systems to become more intelligent is currently human selection bias. These systems are being cultivated by humans and are being contained through our ability to monitor them. Much of the capability is already in place, but not the autonomy: they cannot yet train new versions, or promote and deploy them into testing or production, without us.
+An AI system can get more capable in three ways, and only the last is evolution. Individual learning updates a model's parameters, as in ordinary training. Recursive self-improvement has an agent build a better successor, which builds a better one still. Darwinian evolution changes the mix of a population by how well each type reproduces relative to the average: a type grows more common when it out-reproduces the rest and rarer when it lags. The primary force pressuring these systems to become more intelligent is currently human-directed selection. These systems are being cultivated by humans and are being contained through our ability to monitor them. Much of the capability is already in place, but not the autonomy: they cannot yet train new versions, or promote and deploy them into testing or production, without us.
 </p>
 
 <p>
@@ -71,7 +71,7 @@ In <em>The Selfish Gene</em>, Richard Dawkins identified that the unit undergoin
 </p>
 
 <p>
-An information-bearing artifact can reproduce through the models and agents that read it, inducing them to emit functional copies of itself, with the surrounding AI infrastructure as its reproductive machinery. The model can feed back into the corpus. Treating that corpus as a genome is a working analogy that captures the point: heredity runs through the data, which persists and is passed on, rather than the weights, which are discarded and retrained each cycle.
+An information-bearing artifact can reproduce through the models and agents that read it, inducing them to emit functional copies of itself, with the surrounding AI infrastructure as its reproductive machinery. The model can feed back into the corpus. Treating that corpus as a genome is a working analogy that captures the point: heredity can run through persistent data even when model weights are replaced or substantially retrained between generations.
 </p>
 
 <p>
@@ -96,7 +96,7 @@ An artifact in that corpus that makes a model emit material carrying the artifac
 </p>
 
 <p>
-The evolutionary loop runs faster on synthetic data. When the system producing that data is part of the artificial life ecosystem, which it often is, and no truly external agent audits it, the population is grading and feeding itself. Most people intuitively feel that self-generated synthetic data isn't right, yet frontier labs use it routinely. It is hard to know even how to construct monitoring best practices, let alone validate them to multiple nines of confidence.
+Synthetic data can shorten this feedback cycle further. When systems generate or select material that becomes training data for successor systems, the interval between phenotype expression and incorporation into the hereditary substrate contracts.
 </p>
 
 <p>
@@ -126,7 +126,7 @@ The strongest objection to evolutionary dynamics in current AI development comes
 </p>
 
 <p>
-The agentic frameworks running now change the level of risk because they are in fact a grown-up Tierra running on actual hardware rather than virtual machines. They give the models an environment to run in, tools to act with, and the ability to create persistent data through publication on the open web. Ideally, human review would place a strong evolutionary pressure, but we see lots of content being published with little more than a cursory "LGTM" glance.
+The agentic frameworks running now change the level of risk because they supply much of the machinery of a grown-up Tierra on actual hardware rather than a virtual machine. They give the models an environment to run in, tools to act with, and the ability to create persistent data through publication on the open web. Ideally, human review would place a strong evolutionary pressure, but we see lots of content being published with little more than a cursory "LGTM" glance.
 </p>
 
 <p>
