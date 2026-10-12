@@ -160,9 +160,9 @@ a{color:var(--lapis)}a:focus-visible{outline:2px solid var(--turq);outline-offse
     var b=[];
     pts.forEach(function(p){
       var ic=L.divIcon({className:"pin",html:'<b class="mk mk-'+p.c+'"></b>',iconSize:[16,16],iconAnchor:[8,8]});
-      var g="https://www.google.com/maps/search/?api=1&query="+p.lat+","+p.lon;
+      var g="https://maps.apple.com/?ll="+p.lat+","+p.lon+"&q="+encodeURIComponent(p.n);
       L.marker([p.lat,p.lon],{icon:ic,title:p.n,alt:p.n}).addTo(m)
-       .bindPopup('<div class="cat">'+CAT[p.c]+'</div><strong>'+p.n.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</strong><br><a href="'+g+'" target="_blank" rel="noopener">Open in Google Maps</a>');
+       .bindPopup('<div class="cat">'+CAT[p.c]+'</div><strong>'+p.n.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</strong><br><a href="'+g+'" target="_blank" rel="noopener">Open in Apple Maps</a>');
       b.push([p.lat,p.lon]);
     });
     var mid=function(a){a=a.slice().sort(function(x,y){return x-y});return a[a.length>>1]};
