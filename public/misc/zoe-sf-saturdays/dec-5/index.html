@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Dec 5: Nutcracker Night</title>
   <style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}</style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap");
 :root{
@@ -80,7 +80,7 @@ footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)
     <div><dt>Sunset</dt><dd>4:50 PM</dd></div>
     <div><dt>Dinner</dt><dd>a Mano, 5:45, reserved for 2</dd></div>
     <div><dt>Curtain</dt><dd>7:00 PM, out about 9:00</dd></div>
-    <div><dt>Pickup</dt><dd>9:05, Van Ness &amp; Grove</dd></div>
+    <div><dt>Pickup</dt><dd>9:05, Van Ness &amp; Grove, both of them</dd></div>
   </dl>
 
   <div class="note"><p><strong>Booked:</strong> Nutcracker tickets (on the phone) and a Mano at 5:45. Nothing else to reserve. December evening will be in the low 50s; bring a real coat for the hilltop and the walk home.</p></div>
@@ -156,8 +156,7 @@ footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)
       <div class="t">9:05<small>Home</small></div>
       <div class="b">
         <h3>Getting home</h3>
-        <p><strong>Zoe:</strong> pickup on the Grove Street side of the Opera House, Van Ness &amp; Grove, around 9:05. Traffic on Van Ness after a show is slow; Franklin or Gough are easier for the approach.</p>
-        <p><strong>Imani:</strong> Van Ness Muni station is across the street. Outbound N Judah to the Outer Sunset, about 35 minutes. Trains run every 10 to 12 minutes at that hour.</p>
+        <p>Pickup for both on the Grove Street side of the Opera House, Van Ness &amp; Grove, around 9:05. Traffic on Van Ness after a show is slow; Franklin or Gough are easier for the approach. Drop Imani in the Outer Sunset on the way, about 20 minutes out Fell and Lincoln, then home.</p>
       </div>
     </div>
   </section>
@@ -183,12 +182,11 @@ footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
   var route=[[37.7762,-122.4343],[37.77613,-122.43371],[37.77638,-122.43053],[37.77665,-122.42657],[37.77675,-122.42443],[37.77680,-122.42360],[37.77685,-122.42283],[37.77696,-122.42122],[37.77775,-122.42106],[37.77815,-122.42065]];
   L.polyline(route,{color:'#1e4e9c',weight:5,opacity:.85,lineJoin:'round'}).addTo(map);
-  L.polyline([[37.77815,-122.42065],[37.7773,-122.4203],[37.77530,-122.41930]],{color:'#1e4e9c',weight:3,opacity:.6,dashArray:'6 8'}).addTo(map);
   function pin(ll,label,cls,html){var i=L.divIcon({className:'',html:'<div class="pin '+(cls||'')+'">'+(label||'')+'</div>',iconSize:cls==='shop'?[12,12]:[26,26],iconAnchor:cls==='shop'?[6,6]:[13,13]});return L.marker(ll,{icon:i}).addTo(map).bindPopup(html);}
   pin([37.7762,-122.4343],'1','sun','<b>Alamo Square</b><br>3:30 · Painted Ladies, sunset 4:50');
   pin([37.77680,-122.42360],'2','','<b>a Mano</b><br>450 Hayes · dinner 5:45, reserved');
   pin([37.77815,-122.42065],'3','','<b>War Memorial Opera House</b><br>301 Van Ness · Nutcracker 7:00');
-  pin([37.77530,-122.41930],'4','','<b>Van Ness Muni station</b><br>Imani\'s N Judah home, about 9:05');
+  pin([37.77800,-122.42140],'4','','<b>Pickup</b><br>Grove St side, Van Ness &amp; Grove, 9:05');
   pin([37.77655,-122.42560],'','shop','<b>Reliquary</b><br>544 Hayes');
   pin([37.77665,-122.42470],'','shop','<b>Timbuk2</b><br>506 Hayes');
   pin([37.77610,-122.42450],'','shop','<b>Miette</b><br>449 Octavia');
