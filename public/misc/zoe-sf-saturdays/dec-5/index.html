@@ -6,6 +6,8 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Dec 5: Nutcracker Night</title>
   <style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}</style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap");
 :root{
@@ -36,6 +38,13 @@ h1{font-size:clamp(34px,6vw,56px);font-weight:700;letter-spacing:-.01em}
 section{margin-top:44px;padding-top:22px;border-top:1px solid var(--line)}
 .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .sechead h2{font-size:26px}.sechead .span{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:0}
+#map{height:440px;border:1px solid var(--line);border-radius:4px;margin:0 0 10px;background:var(--land)}
+.maplinks{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:12.5px;margin:0 0 22px}
+.maplinks a{color:var(--lapis)}
+.leaflet-container{font-family:var(--body)}
+.pin{width:26px;height:26px;border-radius:50%;background:var(--lapis);color:#fff;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4);font-family:var(--mono);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center}
+.pin.sun{background:#c79a4a}.pin.shop{width:12px;height:12px;background:#1e9c94;border-width:2px}
+.leaflet-popup-content{font-size:14px;line-height:1.4;margin:10px 14px}.leaflet-popup-content b{font-family:var(--display)}
 .route{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:10px 6px 4px;margin:0 0 20px}
 .route svg{display:block;width:100%;height:auto}
 .rl{font-family:var(--display);font-weight:700;font-size:15px;fill:var(--ink)}
@@ -77,28 +86,11 @@ footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)
   <div class="note"><p><strong>Booked:</strong> Nutcracker tickets (on the phone) and a Mano at 5:45. Nothing else to reserve. December evening will be in the low 50s; bring a real coat for the hilltop and the walk home.</p></div>
 
   <section>
-    <div class="sechead"><h2>The route</h2><p class="span">About 1 mile on foot, all downhill or flat</p></div>
-    <div class="route">
-      <svg viewBox="0 0 860 150" role="img" aria-label="Route: Alamo Square, down Hayes Street to the Hayes Valley shops, a Mano, and the War Memorial Opera House">
-        <path class="rline" d="M70 70 L300 70 L520 70 L690 70 L800 70"/>
-        <circle class="rdot sun" cx="70" cy="70" r="9"/>
-        <circle class="rdot" cx="300" cy="70" r="9"/>
-        <circle class="rdot" cx="520" cy="70" r="9"/>
-        <circle class="rdot" cx="690" cy="70" r="9"/>
-        <circle class="rdot" cx="800" cy="70" r="9"/>
-        <text class="rl" x="70" y="40" text-anchor="middle">Alamo Square</text>
-        <text class="rs" x="70" y="100" text-anchor="middle">3:30 · sunset 4:50</text>
-        <text class="rl" x="300" y="40" text-anchor="middle">Hayes St shops</text>
-        <text class="rs" x="300" y="100" text-anchor="middle">5:00 · 15 min walk</text>
-        <text class="rl" x="520" y="40" text-anchor="middle">a Mano</text>
-        <text class="rs" x="520" y="100" text-anchor="middle">5:45 · 450 Hayes</text>
-        <text class="rl" x="690" y="40" text-anchor="middle">Opera House</text>
-        <text class="rs" x="690" y="100" text-anchor="middle">7:00 · 4 min walk</text>
-        <text class="rl" x="800" y="40" text-anchor="middle">Home</text>
-        <text class="rs" x="800" y="100" text-anchor="middle">9:05</text>
-        <text class="rs" x="185" y="128" text-anchor="middle">Hayes St east, 0.7 mi</text>
-        <text class="rs" x="605" y="128" text-anchor="middle">Hayes to Van Ness, 0.2 mi</text>
-      </svg>
+    <div class="sechead"><h2>The route</h2><p class="span">About 1 mile on foot, downhill then flat · blue pins are stops, green dots are shops</p></div>
+    <div id="map" role="img" aria-label="Map of the Dec 5 walking route from Alamo Square along Hayes Street to a Mano and the War Memorial Opera House"></div>
+    <div class="maplinks">
+      <a href="https://www.google.com/maps/dir/?api=1&origin=Alamo+Square,+San+Francisco&destination=War+Memorial+Opera+House,+301+Van+Ness+Ave,+San+Francisco&waypoints=450+Hayes+St,+San+Francisco&travelmode=walking" target="_blank" rel="noopener">Open walking directions in Google Maps</a>
+      <a href="https://maps.apple.com/?saddr=Alamo+Square,+San+Francisco&daddr=450+Hayes+St,+San+Francisco&dirflg=w" target="_blank" rel="noopener">Apple Maps to a Mano</a>
     </div>
 
     <div class="block">
@@ -182,5 +174,29 @@ footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)
 
   <footer>Updated November 7, 2026. Unlisted page. Back to <a href="../">SF Saturdays</a>.</footer>
 </div>
+<script>
+(function(){
+  var dark=matchMedia('(prefers-color-scheme: dark)').matches;
+  var map=L.map('map',{scrollWheelZoom:false}).setView([37.7772,-122.4278],15);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dark?'dark_all':'light_all')+'/{z}/{x}/{y}{r}.png',{
+    maxZoom:19,subdomains:'abcd',
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+  var route=[[37.7762,-122.4343],[37.77613,-122.43371],[37.77638,-122.43053],[37.77665,-122.42657],[37.77675,-122.42443],[37.77680,-122.42360],[37.77685,-122.42283],[37.77696,-122.42122],[37.77775,-122.42106],[37.77815,-122.42065]];
+  L.polyline(route,{color:'#1e4e9c',weight:5,opacity:.85,lineJoin:'round'}).addTo(map);
+  L.polyline([[37.77815,-122.42065],[37.7773,-122.4203],[37.77530,-122.41930]],{color:'#1e4e9c',weight:3,opacity:.6,dashArray:'6 8'}).addTo(map);
+  function pin(ll,label,cls,html){var i=L.divIcon({className:'',html:'<div class="pin '+(cls||'')+'">'+(label||'')+'</div>',iconSize:cls==='shop'?[12,12]:[26,26],iconAnchor:cls==='shop'?[6,6]:[13,13]});return L.marker(ll,{icon:i}).addTo(map).bindPopup(html);}
+  pin([37.7762,-122.4343],'1','sun','<b>Alamo Square</b><br>3:30 · Painted Ladies, sunset 4:50');
+  pin([37.77680,-122.42360],'2','','<b>a Mano</b><br>450 Hayes · dinner 5:45, reserved');
+  pin([37.77815,-122.42065],'3','','<b>War Memorial Opera House</b><br>301 Van Ness · Nutcracker 7:00');
+  pin([37.77530,-122.41930],'4','','<b>Van Ness Muni station</b><br>Imani\'s N Judah home, about 9:05');
+  pin([37.77655,-122.42560],'','shop','<b>Reliquary</b><br>544 Hayes');
+  pin([37.77665,-122.42470],'','shop','<b>Timbuk2</b><br>506 Hayes');
+  pin([37.77610,-122.42450],'','shop','<b>Miette</b><br>449 Octavia');
+  pin([37.77640,-122.42430],'','shop','<b>Patricia\'s Green / Proxy</b>');
+  pin([37.77690,-122.42290],'','shop','<b>Christopher Elbow Chocolates</b><br>401 Hayes · hot chocolate');
+  pin([37.77570,-122.42370],'','shop','<b>Isotope Comics</b><br>326 Fell');
+  pin([37.77850,-122.41930],'','shop','<b>City Hall</b><br>lit dome at intermission');
+})();
+</script>
 </body>
 </html>
