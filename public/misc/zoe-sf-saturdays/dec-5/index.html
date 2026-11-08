@@ -175,11 +175,10 @@ footer{margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--muted)
 </div>
 <script>
 (function(){
-  var dark=matchMedia('(prefers-color-scheme: dark)').matches;
   var map=L.map('map',{scrollWheelZoom:false}).setView([37.7772,-122.4278],15);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dark?'dark_all':'light_all')+'/{z}/{x}/{y}{r}.png',{
-    maxZoom:19,subdomains:'abcd',
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:19,
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
   var route=[[37.7762,-122.4343],[37.77613,-122.43371],[37.77638,-122.43053],[37.77665,-122.42657],[37.77675,-122.42443],[37.77680,-122.42360],[37.77685,-122.42283],[37.77696,-122.42122],[37.77775,-122.42106],[37.77815,-122.42065]];
   L.polyline(route,{color:'#1e4e9c',weight:5,opacity:.85,lineJoin:'round'}).addTo(map);
   function pin(ll,label,cls,html){var i=L.divIcon({className:'',html:'<div class="pin '+(cls||'')+'">'+(label||'')+'</div>',iconSize:cls==='shop'?[12,12]:[26,26],iconAnchor:cls==='shop'?[6,6]:[13,13]});return L.marker(ll,{icon:i}).addTo(map).bindPopup(html);}
