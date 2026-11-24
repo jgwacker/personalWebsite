@@ -107,7 +107,7 @@ small{color:var(--muted)}a{color:#2b4a7a}
 <tr class='clear'><td>23</td><td><a href='https://data.matricula-online.eu/en/oesterreich/wien/23-mauer/'>Pfarrkirche Mauer</a><br><small>Maurer Hauptplatz, 1230 Wien</small></td><td><small>01-05 · in-book index</small></td><td><span class='pill clear'>no Stich 1878</span><br><small>In-book index of 01-05: no Stich.</small></td></tr>
 <tr class='pending'><td>23</td><td><a href='https://data.matricula-online.eu/en/oesterreich/wien/23-rodaun/'>Pfarrkirche Rodaun</a><br><small>Kirchengasse 1, 1230 Wien</small></td><td><small>01-03 · in-book index</small></td><td><span class='pill pending'>pending</span><br><small></small></td></tr>
 </tbody></table>
-<p><small>Built from Matricula's register inventory and the parish baptism indexes, November 2026. Church positions are today's churches; a few parishes (Gersthof, Fünfhaus, Hetzendorf, Laimgrube) have since rebuilt or moved their church a short distance. Map tiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>.</small></p>
+<p><small>Built from Matricula's register inventory and the parish baptism indexes, November 2026. Church positions are today's churches; a few parishes (Gersthof, Fünfhaus, Hetzendorf, Laimgrube) have since rebuilt or moved their church a short distance. Map tiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</small></p>
 </main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -115,9 +115,9 @@ const P=[{"slug": "01-am-hof", "name": "Kirche am Hof", "addr": "Am Hof 1, 1010 
 const col={clear:'#3b7a57',hit:'#b3261e',hit1879:'#c97a1a',pending:'#8a8378',unindexed:'#5a6b8a'};
 const lab={clear:'no Stich baptised 1878',hit:'Maria Stich 1878 found',hit1879:'Maria Stich 1879 found',pending:'not yet checked',unindexed:'no usable index'};
 const map=L.map('map',{scrollWheelZoom:false}).setView([48.21,16.37],12);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 P.forEach(r=>{ if(r.lat==null) return;
-  const m=L.circleMarker([r.lat,r.lon],{radius:r.city1878?8:7,color:r.city1878?'#222':'#fff',weight:r.city1878?2.5:1.5,fillColor:col[r.status]||'#999',fillOpacity:.92}).addTo(map);
+  const m=L.circleMarker([r.lat,r.lon],{radius:r.city1878?8:7,color:r.city1878?'#222':'#fff',weight:r.city1878?2.5:1.5,fillColor:col[r.status]||'#999',fillOpacity:.95}).addTo(map);
   const books=r.taufbuch.join(', ')+(r.index_books.length?' · index '+r.index_books.join(', '):' · in-book index');
   m.bindPopup(`<b>${r.name}</b><br>${r.addr}<br><small>District ${r.district}${r.city1878?' (city in 1878)':' (suburb in 1878)'}</small><br><small>Register: ${books}</small><br><span style="color:${col[r.status]}">${lab[r.status]}</span>${r.note?'<br><small>'+r.note+'</small>':''}<br><a href="${r.url}">Open on Matricula</a>`);
   m.bindTooltip(r.name,{direction:'top',offset:[0,-6]});
